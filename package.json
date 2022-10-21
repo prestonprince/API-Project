@@ -1,5 +1,29 @@
 {
   "dependencies": {
-    "bcryptjs": "^2.4.3"
-  }
+    "bcryptjs": "^2.4.3",
+    "pg": "^8.8.0"
+  },
+  "name": "airbnbclone",
+  "description": "## Databsase Schema Design ![image](https://user-images.githubusercontent.com/104703742/196803837-42845708-7882-42b5-9efe-da941311558b.png)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "install": "npm --prefix backend install backend",
+    "dev:backend": "npm install --prefix backend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prestonprince/AirBnBClone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prestonprince/AirBnBClone/issues"
+  },
+  "homepage": "https://github.com/prestonprince/AirBnBClone#readme"
 }
