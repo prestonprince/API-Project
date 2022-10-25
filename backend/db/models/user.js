@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         firstName,
         lastName
       });
-
+    
       return await User.scope('currentUser').findByPk(user.id)
     }
     
