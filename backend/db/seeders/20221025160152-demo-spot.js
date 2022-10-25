@@ -57,7 +57,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Users', {
+    return queryInterface.bulkDelete('Spots', {
       name: { [Op.in]: ["Breaking Bad House", "O-Block", "The Park", "Tokyo Metropolitan Curse Technical College"] }
     }, {});
   }
