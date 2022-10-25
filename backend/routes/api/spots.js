@@ -39,7 +39,36 @@ router.get('/', async (req, res, next) => {
 
 router.get('/current', async (req, res, next) => {
     const { user } = req;
-    console.log(user);
+
+    const spots = await user.getSpots();
+
+    const spotArr = await Promise.all(spots.map(async spot => {
+        const spotData = spot.dataValues;
+
+         //add avgrating prop
+         const allReviews = await spot.getReviews();
+         let sumStars = 0;
+         for (const review of allReviews) {
+             const stars = review.dataValues.stars;
+             sumStars += stars;
+         };
+         const avgRating = sumStars / allReviews.length;
+         spotData.avgRating = avgRating;
+
+           //add previewimage prop
+        const allImages = await spot.getSpotImages({where: {preview: true}});
+        for (const image of allImages) {
+            const url = image.dataValues.url;
+            spotData.previewImage = url
+        };
+
+        return spotData;
+    }));
+
+    const resObj = {};
+    resObj.Spots = spotArr;
+
+    res.json(resObj);
 })
 
 module.exports = router;
