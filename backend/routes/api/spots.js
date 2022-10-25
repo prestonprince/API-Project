@@ -35,6 +35,11 @@ router.get('/', async (req, res, next) => {
     resObj.Spots = spots;
 
     res.json(resObj);
+});
+
+router.get('/current', async (req, res, next) => {
+    const { user } = req;
+    console.log(user);
 })
 
 module.exports = router;
