@@ -1,6 +1,8 @@
 const express = require('express');
 
 const { Spot, SpotImage, Review } = require('../../db/models');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
@@ -146,8 +148,46 @@ router.get('/', async (req, res, next) => {
     res.json(resObj);
 });
 
+// validate spotCreation
+const validateSpot = [
+    check('address')
+        .exists({ checkFalsy: true })
+        .withMessage('Street address is required'),
+    check('city')
+        .exists({ checkFalsy: true })
+        .withMessage('City is required'),
+    check('state')
+        .exists({ checkFalsy: true })
+        .withMessage('State is required'),
+    check('country')
+        .exists({ checkFalsy: true })
+        .withMessage("Country is required"),
+    check('lat')
+        .exists({ checkFalsy: true })
+        .withMessage('latitude is required')
+        .isDecimal()
+        .withMessage('Latitude is not valid'),
+    check('lng')
+        .exists({ checkFalsy: true })
+        .withMessage('Longitude is required')
+        .isDecimal()
+        .withMessage('Longitude is not valid'),
+    check('name')
+        .exists({ checkFalsy: true })
+        .withMessage('Name is required')
+        .isLength({ max: 49 })
+        .withMessage('Name must be less than 50 characters'),
+    check('description')
+        .exists({ checkFalsy: true })
+        .withMessage("Description is required"),
+    check('price')
+        .exists({ checkFalsy: true })
+        .withMessage("Price per day is required"),
+    handleValidationErrors
+];
+
 //create spot 
-router.post('/', async (req, res, next) => {
+router.post('/', validateSpot, async (req, res, next) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
     const { user } = req;
     const ownerId = user.dataValues.id;
@@ -205,7 +245,7 @@ router.get('/:spotId', async (req, res, next) => {
 });
 
 // edit a spot
-router.put('/:spotId', async (req, res, next) => {
+router.put('/:spotId', validateSpot, async (req, res, next) => {
     const id = req.params.spotId;
     const spot = await Spot.findByPk(id);
     
