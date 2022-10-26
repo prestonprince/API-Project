@@ -4,38 +4,28 @@ const { Spot, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
-// get all spots
-router.get('/', async (req, res, next) => {
-    const spots = await Spot.findAll();
-    // get avgrating and previewimage for each spot
-    for (const spot of spots) {
-        const spotData = spot.dataValues;
+//create spot img
+router.post('/:spotId/images', async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const { url, preview } = req.body;
 
-        // get reviews for current spot, returns array of reviews
-        const allReviews = await spot.getReviews();
-        
-        // get each review for current spot
-        let sumStars = 0;
-        for (const review of allReviews) {
-            const stars = review.dataValues.stars;
-            sumStars += stars;
-        };
-
-        const avgRating = sumStars / allReviews.length;
-        spotData.avgRating = avgRating;
-
-        // array of all images that are preview for current spot
-        const allImages = await spot.getSpotImages({where: {preview: true}});
-        for (const image of allImages) {
-            const url = image.dataValues.url;
-            spotData.previewImage = url
-        }
-    };
-
-    const resObj = {};
-    resObj.Spots = spots;
-
-    res.json(resObj);
+    const spot = await Spot.findByPk(spotId);
+    if (spot) {
+        const newSpotImg = await SpotImage.create({ spotId, url, preview });
+        const img = await SpotImage.findOne({
+            where: {
+                id: newSpotImg.id
+            },
+            attributes: ['id', 'url', 'preview']
+        });
+    
+        res.json(img);
+    } else {
+        res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
 });
 
 //get spots of current user
@@ -73,29 +63,41 @@ router.get('/current', async (req, res, next) => {
     res.json(resObj);
 });
 
-//create spot img
-router.post('/:spotId/images', async (req, res, next) => {
-    const spotId = req.params.spotId;
-    const { url, preview } = req.body;
+// get all spots
+router.get('/', async (req, res, next) => {
+    const spots = await Spot.findAll();
+    // get avgrating and previewimage for each spot
+    for (const spot of spots) {
+        const spotData = spot.dataValues;
 
-    const spot = await Spot.findByPk(spotId);
-    if (spot) {
-        const newSpotImg = await SpotImage.create({ spotId, url, preview });
-        const img = await SpotImage.findOne({
-            where: {
-                id: newSpotImg.id
-            },
-            attributes: ['id', 'url', 'preview']
-        });
-    
-        res.json(img);
-    } else {
-        res.status(404).json({
-            message: "Spot couldn't be found",
-            statusCode: 404
-        })
-    }
-})
+        // get reviews for current spot, returns array of reviews
+        const allReviews = await spot.getReviews();
+        
+        // get each review for current spot
+        let sumStars = 0;
+        for (const review of allReviews) {
+            const stars = review.dataValues.stars;
+            sumStars += stars;
+        };
+
+        const avgRating = sumStars / allReviews.length;
+        spotData.avgRating = avgRating;
+
+        // array of all images that are preview for current spot
+        const allImages = await spot.getSpotImages({where: {preview: true}});
+        for (const image of allImages) {
+            const url = image.dataValues.url;
+            spotData.previewImage = url
+        }
+    };
+
+    const resObj = {};
+    resObj.Spots = spots;
+
+    res.json(resObj);
+});
+
+
 
 //create spot 
 router.post('/', async (req, res, next) => {
