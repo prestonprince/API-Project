@@ -202,6 +202,25 @@ router.get('/:spotId', async (req, res, next) => {
 
         res.json(spotData)
     }
+});
+
+// edit a spot
+router.put('/:spotId', async (req, res, next) => {
+    const id = req.params.spotId;
+    const spot = await Spot.findByPk(id);
+    
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    spot.update({
+        ...req.body
+    })
+
+    res.json(spot)
 })
 
 module.exports = router;
