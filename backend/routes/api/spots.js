@@ -4,6 +4,7 @@ const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
+// get all spots
 router.get('/', async (req, res, next) => {
     const spots = await Spot.findAll();
     // get avgrating and previewimage for each spot
@@ -37,6 +38,7 @@ router.get('/', async (req, res, next) => {
     res.json(resObj);
 });
 
+//get spots of current user
 router.get('/current', async (req, res, next) => {
     const { user } = req;
 
@@ -69,6 +71,17 @@ router.get('/current', async (req, res, next) => {
     resObj.Spots = spotArr;
 
     res.json(resObj);
+});
+
+//create spot 
+router.post('/', async (req, res, next) => {
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const { user } = req;
+    const ownerId = user.dataValues.id;
+
+    const newSpot = await Spot.create({ ownerId, address, city, state, country, lat, lng, name, description, price });
+
+    res.json(newSpot);
 })
 
 module.exports = router;
