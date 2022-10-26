@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { Spot } = require('../../db/models');
+const { Spot, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -72,6 +72,30 @@ router.get('/current', async (req, res, next) => {
 
     res.json(resObj);
 });
+
+//create spot img
+router.post('/:spotId/images', async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const { url, preview } = req.body;
+
+    const spot = await Spot.findByPk(spotId);
+    if (spot) {
+        const newSpotImg = await SpotImage.create({ spotId, url, preview });
+        const img = await SpotImage.findOne({
+            where: {
+                id: newSpotImg.id
+            },
+            attributes: ['id', 'url', 'preview']
+        });
+    
+        res.json(img);
+    } else {
+        res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+})
 
 //create spot 
 router.post('/', async (req, res, next) => {
