@@ -43,9 +43,33 @@ router.delete('/review-images/:imageId', requireAuth, async (req, res, next) => 
     });
 });
 
+router.delete('/spot-images/:imageId', requireAuth, async (req, res, next) => {
+    const id = req.params.imageId;
+    const img = await SpotImage.findByPk(id);
+
+    if (!img) {
+        return res.status(404).json({
+            message: "Spot Image couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    await SpotImage.destroy({
+        where: {
+            id: img.id
+        }
+    });
+
+    res.json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+});
+
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });
 });
+
 
 
 module.exports = router;
