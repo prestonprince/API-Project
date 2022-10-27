@@ -31,8 +31,21 @@ router.post('/:spotId/images', async (req, res, next) => {
     }
 });
 
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage("Review text is required"),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .withMessage("Stars are required")
+        .isInt()
+        .isIn([1, 2, 3, 4, 5])
+        .withMessage("Stars must be an integer from 1 to 5"),
+        handleValidationErrors
+];
+
 // create review for spot based on spotid
-router.post('/:spotId/reviews', async (req, res, next) => {
+router.post('/:spotId/reviews', validateReview, async (req, res, next) => {
     const { user } = req;
     const spotId = req.params.spotId;
     const userId = user.id;
