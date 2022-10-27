@@ -245,7 +245,41 @@ router.get('/current', async (req, res, next) => {
 
 // get all spots
 router.get('/', async (req, res, next) => {
-    const spots = await Spot.findAll();
+    let { page, size } = req.query;
+    
+    if (!page) page = 1;
+    if (!size) size = 20;
+
+    if (+page > 10) page = 10;
+    if (+size > 20) size = 20;
+
+    if (+page < 1) {
+        return res.status(400).json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                page: "Page must be greater than or equal to 1"
+            }
+        });
+    };
+
+    if (+size < 1) {
+        return res.status(400).json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                size: "size must be greater than or equal to 1"
+            }
+        });
+    };
+
+    let pagination = {};
+    if (+page >= 1 && +size >= 1) {
+        pagination.limit = size;
+        pagination.offset = size * (page - 1)
+    };
+
+    const spots = await Spot.findAll({...pagination});
     // get avgrating and previewimage for each spot
     for (const spot of spots) {
         const spotData = spot.dataValues;
@@ -273,6 +307,8 @@ router.get('/', async (req, res, next) => {
 
     const resObj = {};
     resObj.Spots = spots;
+    resObj.page = page;
+    resObj.size = size
 
     res.json(resObj);
 });
