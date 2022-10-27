@@ -27,11 +27,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     },
     startDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     endDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false
     },
   }, {

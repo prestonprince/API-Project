@@ -1,11 +1,53 @@
 const express = require('express');
 
-const { Spot, SpotImage, Review, ReviewImage } = require('../../db/models');
+const { Spot, SpotImage, Review, ReviewImage, Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
+
+// create booking from spotid
+router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const { startDate, endDate } = req.body;
+    const { user } = req;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    const bookings = await spot.getBookings();
+    const bookingsArr = await Promise.all(bookings.map(async book => book.dataValues));
+    
+    for (const booking of bookingsArr) {
+        if ((startDate >= booking.startDate && startDate <= booking.endDate) ||
+            (endDate >= booking.startDate && endDate <= booking.endDate)) {
+                res.status(403).json({
+                    message: "Sorry, this spot is already booked for the specified dates",
+                    statusCode: 403,
+                    errors: {
+                        startDate: "Start date conflicts with an existing booking",
+                        endDate: "End date conflicts with an existing booking"
+                    }
+                })
+        }
+    }
+
+    const newBooking = await Booking.create({ 
+        spotId,
+        userId: user.id,
+        startDate,
+        endDate
+     });
+
+     res.json(newBooking)
+})
 
 //create spot img
 router.post('/:spotId/images', async (req, res, next) => {
