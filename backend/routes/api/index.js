@@ -14,11 +14,12 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
+router.use('/bookings', bookingsRouter);
+
 router.use('/spots', spotsRouter);
 
 router.use('/reviews', reviewsRouter);
 
-router.use('/bookings', bookingsRouter);
 
 router.delete('/review-images/:imageId', requireAuth, async (req, res, next) => {
     const id = req.params.imageId;
