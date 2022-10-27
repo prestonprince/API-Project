@@ -7,6 +7,44 @@ const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
+//get all bookings for a spot by spotId
+router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const spot = await Spot.findByPk(spotId);
+    const { user } = req;
+
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    if (user.id !== spot.ownerId) {
+        const resObj = {};
+        const bookings = await spot.getBookings({attributes: ['spotId', 'startDate', 'endDate']});
+
+        resObj.Bookings = bookings;
+        res.json(resObj)
+    } else {
+        const resObj = {};
+        const bookings = await spot.getBookings();
+        const bookingsArr = await Promise.all(bookings.map(async book => {
+            const bookData = book.dataValues;
+            bookData.User = {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName
+            };
+
+            return bookData;
+        }));
+        resObj.Bookings = bookingsArr;
+
+        res.json(resObj)
+    };
+});
+
 // create booking from spotid
 router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
     const spotId = req.params.spotId;
