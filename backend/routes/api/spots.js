@@ -28,9 +28,22 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
         res.json(resObj)
     } else {
         const resObj = {};
-        
-    }
-})
+        const bookings = await spot.getBookings();
+        const bookingsArr = await Promise.all(bookings.map(async book => {
+            const bookData = book.dataValues;
+            bookData.User = {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName
+            };
+
+            return bookData;
+        }));
+        resObj.Bookings = bookingsArr;
+
+        res.json(resObj)
+    };
+});
 
 // create booking from spotid
 router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
