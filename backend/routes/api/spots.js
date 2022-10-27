@@ -88,7 +88,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
 })
 
 //create spot img
-router.post('/:spotId/images', async (req, res, next) => {
+router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const spotId = req.params.spotId;
     const { url, preview } = req.body;
 
@@ -209,7 +209,7 @@ router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res, ne
 })
 
 //get spots of current user
-router.get('/current', async (req, res, next) => {
+router.get('/current', requireAuth, async (req, res, next) => {
     const { user } = req;
 
     const spots = await user.getSpots();
@@ -245,7 +245,41 @@ router.get('/current', async (req, res, next) => {
 
 // get all spots
 router.get('/', async (req, res, next) => {
-    const spots = await Spot.findAll();
+    let { page, size } = req.query;
+    
+    if (!page) page = 1;
+    if (!size) size = 20;
+
+    if (+page > 10) page = 10;
+    if (+size > 20) size = 20;
+
+    if (+page < 1) {
+        return res.status(400).json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                page: "Page must be greater than or equal to 1"
+            }
+        });
+    };
+
+    if (+size < 1) {
+        return res.status(400).json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                size: "size must be greater than or equal to 1"
+            }
+        });
+    };
+
+    let pagination = {};
+    if (+page >= 1 && +size >= 1) {
+        pagination.limit = size;
+        pagination.offset = size * (page - 1)
+    };
+
+    const spots = await Spot.findAll({...pagination});
     // get avgrating and previewimage for each spot
     for (const spot of spots) {
         const spotData = spot.dataValues;
@@ -273,6 +307,8 @@ router.get('/', async (req, res, next) => {
 
     const resObj = {};
     resObj.Spots = spots;
+    resObj.page = page;
+    resObj.size = size
 
     res.json(resObj);
 });
@@ -316,7 +352,7 @@ const validateSpot = [
 ];
 
 //create spot 
-router.post('/', validateSpot, async (req, res, next) => {
+router.post('/', requireAuth, validateSpot, async (req, res, next) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
     const { user } = req;
     const ownerId = user.dataValues.id;
@@ -374,7 +410,7 @@ router.get('/:spotId', async (req, res, next) => {
 });
 
 // edit a spot
-router.put('/:spotId', validateSpot, async (req, res, next) => {
+router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
     const id = req.params.spotId;
     const spot = await Spot.findByPk(id);
     
@@ -393,7 +429,7 @@ router.put('/:spotId', validateSpot, async (req, res, next) => {
 });
 
 // delete spot
-router.delete('/:spotId', async (req, res, next) => {
+router.delete('/:spotId', requireAuth, async (req, res, next) => {
     const id = req.params.spotId;
     const spot = await Spot.findByPk(id);
 

@@ -107,7 +107,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
 
 // edit review
-router.put('/:reviewId', validateReview, async (req, res, next) => {
+router.put('/:reviewId', requireAuth, validateReview, async (req, res, next) => {
     const id = req.params.reviewId;
     const rev = await Review.findByPk(id);
     const { review, stars } = req.body;
