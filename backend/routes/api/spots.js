@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { Spot, SpotImage, Review } = require('../../db/models');
+const { Spot, SpotImage, Review, ReviewImage } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
@@ -31,6 +31,41 @@ router.post('/:spotId/images', async (req, res, next) => {
     }
 });
 
+// get all reviews by spotId
+router.get('/:spotId/reviews', async (req, res, next) => {
+    const { spotId } = req.params;
+    const { user } = req;
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    const reviews = await spot.getReviews();
+    const resObj = {};
+    const revArr = await Promise.all(reviews.map(async rev => {
+        const revData = rev.dataValues;
+        revData.User = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName
+        };
+
+        const imgs = await ReviewImage.findAll({ where: {reviewId: rev.id}, attributes: ['id', 'url'] });
+
+        revData.ReviewImages = imgs
+
+        return revData
+    }));
+    
+    resObj.Reviews = revArr
+
+    res.json(resObj)
+});
+
 const validateReview = [
     check('review')
         .exists({ checkFalsy: true })
@@ -45,7 +80,7 @@ const validateReview = [
 ];
 
 // create review for spot based on spotid
-router.post('/:spotId/reviews', validateReview, async (req, res, next) => {
+router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res, next) => {
     const { user } = req;
     const spotId = req.params.spotId;
     const userId = user.id;
