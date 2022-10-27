@@ -3,6 +3,7 @@ const express = require('express');
 const { Spot, SpotImage, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -280,7 +281,7 @@ router.delete('/:spotId', async (req, res, next) => {
             where: {
                 id: id
             }
-        })
+        });
 
         return res.json({
             message: "Successfully deleted",
