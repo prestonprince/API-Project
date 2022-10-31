@@ -58,9 +58,11 @@ router.get('/current', requireAuth, async (req, res, next) => {
     const reviews = await user.getReviews();
     if (!reviews.length) {res.json({message: "No reviews for this user"})}
 
+    // structure reviews array for response
     const reviewArr = await Promise.all(reviews.map(async rev => {
         const revData = rev.dataValues;
 
+        // add User key to each review object
         revData.User = {
             id: user.id,
             firstName: user.firstName,
@@ -91,10 +93,13 @@ router.get('/current', requireAuth, async (req, res, next) => {
             attributes: ['url']
         });
 
+        // add previewImage key to spot object within each review object
         spot.dataValues.previewImage = prevImg.dataValues.url
 
+        // structure review images array and add it to each review object
         const imgArr = await Promise.all(prevImgs.map(async img => img.dataValues));
 
+        // add spot and review images keys to review object 
         revData.Spot = spot.dataValues;
         revData.ReviewImages = imgArr;
         
