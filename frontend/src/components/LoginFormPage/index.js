@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/session';
+import { login } from '../../store/session';
+
+import './LoginForm.css';
 
 const LoginFormPage = () => {
     const [credential, setCredential] = useState('');
@@ -26,14 +28,15 @@ const LoginFormPage = () => {
 
     return (
         <div>
+            <h2>Log In</h2>
             <ul>
                 {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}
             </ul>
             <form onSubmit={onSubmit}>
-                <label htmlFor='credential'>
-                    Username or Email: 
+                <label className='credential' htmlFor='credential'>
+                    <span className='credential-label'>Username or Email: </span> 
                     <input
                         type='text'
                         onChange={(e) => setCredential(e.target.value)}
@@ -41,8 +44,8 @@ const LoginFormPage = () => {
                         required
                     />  
                 </label>
-                <label htmlFor='password'>
-                    Password: 
+                <label className='password' htmlFor='password'>
+                <span className='password-label'>Username or Email: </span>  
                     <input
                         type='password'
                         onChange={(e) => setPassword(e.target.value)}

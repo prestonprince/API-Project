@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 
-import LoginFormPage from './components';
+import LoginFormPage from './components/LoginFormPage';
 
 function App() {
   return (

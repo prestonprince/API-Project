@@ -1,0 +1,24 @@
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}
+
+.credential {
+    padding: 5px;
+}
+
+.credential-label {
+    padding-right: 1px;
+}
+
+.password {
+    padding: 5px;
+}
+
+.password-label {
+    padding-left: 5px;
+    padding-right: 1px
+}
