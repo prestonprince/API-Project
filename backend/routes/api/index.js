@@ -67,10 +67,6 @@ router.delete('/spot-images/:imageId', requireAuth, async (req, res, next) => {
     })
 });
 
-router.post('/test', (req, res) => {
-    res.json({ requestBody: req.body });
-});
-
 
 
 module.exports = router;
