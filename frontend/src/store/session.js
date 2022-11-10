@@ -25,10 +25,15 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  console.log(data)
-  dispatch(setUser(data));
-  return response;
+
+  if (response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+      return response;
+  } else {
+    throw response
+  };
+
 };
 
 const initialState = { user: null };
