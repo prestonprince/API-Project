@@ -4,6 +4,8 @@ const { Spot, SpotImage, Review, ReviewImage, Booking } = require('../../db/mode
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
+const { Op, MACADDR } = require('sequelize');
+const { query } = require('express');
 
 const router = express.Router();
 
@@ -243,6 +245,93 @@ router.get('/current', requireAuth, async (req, res, next) => {
     res.json(resObj);
 });
 
+// query filters helper func
+const queryFilters = (queryObj) => {
+    let { minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = queryObj;
+
+    const filterOBJ = {}
+
+    const errObj = {};
+    if (minLat && isNaN(+minLat)) {
+        errObj.minLat = "Minimum latitude is invalid";
+        filterOBJ.errors = { ...errObj }
+    };
+
+    if (maxLat && isNaN(+maxLat)) {
+        errObj.maxLat = "Maximum latitude is invalid";
+        filterOBJ.errors = { ...errObj }
+    };
+
+    if (minLng && isNaN(+minLng)) {
+        errObj.minLng = "Minimum longitude is invalid";
+        filterOBJ.errors = { ...errObj }
+    };
+
+    if (maxLng && isNaN(+maxLng)) {
+        errObj.maxLng = "Maximum longitude is invalid";
+        filterOBJ.errors = { ...errObj }
+    };
+
+    if (minPrice && +minPrice < 0) {
+        errObj.minPrice = "Minimum price must be greater than or equal to 0";
+        filterOBJ.errors = { ...errObj }
+    };
+
+    if (maxPrice && +maxPrice < 0) {
+        errObj.maxPrice = "Maximum price must be greater than or equal to 0";
+        filterOBJ.errors = { ...errObj };
+    }
+
+    const where = {};
+
+    if (minLat) {
+        where.lat = { [Op.gt]: minLat }
+        filterOBJ.where = { ...where }
+    };
+
+    if (maxLat) {
+        where.lat = { [Op.lt]: maxLat }
+        filterOBJ.where = { ...where }
+    };
+
+    if (minLat && maxLat) {
+        where.lat = { [Op.between]: [minLat, maxLat] }
+        filterOBJ.where = { ...where }
+    };
+
+    if (minLng) {
+        where.lng = { [Op.gte]: minLng }
+        filterOBJ.where = { ...where }
+    };
+
+    if (maxLng) {
+        where.lng = { [Op.lte]: maxLng }
+        filterOBJ.where = { ...where }
+    };
+
+    if (minLng && maxLng) {
+        where.lng = { [Op.between]: [minLng, maxLng] }
+        filterOBJ.where = { ...where }
+    };
+
+    if (minPrice) {
+        where.price = { [Op.gte]: minPrice }
+        filterOBJ.where = { ...where }
+    };
+
+    if (maxPrice) {
+        where.price = { [Op.lte]: maxPrice }
+        filterOBJ.where = { ...where }
+    };
+
+    if (minPrice && maxPrice) {
+        where.price = { [Op.between]: [minPrice, maxPrice] }
+        filterOBJ.where = { ...where }
+    };
+
+    return filterOBJ;
+}
+
 // get all spots
 router.get('/', async (req, res, next) => {
     let { page, size } = req.query;
@@ -279,7 +368,18 @@ router.get('/', async (req, res, next) => {
         pagination.offset = size * (page - 1)
     };
 
-    const spots = await Spot.findAll({...pagination});
+    // query filters
+    const {where, errors} = queryFilters(req.query);
+
+    if (errors && Object.keys(errors).length > 0) {
+        res.status(400).json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors
+        })
+    }
+
+    const spots = await Spot.findAll({where, ...pagination});
     // get avgrating and previewimage for each spot
     for (const spot of spots) {
         const spotData = spot.dataValues;
