@@ -45,15 +45,12 @@ router.delete('/', (_req, res) => {
     return res.json({ message: 'success' });
 });
 
-router.get('/', restoreUser, requireAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     const { user }  = req;
-    const { id, firstName, lastName, email, username } = user;
-
-    const resObj = {id, firstName, lastName, email, username};
 
     if (user) {
-        return res.json(resObj);
-    } else return res.json({})
+        return res.json(user.toSafeObject());
+    } else return res.json(null)
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signupUser } from '../../store/session';
 
 const SignupFormPage = () =>  {
@@ -12,6 +12,7 @@ const SignupFormPage = () =>  {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState({});
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
@@ -23,7 +24,6 @@ const SignupFormPage = () =>  {
 
         if (confirmPassword !== password) setPasswordError({error: "Passwords must match"});
         else {
-            setPasswordError({})
             return dispatch(signupUser({
                 firstname,
                 lastname,
@@ -31,12 +31,23 @@ const SignupFormPage = () =>  {
                 email,
                 password
             }))
+            .then(() => {
+                setPasswordError({})
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setUserName('');
+                setPassword('');
+                setConfirmPassword('');
+                setErrors({});
+                history.push('/')
+            })
             .catch(async(res) => {
                 const data = await res.json();
                 console.log(data);
                 if (data && data.errors) setErrors(data.errors);
             })
-        }
+        };
     };
 
     return (

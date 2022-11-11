@@ -5,14 +5,13 @@ import { login } from '../../store/session';
 
 import './LoginForm.css';
 
-const LoginFormPage = () => {
+const LoginForm = () => {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
     const sessionUser = useSelector(state => state.session.user);
+    // console.log(sessionUser)
     const dispatch = useDispatch();
-
-    if (sessionUser) return (<Redirect to ='/' />);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -59,4 +58,4 @@ const LoginFormPage = () => {
     )
 };
 
-export default LoginFormPage;
+export default LoginForm;

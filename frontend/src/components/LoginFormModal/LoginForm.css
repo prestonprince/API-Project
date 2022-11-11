@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 250px;
+    /* margin-top: 250px; */
+    padding: 50px;
 }
 
 .credential {

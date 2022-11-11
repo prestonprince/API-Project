@@ -3,30 +3,31 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
-import LoginFormPage from './components/LoginFormPage';
+import LoginFormPage from './components/LoginFormModal';
 import SignupFormPage from './components/SignupFormPage';
+import Navigation from './components/Navigation';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch])
+    dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true)).catch((e) => console.log(e));
+  }, [dispatch]);
 
-  return isLoaded && (
+  return (
     <>
+    <Navigation isLoaded={isLoaded} />
+    {isLoaded && (
     <Switch>
-      <Route path='/login'>
-        <LoginFormPage />
-      </Route>
       <Route path='/signup'>
         <SignupFormPage />
       </Route>
       <Route exact path='/'>
-        <h1>Hello from myAirBnB</h1>
+      <h2>Welcome to BingusBnB</h2>
       </Route>
     </Switch>
+    )}
     </>
   );
 }
