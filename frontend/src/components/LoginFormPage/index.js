@@ -27,7 +27,7 @@ const LoginFormPage = () => {
     };
 
     return (
-        <div>
+        <div className='login-form'>
             <h2>Log In</h2>
             <ul>
                 {Object.values(errors).map((err, idx) => (

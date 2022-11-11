@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
 import LoginFormPage from './components/LoginFormPage';
+import SignupFormPage from './components/SignupFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,11 +14,14 @@ function App() {
     dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch])
 
-  return (
+  return isLoaded && (
     <>
     <Switch>
       <Route path='/login'>
         <LoginFormPage />
+      </Route>
+      <Route path='/signup'>
+        <SignupFormPage />
       </Route>
       <Route exact path='/'>
         <h1>Hello from myAirBnB</h1>
