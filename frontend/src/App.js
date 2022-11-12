@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
 import Navigation from './components/Navigation';
+import SpotsView from './components/SpotsView';
 
 //? TODO: Spots Feature
 //?       Make spot store
@@ -29,7 +30,7 @@ function App() {
       {isLoaded && (
       <Switch>
         <Route exact path='/'>
-        <h2 className='nav1'>BingusBnB</h2>
+          <SpotsView />
         </Route>
       </Switch>
       )}
