@@ -1,0 +1,21 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    border-radius: 10px;
+    border: 0.5px solid;
+    width: 475px;
+    padding: 10px;
+    margin: 5px 0;
+};
+
+.button {
+    margin-top: 20px;
+    background-color: rgb(255, 56, 92);
+    border: 0.5px solid;
+    border-radius: 10px;
+    height: 43px;
+    color: white;
+}
