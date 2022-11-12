@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
-import LoginFormPage from './components/LoginFormModal';
-import SignupFormPage from './components/SignupFormPage';
+import SignupFormPage from './components/SignupFormModal';
 import Navigation from './components/Navigation';
 
 function App() {

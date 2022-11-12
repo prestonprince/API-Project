@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 
 const Navigation = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,7 +17,7 @@ const Navigation = ({ isLoaded }) => {
         sessionLinks = (
             <>
                 <LoginFormModal />
-                <NavLink to='/signup'>Sign Up</NavLink>
+                <SignupFormModal />
             </>
         );
     };
