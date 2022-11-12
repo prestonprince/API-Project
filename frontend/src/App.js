@@ -3,8 +3,16 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
-import SignupFormPage from './components/SignupFormModal';
 import Navigation from './components/Navigation';
+
+//? TODO: Spots Feature
+//?       Make spot store
+//?       - make spot reducer
+//?       - make load spot actions and dispatch
+//?       Make spot card component
+//?       Make spot details page and route
+//?       Make create a spot modal
+//?       Make an edit a spot modal
 
 function App() {
   const dispatch = useDispatch();
@@ -16,17 +24,16 @@ function App() {
 
   return (
     <>
-    <Navigation isLoaded={isLoaded} />
-    {isLoaded && (
-    <Switch>
-      <Route path='/signup'>
-        <SignupFormPage />
-      </Route>
-      <Route exact path='/'>
-      <h2>Welcome to BingusBnB</h2>
-      </Route>
-    </Switch>
-    )}
+    <div className='main'>
+      <Navigation className='nav' isLoaded={isLoaded} />
+      {isLoaded && (
+      <Switch>
+        <Route exact path='/'>
+        <h2 className='nav1'>BingusBnB</h2>
+        </Route>
+      </Switch>
+      )}
+    </div>
     </>
   );
 }
