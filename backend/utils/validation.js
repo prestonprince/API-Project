@@ -6,7 +6,7 @@ const handleValidationErrors = (req, _res, next) => {
     const validationErrors = validationResult(req);
   
     if (!validationErrors.isEmpty()) {
-      console.log(validationErrors.errors)
+      // console.log(validationErrors.errors)
 
       // add column name that failed validation to err obj
       const validObj = {}
