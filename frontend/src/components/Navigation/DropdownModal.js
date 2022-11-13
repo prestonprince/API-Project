@@ -9,8 +9,8 @@ function DropdownModal({ props: {handleClick, user} }) {
       {showModal && (
         <ModalTwo onClose={() => setShowModal(false)}>
             <div className='dropdown'>
-                <p>{user.username}</p>
-                <p>{user.email}</p>
+                <p className='drop-content'>{user.username}</p>
+                <p className='drop-content'>{user.email}</p>
                 <button className='btn' onClick={handleClick}><span className='lgText'>Log Out</span></button>  
             </div>
         </ModalTwo>
