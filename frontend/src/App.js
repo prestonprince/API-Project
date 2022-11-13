@@ -5,35 +5,39 @@ import { useDispatch } from 'react-redux';
 import * as sessionActivities from './store/session';
 import Navigation from './components/Navigation';
 import SpotsView from './components/SpotsView';
+import { fetchAllSpots } from './store/spot';
+import SpotDetails from './components/SpotDetails';
 
-//? TODO: Spots Feature
-//?       Make spot store
-//?       - make spot reducer
-//?       - make load spot actions and dispatch
-//?       Make spot card component
-//?       Make spot details page and route
-//?       Make create a spot modal
-//?       Make an edit a spot modal
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasSpots, setHasSpots] = useState(false);
 
   useEffect(() => {
     dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true)).catch((e) => console.log(e));
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchAllSpots()).then(() => setHasSpots(true))
+  }, [dispatch])
+
   return (
     <>
     <div className='main'>
       <Navigation className='nav' isLoaded={isLoaded} />
-      {isLoaded && (
+      {isLoaded && hasSpots ? (
       <Switch>
+        <Route path='/spots/:spotId'>
+          <SpotDetails />
+        </Route>
         <Route exact path='/'>
           <SpotsView />
         </Route>
       </Switch>
-      )}
+      ) :
+      (<div className='loader'></div>)
+    }
     </div>
     </>
   );

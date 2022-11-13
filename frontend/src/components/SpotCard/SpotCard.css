@@ -46,3 +46,7 @@
     grid-area: price;
     font-size: 0.8rem;
 }
+
+.card:hover {
+    cursor: pointer;
+}
