@@ -5,7 +5,14 @@
 }
 
 .main {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
     /* border: 3px solid blue; */
+}
+
+hr {
+    border: none;
+    height: 0.01rem;
+    color: #D3D3D3;
+    background: #e0e0e0;
 }

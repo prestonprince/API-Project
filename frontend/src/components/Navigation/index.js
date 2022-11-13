@@ -30,7 +30,8 @@ const Navigation = ({ isLoaded }) => {
         <div className="nav-container">
             <div className='home'>
                 <NavLink exact to='/'>
-                    <i className="fa-solid fa-house fa-lg" inverse='true'></i>
+                    {/* <i className="fa-solid fa-house fa-lg" inverse='true'></i> */}
+                    <img  className="logo" alt="logo" src="https://cdn.discordapp.com/attachments/1021817221082779668/1041441675580538970/someone.jpg"></img>
                 </NavLink>
             </div>
             <div className="sesh">

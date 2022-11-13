@@ -26,6 +26,7 @@ function App() {
     <>
     <div className='main'>
       <Navigation className='nav' isLoaded={isLoaded} />
+      <hr className='nav-under'></hr>
       {isLoaded && hasSpots ? (
       <Switch>
         <Route path='/spots/:spotId'>

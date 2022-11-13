@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { csrfFetch } from "../../store/csrf";
+import "./SpotDetails.css"
 
 const SpotDetails = () => {
     const { spotId } = useParams();
@@ -24,19 +25,29 @@ const SpotDetails = () => {
     }, [spotId])
 
     return (
-        <div>
+        <div className="page-container"> 
             {isLoaded && Object.keys(spot).length > 0 ? (
-                <div className="detail-container">
-                    <div className="images-box">
-                        {spot.SpotImages.map(obj => (<img alt={obj.id} key={obj.id} src={obj.url}></img>))}
+                <>
+                    <div>
+                        <div className="image-box">
+                                {spot.SpotImages.map(obj => (<img alt={obj.id} src={obj.url} key={obj.id} ></img>))}
+                        </div>
                     </div>
-                    <div className="title-box">
-                        <h2>Entire spot hosted by {spot.Owner.firstName}</h2>
+                    <div className="details-container">
+                        <div className="title-box">
+
+                        </div>
+                        <div className="bookings-card">
+
+                        </div>
+                        <div className="description-box">
+
+                        </div>
                     </div>
-                    <div className="description-box">
-                        <p>{spot.description}.</p>
+                    <div className="footer">
+
                     </div>
-                </div>
+                </>
             ) : (<div className="loader"></div>)}
         </div>
 

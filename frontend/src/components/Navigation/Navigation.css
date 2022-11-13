@@ -1,4 +1,6 @@
 .nav-container {
+    margin-top: 15px;
+    margin-bottom: 0px;
     display: flex;
     justify-content: space-between;
 };
@@ -45,4 +47,9 @@
 
 .drop-content {
     font-size: .8rem;
+}
+
+.logo {
+    top: 15px;
+    width: 50px;
 }

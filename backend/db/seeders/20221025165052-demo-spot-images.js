@@ -6,7 +6,7 @@ module.exports = {
     return queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: 'https://media.gq.com/photos/558288851177d66d68d51bdf/master/w_1280,c_limit/blogs-the-feed-2013-08-19-area-pool.jpg',
+        url: 'https://www.fancypantshomes.com/wp-content/uploads/2020/03/original_1333066725walts.jpg',
         preview: true
       },
       {
