@@ -18,8 +18,10 @@ const Navigation = ({ isLoaded }) => {
     } else {
         sessionLinks = (
             <>
+            <div className="btn-box">
                 <LoginFormModal />
                 <SignupFormModal />
+            </div>
             </>
         );
     };

@@ -19,3 +19,34 @@
     height: 43px;
     color: white;
 }
+
+.lgText {
+    font-size: .8rem;
+}
+
+.login-btn {
+    background-color: rgb(255, 56, 92);
+}
+   
+.login-btn {
+    margin: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+}
+
+.login-btn:active {
+    transform: scale(0.95);
+}

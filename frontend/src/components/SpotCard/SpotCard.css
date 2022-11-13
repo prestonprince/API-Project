@@ -1,24 +1,33 @@
 .card {
-    width: 250px;
+    /* width: 250px;
     height: auto;
     overflow: hidden;
-    /* box-shadow: 0px 0px 15px -5px; */
     padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: red solid 3px; */
+    margin: 10px; */
+    /* border: 3px solid pink; */
+    width: 300px;
+    overflow: hidden;
+    padding: 15px;
     margin: 10px;
+    display: grid;
+    grid-template-areas: 
+    "img"
+    "title"
+    "price";
 }   
 
 .image-container img {
     overflow: hidden;
     height: 200px;
-    width: 250px;
+    width: 260px;
     border-radius: 10px;
+    grid-area: img;
 }
 
-.card-content {
+/* .card-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,4 +36,13 @@
 
 .price {
     font-weight: 800;
+} */
+
+.title-container {
+    grid-area: title;
+}
+
+.price-container {
+    grid-area: price;
+    font-size: 0.8rem;
 }
