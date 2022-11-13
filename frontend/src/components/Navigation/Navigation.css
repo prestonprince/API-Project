@@ -1,0 +1,6 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(255, 56, 92);
+};
+

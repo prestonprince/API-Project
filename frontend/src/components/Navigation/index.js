@@ -5,6 +5,8 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 
+import "./Navigation.css"
+
 const Navigation = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
 
@@ -23,12 +25,16 @@ const Navigation = ({ isLoaded }) => {
     };
 
     return (
-        <ul>
-            <li>
-                <NavLink exact to='/'>Home</NavLink>
+        <div className="nav-container">
+            <div className='home'>
+                <NavLink exact to='/'>
+                    <i className="fa-solid fa-house fa-lg" inverse='true'></i>
+                </NavLink>
+            </div>
+            <div className="sesh">
                 {isLoaded && sessionLinks}
-            </li>
-        </ul>
+            </div>
+        </div>
     )
 };
 

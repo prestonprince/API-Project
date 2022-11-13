@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllSpots } from '../../store/spot';
 import SpotCard from '../SpotCard';
 
+import "./SpotsView.css"
+
 const SpotsView = () => {
     const spotsObj = useSelector(state => state.spots);
     const dispatch = useDispatch();
@@ -14,12 +16,12 @@ const SpotsView = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='card-container'>
             {isLoaded ? 
                 Object.values(spotsObj).map((spot) => (
                     <SpotCard key={spot.id} spot={spot} />
                 )) :
-                (<p>loading...</p>)
+                (<div className="loader"></div>)
             }
         </div>
     )
