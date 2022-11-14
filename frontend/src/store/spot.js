@@ -6,7 +6,7 @@ const normalizeWithId = (arr) => {
     return dataObj
 };
 
-const LOAD_SPOTS = "spot/loadSpots"
+const LOAD_SPOTS = "spot/loadSpots";
 
 const loadSpots = (payload) => {
     return {
@@ -14,6 +14,7 @@ const loadSpots = (payload) => {
         payload
     }
 };
+
 
 export const fetchAllSpots = () => async(dispatch) => {
     const response = await csrfFetch('/api/spots');
@@ -25,16 +26,50 @@ export const fetchAllSpots = () => async(dispatch) => {
     } else {
         throw response;
     }
+};
+
+export const postSpotImage = () => async(dispatch) => {
+
 }
+
+export const postSpot = (spot) => async(dispatch) => {
+    const {previewImageUrl, ...rest} = spot;
+
+    const response = await csrfFetch('/api/spots', {
+        method: "POST",
+        body: JSON.stringify(rest)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        const imageResponse = await csrfFetch(`/api/spots/${data.id}/images`, {
+            method: 'POST',
+            body: JSON.stringify({
+                url: previewImageUrl,
+                preview: true
+            })
+        });
+
+        if (imageResponse.ok) {
+            dispatch(fetchAllSpots())
+            return data;
+        } else {
+            throw response;
+        };
+
+    } else {
+        throw response;
+    }
+};
 
 const initalState = {};
 
 const spotReducer = (state = initalState, action) => {
-    let newState;
+    let newState = {...state};
     switch(action.type) {
         case LOAD_SPOTS: 
             const dataObj = normalizeWithId(action.payload)
-            newState = { ...state }
             newState = dataObj;
             return newState;
         default:

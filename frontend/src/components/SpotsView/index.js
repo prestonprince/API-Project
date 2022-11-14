@@ -10,7 +10,7 @@ const SpotsView = () => {
     return (
         <div className='card-container'>
             {Object.values(spotsObj).map((spot) => (
-                    <SpotCard key={spot.id} spot={spot} />
+                    <SpotCard key={`spot${spot.id}`} spot={spot} />
                 ))}
         </div>
     )
