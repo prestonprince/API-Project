@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { logout } from "../../store/session";
+import './Navigation.css';
+import DropdownModal from "./DropdownModal";
 
 const ProfileButton = ({ user }) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -32,17 +34,11 @@ const ProfileButton = ({ user }) => {
 
     return (
         <div>
-            <button onClick={openMenu}>
+            <button className='profile-btn' onClick={openMenu}>
                 <i className="fa-sharp fa-solid fa-user"></i>
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={handleClick}>Log Out</button>
-                    </li>
-                </ul>
+                <DropdownModal props={{handleClick, user}}/>
             )}
         </div>
     )

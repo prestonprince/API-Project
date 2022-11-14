@@ -3,30 +3,43 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as sessionActivities from './store/session';
-import SignupFormPage from './components/SignupFormModal';
 import Navigation from './components/Navigation';
+import SpotsView from './components/SpotsView';
+import { fetchAllSpots } from './store/spot';
+import SpotDetails from './components/SpotDetails';
+
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasSpots, setHasSpots] = useState(false);
 
   useEffect(() => {
     dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true)).catch((e) => console.log(e));
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchAllSpots()).then(() => setHasSpots(true))
+  }, [dispatch])
+
   return (
     <>
-    <Navigation isLoaded={isLoaded} />
-    {isLoaded && (
-    <Switch>
-      <Route path='/signup'>
-        <SignupFormPage />
-      </Route>
-      <Route exact path='/'>
-      <h2>Welcome to BingusBnB</h2>
-      </Route>
-    </Switch>
-    )}
+    <div className='main'>
+      <Navigation className='nav' isLoaded={isLoaded} />
+      <hr className='nav-under'></hr>
+      {isLoaded && hasSpots ? (
+      <Switch>
+        <Route path='/spots/:spotId'>
+          <SpotDetails />
+        </Route>
+        <Route exact path='/'>
+          <SpotsView />
+        </Route>
+      </Switch>
+      ) :
+      (<div className='loader'></div>)
+    }
+    </div>
     </>
   );
 }

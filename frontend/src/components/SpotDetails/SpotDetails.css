@@ -1,0 +1,25 @@
+.page-container {
+    display: grid;
+    grid-template-areas: 
+    "img img"
+    "dc dc"
+    "footer footer";
+};
+
+.image-box img {
+    grid-area: img;
+    width: 1px;
+    border: 3px solid red;
+}
+
+.details-container {
+    grid-area: dc;
+    display: grid;
+    grid-template-areas: 
+    "title booking"
+    "desc booking";
+}
+
+.footer {
+    grid-area: footer;
+}
