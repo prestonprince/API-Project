@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import SpotsView from './components/SpotsView';
 import { fetchAllSpots } from './store/spot';
 import SpotDetails from './components/SpotDetails';
+import AddSpotForm from './components/AddSpotForm.js';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
       <hr className='nav-under'></hr>
       {isLoaded && hasSpots ? (
       <Switch>
+        <Route path='/spots/new'>
+          <AddSpotForm />
+        </Route>
         <Route path='/spots/:spotId'>
           <SpotDetails />
         </Route>

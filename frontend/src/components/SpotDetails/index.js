@@ -22,7 +22,13 @@ const SpotDetails = () => {
         };
 
         myFetch();
-    }, [spotId])
+    }, [spotId]);
+
+    const capitalize = (str) => {
+        const capital = str[0].toUpperCase();
+        const newStr = capital + str.slice(1);
+        return newStr
+    };
 
     return (
         <div className="page-container"> 
@@ -30,18 +36,30 @@ const SpotDetails = () => {
                 <>
                     <div>
                         <div className="image-box">
-                                {spot.SpotImages.map(obj => (<img alt={obj.id} src={obj.url} key={obj.id} ></img>))}
+                            {spot.SpotImages.length > 0 ? 
+                                spot.SpotImages.map(obj => (<img alt={obj.id} src={obj.url} key={obj.id} ></img>))
+                             : 
+                             (<h3>No Images Available</h3>)
+                            }
                         </div>
                     </div>
                     <div className="details-container">
                         <div className="title-box">
-
+                            <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)}</h3>
+                        </div>
+                        <div className="rating-box">
+                            {spot.avgStarRating ? (
+                                <span>★ {spot.avgStarRating}</span>
+                                )
+                                :
+                                (<h3>This spot has no reviews</h3>)
+                            }
                         </div>
                         <div className="bookings-card">
 
                         </div>
                         <div className="description-box">
-
+                            <p>{spot.description}</p>
                         </div>
                     </div>
                     <div className="footer">

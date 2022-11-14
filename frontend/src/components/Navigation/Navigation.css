@@ -53,3 +53,7 @@
     top: 15px;
     width: 50px;
 }
+
+.host-spot:hover {
+    cursor: pointer;
+}   

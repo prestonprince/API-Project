@@ -13,7 +13,13 @@ const SpotCard = ({ spot }) => {
     return (
         <div onClick={handleClick} className="card">
             <div className='image-container'>
-                <img alt={spot.name} src={spot.previewImage}></img>
+                {spot.previewImage ? (
+                    <img alt={spot.name} src={spot.previewImage}></img>
+                    ): 
+                    (
+                        <h3>No Preview Image Available</h3>
+                    )
+                }
             </div>
             <div className='title-container'>
                 <h5>{spot.city}, {spot.state}</h5>
