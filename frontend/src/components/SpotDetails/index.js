@@ -29,6 +29,8 @@ const SpotDetails = () => {
         myFetch();
     }, [spotId]);
 
+    console.log(spot)
+
     const capitalize = (str) => {
         const capital = str[0].toUpperCase();
         const newStr = capital + str.slice(1);
@@ -54,16 +56,99 @@ const SpotDetails = () => {
                         <h2>{spot.name}</h2>
                     </div>
                     <div className="header-lower">
-
+                        <div className="header-lower-left">
+                            {spot.avgStarRating ? (
+                                <p>★ {spot.avgStarRating}</p>
+                                )
+                            :
+                                (
+                                    <p>★ No Reviews Yet</p>
+                                )
+                            }
+                            <p>{spot.numReviews} {spot.numReviews === 1 ? (<>review</>) : (<>reviews</>)}</p>
+                            <p className="city-state">{spot.city}, {spot.state}</p>
+                        </div>
+                        <div className="header-lower-right">
+                            {spot.ownerId === user.id && (
+                                <div className="buttons">
+                                    <button className="clickable delete-btn" onClick={handleDelete}><i className="fa-regular fa-trash-can"></i></button>
+                                    <button className="clickable edit-btn" onClick={handleEdit}><i className="fa-regular fa-pen-to-square"></i></button>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
-                <div>
-                    {spot.ownerId === user.id && (
-                        <div>
-                            <button className="clickable" onClick={handleDelete}>Delete Spot</button>
-                            <button className="clickable" onClick={handleEdit}>Edit</button>
+                <div className="image-box">
+                    <div className="image-box-left">
+                        <img className="big-img" alt={spot.SpotImages[0].id} src={spot.SpotImages[0].url}></img>
+                    </div>
+                    <div className="image-box-right">
+                        <div className="imgbox-top">
+                            <div className="top-left smimg-top">
+                                {spot.SpotImages[1]
+                                        ? (
+                                            <img className="det-img" alt={spot.SpotImages[1].id} src={spot.SpotImages[1].url}></img>
+                                        )
+                                        : (
+                                            <p>No Image Available</p>
+                                        )
+                                }
+                            </div>
+                            <div className="top-right smimg-top">
+                                {spot.SpotImages[2]
+                                        ? (
+                                            <img className="det-img top-corner" alt={spot.SpotImages[2].id} src={spot.SpotImages[2].url}></img>
+                                        )
+                                        : (
+                                            <p>No Image Available</p>
+                                        )
+                                }
+                            </div>
                         </div>
-                    )}
+                        <div className="imgbox-bot">
+                            <div className="bot-left smimg-bot">
+                                {spot.SpotImages[3]
+                                    ? (
+                                        <img className="det-img" alt={spot.SpotImages[3].id} src={spot.SpotImages[3].url}></img>
+                                    )
+                                    : (
+                                        <p>No Image Available</p>
+                                    )
+                                }
+                            </div>
+                            <div className="bot-right smimg-bot">
+                                {spot.SpotImages[4]
+                                ? (
+                                    <img className="det-img bot-corner" alt={spot.SpotImages[4].id} src={spot.SpotImages[4].url}></img>
+                                )
+                                : (
+                                    <p>No Image Available</p>
+                                )
+                                }
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div className="body-container">
+                    <div className="body-left">
+                        <div className="body-left-header">
+                            <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)}</h3>
+                            <p>6 guests · 4 bedrooms · 5 beds · 2 baths</p>
+                            <hr className="line"></hr>
+                        </div>
+                        <div className="body-left-standout">
+
+                        </div>
+                        <div className="body-left-desc">
+
+                        </div>
+
+                    </div>
+                    <div className="body-right">
+                        <div className="booking card">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         )

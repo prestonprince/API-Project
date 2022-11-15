@@ -51,6 +51,18 @@ module.exports = {
         name: "Tokyo Metropolitan Curse Technical College",
         description: "Training ground for the next generation of sorcerers",
         price: 700
+      },
+      {
+        ownerId: 1,
+        address: "123 Summit Drive",
+        city: "Grand Lake",
+        state: "Colorado",
+        country: "United States",
+        lat: 35.711224,
+        lng: 139.766525,
+        name: "Cozy Mountain Cabin",
+        description: "Cozy log cabin on the lakeside, perfect for a relaxing weekend. Enjoy views of the Rocky Mountains as you sit lakeside.",
+        price: 1200
       }
     ], {});
   },
