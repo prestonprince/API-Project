@@ -1,12 +1,12 @@
 /* TODO Add site wide styles */
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .main {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 0px;
+    margin-right: 0px;
     /* border: 3px solid blue; */
 }
 

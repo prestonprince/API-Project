@@ -28,7 +28,32 @@ module.exports = {
         spotId: 4,
         url: 'https://m.media-amazon.com/images/M/MV5BYjFkNjU3ZGEtNTBjOS00ZTYyLTkxZGQtMDJkYjQ3M2I2ODk5XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg',
         preview: true
-      }
+      },
+      {
+        spotId: 5,
+        url: 'https://media.istockphoto.com/id/1141078602/photo/emerald-lake-on-a-cloudy-day-with-its-thawed-lake-summer-and-fun-rocky-mountain-canada.jpg?b=1&s=170667a&w=0&k=20&c=0hv6eWuKuPhYAHdKo4rJPgrz-aW-bUBCn7-JSOGBvX8=',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ_LMvf59pxaT_xTfQCg77Qyk8B0oNc6V4veBMqIMtOjA1koEKzUiCkN3o3wKphh7iHDU&usqp=CAU',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://www.sunset.com/wp-content/uploads/cozy-cabins-cathedral-mountain-lodge-bc-pr-0919-900x500.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://c4.wallpaperflare.com/wallpaper/771/768/18/canada-cabin-bridge-wallpaper-thumb.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://s1.1zoom.me/b4854/318/Canada_Parks_Lake_Houses_Bridges_Emerald_Lake_Fir_513462_1366x768.jpg',
+        preview: false
+      },
     ], {})
   },
 
