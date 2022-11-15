@@ -57,3 +57,7 @@
 .clickable:hover {
     cursor: pointer;
 }   
+
+.sesh {
+    margin-top: 20px;
+}

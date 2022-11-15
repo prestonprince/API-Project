@@ -69,14 +69,6 @@ const SpotDetails = () => {
                         <div className="title-box">
                             <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)}</h3>
                         </div>
-                        <div className="rating-box">
-                            {spot.avgStarRating ? (
-                                <span>★ {spot.avgStarRating}</span>
-                                )
-                                :
-                                (<h3>This spot has no reviews</h3>)
-                            }
-                        </div>
                         <div className="bookings-card">
 
                         </div>
