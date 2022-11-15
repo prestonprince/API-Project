@@ -8,26 +8,46 @@ import "./SpotDetails.css"
 
 const SpotDetails = () => {
     const { spotId } = useParams();
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [spotLoaded, setSpotLoaded] = useState(false);
     const [spot, setSpot] = useState({});
+    const [reviews, setReviews] = useState({});
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory()
+
+    //TODO: make a thunk action to fetch single spot deets
 
     useEffect(() => {
         const myFetch = async() => {
             const res = await csrfFetch(`/api/spots/${spotId}`);
             if (res.ok) {
                 const data = await res.json()
-                setIsLoaded(true)
+                setSpotLoaded(true)
                 setSpot(data)
             } else {
                 throw res
             };
         };
-
         myFetch();
     }, [spotId]);
+
+    //TODO: make thunk action to fetch reviews by spotId
+    
+    useEffect(() => {
+        const fetchTwo = async() => {
+            const revRes = await csrfFetch(`/api/spots/${spotId}/reviews`);
+            if (revRes.ok) {
+                const data = await revRes.json()
+                setReviews(data)
+            } else {
+                throw revRes
+            }
+        };
+        fetchTwo()
+    }, [spotLoaded, spotId])
+
+    const { Reviews } = reviews;
+    console.log(Reviews)
 
     const capitalize = (str) => {
         const capital = str[0].toUpperCase();
@@ -46,7 +66,18 @@ const SpotDetails = () => {
         history.push(`/spots/${spot.id}/edit`)
     };
 
-    if (isLoaded && Object.keys(spot).length > 0) {
+    const handleReview = (e) => {
+        e.preventDefault();
+        history.push(`/spots/${spot.id}/reviews/new`)
+    }
+
+    let rating;
+    if (spot.avgStarRating) {
+        rating = Math.round(+spot.avgStarRating*100)/100
+    };
+    console.log(rating)
+
+    if (spotLoaded && Object.keys(spot).length > 0) {
         return (
             <div className="page-container">
                 <div className="header-container">
@@ -56,7 +87,7 @@ const SpotDetails = () => {
                     <div className="header-lower">
                         <div className="header-lower-left">
                             {spot.avgStarRating ? (
-                                <p>★ {spot.avgStarRating}</p>
+                                <p>★ {rating}</p>
                                 )
                             :
                                 (
@@ -67,7 +98,7 @@ const SpotDetails = () => {
                             <p className="city-state">{spot.city}, {spot.state}</p>
                         </div>
                         <div className="header-lower-right">
-                            {spot.ownerId === user.id && (
+                            {user && spot.ownerId === user.id && (
                                 <div className="buttons">
                                     <button className="clickable delete-btn" onClick={handleDelete}><i className="fa-regular fa-trash-can"></i></button>
                                     <button className="clickable edit-btn" onClick={handleEdit}><i className="fa-regular fa-pen-to-square"></i></button>
@@ -151,6 +182,9 @@ const SpotDetails = () => {
                         <div className="body-left-desc">
                             <p>{spot.description}</p>
                         </div>
+                        <div className="body-left-booking-calendar">
+
+                        </div>
                     </div>
                     <div className="body-right">
                         <div className="booking-card">
@@ -158,6 +192,31 @@ const SpotDetails = () => {
                         </div>
                     </div>
                 </div>
+                <hr className="line"></hr>
+                <div className="reviews-container">
+                    <div className="reviews-header">
+                            <div className="review-star">
+                                <i className="fa-solid fa-star"></i>
+                            </div>
+                        <h2>
+                            {rating} · {spot.numReviews} reviews
+                        </h2>
+                    </div>
+                    <div className="reviews-box">
+                        {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
+                            <div key={obj.id} className="review-actual">
+                                <p>{capitalize(obj.User.firstName)}</p>
+                                <p>{obj.review}</p>
+                            </div>
+                        )):
+                            <h3>No Reviews Yet</h3>
+                        }
+                    </div>
+                    {user && user.id !== spot.id && (
+                        <button onClick={handleReview} className="button">Leave a review</button>
+                    )}
+                </div>
+                <hr className="line"></hr>
             </div>
         )
     } else return (

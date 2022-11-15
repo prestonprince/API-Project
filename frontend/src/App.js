@@ -10,6 +10,7 @@ import SpotDetails from './components/SpotDetails';
 import AddSpotForm from './components/AddSpotForm.js';
 import MySpots from './components/MySpots';
 import EditSpotForm from './components/EditSpotForm';
+import ReviewForm from './components/ReviewForm';
 
 
 function App() {
@@ -28,12 +29,17 @@ function App() {
   return (
     <>
     <div className='main'>
-      <Navigation className='nav' isLoaded={isLoaded} />
-      <hr className='nav-under'></hr>
+      <div className='nav-bar'>
+        <Navigation isLoaded={isLoaded} />
+        <hr className='nav-under'></hr>
+      </div>
       {isLoaded && hasSpots ? (
       <Switch>
         <Route path='/spots/new'>
           <AddSpotForm />
+        </Route>
+        <Route path='/spots/:spotId/reviews/new'>
+          <ReviewForm />
         </Route>
         <Route path='/spots/:spotId/edit'>
           <EditSpotForm />

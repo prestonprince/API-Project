@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import { postSpot } from "../../store/spot";
 
@@ -18,6 +19,8 @@ const AddSpotForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+
+    const user = useSelector(state => state.session.user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,6 +59,7 @@ const AddSpotForm = () => {
 
     return (
         <div>
+            {!user && <Redirect to='/'></Redirect>}
             <h2>Host Your Very Own Spot!</h2>
             <ul>
             {Object.values(errors).map((err, idx) => (

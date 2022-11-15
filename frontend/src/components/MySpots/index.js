@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 
 import SpotCard from "../SpotCard";
 
 const MySpots = () => {
     const { userId } = useParams();
     const spotsObj = useSelector(state => state.spots);
+    const user = useSelector(state => state.session.user);
+
     const mySpotsObj = {};
     Object.values(spotsObj).forEach(obj => {
         if (+obj.ownerId === +userId) {
@@ -15,6 +17,7 @@ const MySpots = () => {
 
     return (
         <>
+        {!user && <Redirect to='/'></Redirect>}
         <h2 style={{textAlign: 'center'}}>My Spots</h2>
             <div className="card-container">
                 {Object.values(mySpotsObj).map((spot) => (
