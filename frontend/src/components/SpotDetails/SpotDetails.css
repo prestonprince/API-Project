@@ -131,6 +131,37 @@
     line-height: 5px;
 }
 
+.body-left-standout {
+    display: flex;
+    flex-direction: column;
+}
+
+.super-host p {
+    color: #808080;
+}
+
+.check-in p {
+    color: #808080;
+}
+
+.body-left-desc p {
+    color: #808080;
+}
+
+.body-right {
+    display: flex;
+    justify-content: center;
+}
+
+.booking-card {
+    border: 3px solid black;
+    position: sticky;
+    top: 150px;
+    border-radius: 10px;
+    height: 500px;
+    width: 60%
+}
+
 .line {
 
     margin-top: 50px;

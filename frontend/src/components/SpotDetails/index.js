@@ -29,8 +29,6 @@ const SpotDetails = () => {
         myFetch();
     }, [spotId]);
 
-    console.log(spot)
-
     const capitalize = (str) => {
         const capital = str[0].toUpperCase();
         const newStr = capital + str.slice(1);
@@ -132,20 +130,30 @@ const SpotDetails = () => {
                 <div className="body-container">
                     <div className="body-left">
                         <div className="body-left-header">
-                            <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)}</h3>
+                            <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)} {capitalize(spot.Owner.lastName)}</h3>
                             <p>6 guests · 4 bedrooms · 5 beds · 2 baths</p>
                             <hr className="line"></hr>
                         </div>
                         <div className="body-left-standout">
-
+                            <div className="super-host">
+                                <h3>{capitalize(spot.Owner.firstName)} is a Superhost</h3>
+                                <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
+                            </div>
+                            <div className="check-in">
+                               <h3>Self check-in</h3>
+                               <p>You can check in with the smart lock</p> 
+                            </div>
+                            <div className="cancellation">
+                                <h3>Free cancellation for 48 hours.</h3>
+                                <hr className="line"></hr>
+                            </div>
                         </div>
                         <div className="body-left-desc">
-
+                            <p>{spot.description}</p>
                         </div>
-
                     </div>
                     <div className="body-right">
-                        <div className="booking card">
+                        <div className="booking-card">
 
                         </div>
                     </div>
