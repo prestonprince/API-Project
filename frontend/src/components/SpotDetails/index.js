@@ -44,46 +44,32 @@ const SpotDetails = () => {
     const handleEdit = (e) => {
         e.preventDefault();
         history.push(`/spots/${spot.id}/edit`)
-    }
+    };
 
-    return (
-        <div className="page-container"> 
-            {isLoaded && Object.keys(spot).length > 0 ? (
-                <>
-                    <div>
-                        {spot.ownerId === user.id && (
-                            <div>
-                                <button className="clickable" onClick={handleDelete}>Delete Spot</button>
-                                <button className="clickable" onClick={handleEdit}>Edit</button>
-                            </div>
-                        )}
-                        <div className="image-box">
-                            {spot.SpotImages.length > 0 ? 
-                                spot.SpotImages.map(obj => (<img alt={obj.id} src={obj.url} key={obj.id} ></img>))
-                             : 
-                             (<h3>No Images Available</h3>)
-                            }
-                        </div>
+    if (isLoaded && Object.keys(spot).length > 0) {
+        return (
+            <div className="page-container">
+                <div className="header-container">
+                    <div className="header-upper">
+                        <h2>{spot.name}</h2>
                     </div>
-                    <div className="details-container">
-                        <div className="title-box">
-                            <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)}</h3>
-                        </div>
-                        <div className="bookings-card">
-
-                        </div>
-                        <div className="description-box">
-                            <p>{spot.description}</p>
-                        </div>
-                    </div>
-                    <div className="footer">
+                    <div className="header-lower">
 
                     </div>
-                </>
-            ) : (<div className="loader"></div>)}
-        </div>
-
-    )
+                </div>
+                <div>
+                    {spot.ownerId === user.id && (
+                        <div>
+                            <button className="clickable" onClick={handleDelete}>Delete Spot</button>
+                            <button className="clickable" onClick={handleEdit}>Edit</button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        )
+    } else return (
+        <div className="loader"></div>
+    );
 };
 
 export default SpotDetails;
