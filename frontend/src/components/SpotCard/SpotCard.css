@@ -40,11 +40,24 @@
 
 .title-container {
     grid-area: title;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-container span {
+    margin-right: 15px;
+    font-size: .95rem;
 }
 
 .price-container {
     grid-area: price;
     font-size: 0.8rem;
+    font-size: .9rem;
+}
+
+.price-container span {
+    font-weight: 800;
 }
 
 .card:hover {

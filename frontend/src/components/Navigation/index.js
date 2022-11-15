@@ -34,6 +34,9 @@ const Navigation = ({ isLoaded }) => {
                     <img  className="logo" alt="logo" src="https://cdn.discordapp.com/attachments/1021817221082779668/1041441675580538970/someone.jpg"></img>
                 </NavLink>
             </div>
+            <div>
+                <h4>placeholder for search bar</h4>
+            </div>
             <div className="sesh">
                 {isLoaded && sessionLinks}
             </div>

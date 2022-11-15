@@ -22,7 +22,14 @@ const SpotCard = ({ spot }) => {
                 }
             </div>
             <div className='title-container'>
-                <h5>{spot.city}, {spot.state}</h5>
+                <h5>{spot.city}, {spot.state}</h5> 
+                {spot.avgRating ? (
+                    <span>
+                    ★ {spot.avgRating}
+                    </span>
+                    ) :
+                    (<span>No Reviews</span>)
+                }
             </div>
             <div className='price-container'>
                 <p><span className='price'>${spot.price}</span> night</p>
