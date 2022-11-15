@@ -54,6 +54,6 @@
     width: 50px;
 }
 
-.host-spot:hover {
+.clickable:hover {
     cursor: pointer;
 }   

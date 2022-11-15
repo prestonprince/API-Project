@@ -15,6 +15,37 @@ const loadSpots = (payload) => {
     }
 };
 
+export const editSpot = (spot) => async(dispatch) => {
+    const {id, ...rest} = spot;
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(rest)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        dispatch(fetchAllSpots());
+        return data
+    } else {
+        throw response
+    }
+};
+
+export const removeSpot = (spot) => async(dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(fetchAllSpots())
+        return data
+    } else {
+        throw response
+    }
+};
+
 
 export const fetchAllSpots = () => async(dispatch) => {
     const response = await csrfFetch('/api/spots');
@@ -28,10 +59,6 @@ export const fetchAllSpots = () => async(dispatch) => {
     }
 };
 
-export const postSpotImage = () => async(dispatch) => {
-
-}
-
 export const postSpot = (spot) => async(dispatch) => {
     const {previewImageUrl, ...rest} = spot;
 
@@ -42,7 +69,6 @@ export const postSpot = (spot) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
         const imageResponse = await csrfFetch(`/api/spots/${data.id}/images`, {
             method: 'POST',
             body: JSON.stringify({

@@ -510,7 +510,7 @@ router.get('/:spotId', async (req, res, next) => {
 });
 
 // edit a spot
-router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
+router.put('/:spotId', requireAuth, async (req, res, next) => {
     const id = req.params.spotId;
     const spot = await Spot.findByPk(id);
     

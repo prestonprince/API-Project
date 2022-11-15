@@ -8,6 +8,8 @@ import SpotsView from './components/SpotsView';
 import { fetchAllSpots } from './store/spot';
 import SpotDetails from './components/SpotDetails';
 import AddSpotForm from './components/AddSpotForm.js';
+import MySpots from './components/MySpots';
+import EditSpotForm from './components/EditSpotForm';
 
 
 function App() {
@@ -33,8 +35,14 @@ function App() {
         <Route path='/spots/new'>
           <AddSpotForm />
         </Route>
+        <Route path='/spots/:spotId/edit'>
+          <EditSpotForm />
+        </Route>
         <Route path='/spots/:spotId'>
           <SpotDetails />
+        </Route>
+        <Route path='/users/:userId'>
+          <MySpots />
         </Route>
         <Route exact path='/'>
           <SpotsView />

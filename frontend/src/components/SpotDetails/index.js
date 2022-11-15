@@ -1,13 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 import { csrfFetch } from "../../store/csrf";
+import { removeSpot } from "../../store/spot";
 import "./SpotDetails.css"
 
 const SpotDetails = () => {
     const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
     const [spot, setSpot] = useState({});
+    const user = useSelector(state => state.session.user)
+    const dispatch = useDispatch();
+    const history = useHistory()
 
     useEffect(() => {
         const myFetch = async() => {
@@ -30,11 +35,28 @@ const SpotDetails = () => {
         return newStr
     };
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch(removeSpot(spot))
+        history.push('/')
+    };
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+        history.push(`/spots/${spot.id}/edit`)
+    }
+
     return (
         <div className="page-container"> 
             {isLoaded && Object.keys(spot).length > 0 ? (
                 <>
                     <div>
+                        {spot.ownerId === user.id && (
+                            <div>
+                                <button className="clickable" onClick={handleDelete}>Delete Spot</button>
+                                <button className="clickable" onClick={handleEdit}>Edit</button>
+                            </div>
+                        )}
                         <div className="image-box">
                             {spot.SpotImages.length > 0 ? 
                                 spot.SpotImages.map(obj => (<img alt={obj.id} src={obj.url} key={obj.id} ></img>))

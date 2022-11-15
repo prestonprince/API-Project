@@ -1,14 +1,14 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { postSpot } from "../../store/spot";
+import { editSpot } from "../../store/spot";
 
-const AddSpotForm = () => {
+const EditSpotForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { spotId } = useParams();
     const [errors, setErrors] = useState({});
-    const [previewImageUrl, setPreviewImageUrl] = useState('')
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
@@ -22,20 +22,18 @@ const AddSpotForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const spotInfo ={
-            address,
-            city,
-            state,
-            country,
-            lat,
-            lng,
-            name,
-            description,
-            previewImageUrl,
-            price
-        };
-        
-        return dispatch(postSpot(spotInfo)).then((data) => {
+        const spotInfo = {id: spotId}
+        if (address) spotInfo.address = address;
+        if (city) spotInfo.city = city;
+        if (state) spotInfo.state = state;
+        if (country) spotInfo.country = country;
+        if (lat) spotInfo.lat = lat;
+        if (lng) spotInfo.lng = lng;
+        if (name) spotInfo.name = name;
+        if (description) spotInfo.description = description;
+        if (price) spotInfo.price = price;
+
+        return dispatch(editSpot(spotInfo)).then((data) => {
             setAddress('');
             setCity('');
             setState('');
@@ -44,19 +42,18 @@ const AddSpotForm = () => {
             setLng('');
             setName('');
             setDescription('');
-            setPreviewImageUrl('');
             setPrice('');
-            history.push(`/spots/${data.id}`)
+            history.push(`/spots/${spotId}`)
         })
         .catch(async(res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
-        });
-    }   
+        })
+    }
 
     return (
         <div>
-            <h2>Host Your Very Own Spot!</h2>
+            <h2>Edit Your Spot</h2>
             <ul>
             {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
@@ -69,7 +66,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
                         placeholder=' Address'
-                        required
                     />
                 </label>
                 <label htmlFor="city">
@@ -78,7 +74,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setCity(e.target.value)}
                         value={city}
                         placeholder=' City'
-                        required
                     />
                 </label>
                 <label htmlFor="state">
@@ -87,7 +82,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setState(e.target.value)}
                         value={state}
                         placeholder=' State'
-                        required
                     />
                 </label>
                 <label htmlFor="country">
@@ -96,7 +90,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setCountry(e.target.value)}
                         value={country}
                         placeholder=' Country'
-                        required
                     />
                 </label>
                 <label htmlFor="latitude">
@@ -105,7 +98,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setLat(e.target.value)}
                         value={lat}
                         placeholder=' Latitude'
-                        required
                     />
                 </label>
                 <label htmlFor="longitude">
@@ -114,7 +106,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setLng(e.target.value)}
                         value={lng}
                         placeholder=' Longitude'
-                        required
                     />
                 </label>
                 <label htmlFor="name">
@@ -123,7 +114,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         placeholder=' Name'
-                        required
                     />
                 </label>
                 <label htmlFor="description">
@@ -132,16 +122,6 @@ const AddSpotForm = () => {
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder=' Description'
-                        required
-                    />
-                </label>
-                <label htmlFor="preview image url">
-                    <input
-                        type='text'
-                        onChange={(e) => setPreviewImageUrl(e.target.value)}
-                        value={previewImageUrl}
-                        placeholder=' Preview Image Url'
-                        required
                     />
                 </label>
                 <label htmlFor="price">
@@ -150,13 +130,12 @@ const AddSpotForm = () => {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder=' Price'
-                        required
                     />
                 </label>
-                <button>Host</button>
+                <button>Continue</button>
             </form>
         </div>
     )
 };
 
-export default AddSpotForm;
+export default EditSpotForm;
