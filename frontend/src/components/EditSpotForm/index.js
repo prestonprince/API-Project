@@ -1,6 +1,6 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { editSpot } from "../../store/spot";
 
@@ -18,6 +18,8 @@ const EditSpotForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+
+    const user = useSelector(state => state.session.user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -53,6 +55,7 @@ const EditSpotForm = () => {
 
     return (
         <div>
+            {!user && <Redirect to='/'></Redirect>}
             <h2>Edit Your Spot</h2>
             <ul>
             {Object.values(errors).map((err, idx) => (

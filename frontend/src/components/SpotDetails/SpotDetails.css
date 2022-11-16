@@ -131,7 +131,69 @@
     line-height: 5px;
 }
 
+.body-left-standout {
+    display: flex;
+    flex-direction: column;
+}
+
+.super-host p {
+    color: #808080;
+}
+
+.check-in p {
+    color: #808080;
+}
+
+.body-left-desc p {
+    color: #808080;
+}
+
+.body-right {
+    display: flex;
+    justify-content: center;
+}
+
+.booking-card {
+    border: 3px solid black;
+    position: sticky;
+    top: 150px;
+    border-radius: 10px;
+    height: 500px;
+    width: 60%;
+    z-index: -1;
+}
+
 .line {
 
     margin-top: 50px;
 }
+
+.reviews-container {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews-header {
+    display: flex;
+    align-items: center;
+    /* border: 3px solid blue; */
+}
+.review-star {
+    font-size: 1.2rem;
+    color: black;
+    padding-right: 3px;
+}
+
+.reviews-box {
+    /* border: 3px solid gold; */
+    display: flex;
+    flex-direction: row;
+}
+.review-actual {
+    /* display: flex;
+    flex-direction: row; */
+    /* border: 3px solid purple; */
+    /* align-items: center; */
+    width: 25%;
+};

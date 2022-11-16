@@ -16,3 +16,9 @@ hr {
     color: #D3D3D3;
     background: #e0e0e0;
 }
+
+.nav-bar{
+    background-color: white;
+    position: sticky;
+    top: 0;
+}

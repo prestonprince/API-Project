@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { Spot, SpotImage, Review, ReviewImage, Booking } = require('../../db/models');
+const { Spot, SpotImage, Review, ReviewImage, Booking, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
@@ -130,10 +130,11 @@ router.get('/:spotId/reviews', async (req, res, next) => {
     const resObj = {};
     const revArr = await Promise.all(reviews.map(async rev => {
         const revData = rev.dataValues;
+        const revUser = await User.findByPk(revData.userId)
         revData.User = {
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName
+            id: revUser.dataValues.id,
+            firstName: revUser.dataValues.firstName,
+            lastName: revUser.dataValues.lastName
         };
 
         const imgs = await ReviewImage.findAll({ where: {reviewId: rev.id}, attributes: ['id', 'url'] });

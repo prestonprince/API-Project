@@ -6,9 +6,9 @@ import { signupUser } from '../../store/session';
 import './SignUpForm.css'
 
 const SignupFormPage = ({props: {setShowModal}}) =>  {
-    const [firstname, setFirstName] = useState('');
-    const [lastname, setLastName] = useState('');
-    const [username, setUserName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setusername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,8 +32,8 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
         if (confirmPassword !== password) setPasswordError({error: "Passwords must match"});
         else {
             return dispatch(signupUser({
-                firstname,
-                lastname,
+                firstName,
+                lastName,
                 username,
                 email,
                 password
@@ -43,7 +43,7 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
                 setFirstName('');
                 setLastName('');
                 setEmail('');
-                setUserName('');
+                setusername('');
                 setPassword('');
                 setConfirmPassword('');
                 setErrors({});
@@ -87,21 +87,21 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
                         placeholder=' Email'
                     />
                 </label>
-                <label htmlFor="firstname">
+                <label htmlFor="firstName">
                     <input
                         className='input'
                         type="text"
                         onChange={(e) => setFirstName(e.target.value)}
-                        value={firstname}
+                        value={firstName}
                         placeholder=' First name'
                     />
                 </label>
-                <label htmlFor='lastname'>
+                <label htmlFor='lastName'>
                     <input
                         className='input' 
                         type='text'
                         onChange={(e) => setLastName(e.target.value)}
-                        value={lastname}
+                        value={lastName}
                         placeholder=' Last Name'
                     />
                 </label>
@@ -109,9 +109,9 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
                     <input 
                         className='input'
                         type='text'
-                        onChange={(e) => setUserName(e.target.value)}
+                        onChange={(e) => setusername(e.target.value)}
                         value={username}
-                        placeholder=' Username'
+                        placeholder=' username'
                     />
                 </label>
                 <label htmlFor='password'>

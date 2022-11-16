@@ -9,6 +9,11 @@ const SpotCard = ({ spot }) => {
         e.preventDefault();
         history.push(`/spots/${spot.id}`)
     }
+    
+    let rating;
+    if (spot.avgRating) {   
+        rating = Math.round(+spot.avgRating*100)/100;
+    } ;
 
     return (
         <div onClick={handleClick} className="card">
@@ -25,7 +30,7 @@ const SpotCard = ({ spot }) => {
                 <h5>{spot.city}, {spot.state}</h5> 
                 {spot.avgRating ? (
                     <span>
-                    ★ {spot.avgRating}
+                    ★ {rating}
                     </span>
                     ) :
                     (<span>No Reviews</span>)
