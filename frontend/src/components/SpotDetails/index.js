@@ -11,6 +11,7 @@ const SpotDetails = () => {
     const [spotLoaded, setSpotLoaded] = useState(false);
     const [spot, setSpot] = useState({});
     const [reviews, setReviews] = useState({});
+    const [reviewDelete, setReviewDelete] = useState(false)
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory()
@@ -20,13 +21,13 @@ const SpotDetails = () => {
             setSpotLoaded(true)
             setSpot(data)
         })
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, reviewDelete])
 
     useEffect(() => {
         dispatch(fetchSpotReviews(spotId)).then((data) => {
             setReviews(data)
         })
-    }, [spotLoaded, spotId, dispatch])
+    }, [spotLoaded, spotId, dispatch, reviewDelete])
 
     const { Reviews } = reviews;
 
@@ -55,7 +56,8 @@ const SpotDetails = () => {
     const handleReviewDelete = (e, id) => {
         e.preventDefault();
         return dispatch(deleteReview(id)).then((data) => {
-            history.push('/')
+            // history.push('/')
+            setReviewDelete(!reviewDelete)
         })
     };
 
