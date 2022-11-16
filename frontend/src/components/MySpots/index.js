@@ -5,7 +5,7 @@ import SpotCard from "../SpotCard";
 
 const MySpots = () => {
     const { userId } = useParams();
-    const spotsObj = useSelector(state => state.spots);
+    const spotsObj = useSelector(state => state.spots.allSpots);
     const user = useSelector(state => state.session.user);
 
     const mySpotsObj = {};
