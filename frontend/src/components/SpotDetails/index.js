@@ -15,41 +15,12 @@ const SpotDetails = () => {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    // useEffect(() => {
-    //     const myFetch = async() => {
-    //         const res = await csrfFetch(`/api/spots/${spotId}`);
-    //         if (res.ok) {
-    //             const data = await res.json()
-    //             setSpotLoaded(true)
-    //             setSpot(data)
-    //         } else {
-    //             throw res
-    //         };
-    //     };
-    //     myFetch();
-    // }, [spotId]);
-
     useEffect(() => {
         dispatch(fetchSingleSpot(spotId)).then((data) => {
             setSpotLoaded(true)
             setSpot(data)
         })
     }, [dispatch, spotId])
-
-    //TODO: make thunk action to fetch reviews by spotId
-    
-    // useEffect(() => {
-    //     const fetchTwo = async() => {
-    //         const revRes = await csrfFetch(`/api/spots/${spotId}/reviews`);
-    //         if (revRes.ok) {
-    //             const data = await revRes.json()
-    //             setReviews(data)
-    //         } else {
-    //             throw revRes
-    //         }
-    //     };
-    //     fetchTwo()
-    // }, [spotLoaded, spotId])
 
     useEffect(() => {
         dispatch(fetchSpotReviews(spotId)).then((data) => {
