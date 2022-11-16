@@ -5,7 +5,7 @@ import SpotCard from '../SpotCard';
 import "./SpotsView.css"
 
 const SpotsView = () => {
-    const spotsObj = useSelector(state => state.spots);
+    const spotsObj = useSelector(state => state.spots.allSpots);
 
     return (
         <div className='card-container'>

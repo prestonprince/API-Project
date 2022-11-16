@@ -2,8 +2,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { csrfFetch } from "../../store/csrf";
-import { removeSpot } from "../../store/spot";
+import { deleteReview, removeSpot } from "../../store/spot";
+import { fetchSingleSpot, fetchSpotReviews } from "../../store/spot";
 import "./SpotDetails.css"
 
 const SpotDetails = () => {
@@ -15,39 +15,49 @@ const SpotDetails = () => {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    //TODO: make a thunk action to fetch single spot deets
+    // useEffect(() => {
+    //     const myFetch = async() => {
+    //         const res = await csrfFetch(`/api/spots/${spotId}`);
+    //         if (res.ok) {
+    //             const data = await res.json()
+    //             setSpotLoaded(true)
+    //             setSpot(data)
+    //         } else {
+    //             throw res
+    //         };
+    //     };
+    //     myFetch();
+    // }, [spotId]);
 
     useEffect(() => {
-        const myFetch = async() => {
-            const res = await csrfFetch(`/api/spots/${spotId}`);
-            if (res.ok) {
-                const data = await res.json()
-                setSpotLoaded(true)
-                setSpot(data)
-            } else {
-                throw res
-            };
-        };
-        myFetch();
-    }, [spotId]);
+        dispatch(fetchSingleSpot(spotId)).then((data) => {
+            setSpotLoaded(true)
+            setSpot(data)
+        })
+    }, [dispatch, spotId])
 
     //TODO: make thunk action to fetch reviews by spotId
     
+    // useEffect(() => {
+    //     const fetchTwo = async() => {
+    //         const revRes = await csrfFetch(`/api/spots/${spotId}/reviews`);
+    //         if (revRes.ok) {
+    //             const data = await revRes.json()
+    //             setReviews(data)
+    //         } else {
+    //             throw revRes
+    //         }
+    //     };
+    //     fetchTwo()
+    // }, [spotLoaded, spotId])
+
     useEffect(() => {
-        const fetchTwo = async() => {
-            const revRes = await csrfFetch(`/api/spots/${spotId}/reviews`);
-            if (revRes.ok) {
-                const data = await revRes.json()
-                setReviews(data)
-            } else {
-                throw revRes
-            }
-        };
-        fetchTwo()
-    }, [spotLoaded, spotId])
+        dispatch(fetchSpotReviews(spotId)).then((data) => {
+            setReviews(data)
+        })
+    }, [spotLoaded, spotId, dispatch])
 
     const { Reviews } = reviews;
-    console.log(Reviews)
 
     const capitalize = (str) => {
         const capital = str[0].toUpperCase();
@@ -71,11 +81,17 @@ const SpotDetails = () => {
         history.push(`/spots/${spot.id}/reviews/new`)
     }
 
+    const handleReviewDelete = (e, id) => {
+        e.preventDefault();
+        return dispatch(deleteReview(id)).then((data) => {
+            history.push('/')
+        })
+    };
+
     let rating;
     if (spot.avgStarRating) {
         rating = Math.round(+spot.avgStarRating*100)/100
     };
-    console.log(rating)
 
     if (spotLoaded && Object.keys(spot).length > 0) {
         return (
@@ -205,14 +221,21 @@ const SpotDetails = () => {
                     <div className="reviews-box">
                         {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
                             <div key={obj.id} className="review-actual">
-                                <p>{capitalize(obj.User.firstName)}</p>
-                                <p>{obj.review}</p>
+                                <div className="review-left">
+                                    <p>{capitalize(obj.User.firstName)}</p>
+                                    <p>{obj.review}</p>
+                                </div>
+                                <div className="review-right">
+                                    {user && obj.User.id === user.id && (
+                                        <button onClick={(e) => handleReviewDelete(e, obj.id)} className="clickable review-dlt delete-btn"><i className="fa-regular fa-trash-can"></i></button>
+                                        )}
+                                </div>
                             </div>
                         )):
-                            <h3>No Reviews Yet</h3>
+                            <h3>No Reviews (Yet)</h3>
                         }
                     </div>
-                    {user && user.id !== spot.id && (
+                    {user && user.id !== spot.Owner.id && (
                         <button onClick={handleReview} className="button">Leave a review</button>
                     )}
                 </div>

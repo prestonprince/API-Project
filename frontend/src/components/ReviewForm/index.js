@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { csrfFetch } from "../../store/csrf";
+import { postReview } from "../../store/spot";
 
 const ReviewForm = () => {
     const [review, setReview] = useState('');
     const [stars, setStars] = useState('');
     const [errors, setErrors] = useState('')
+    const dispatch = useDispatch()
 
     const { spotId } = useParams();
     const user = useSelector(state => state.session.user);
@@ -24,23 +26,32 @@ const ReviewForm = () => {
             stars
         };
 
-        console.log(reviewInfo)
+        return dispatch(postReview(reviewInfo)).then((data) => {
+            setReview('');
+            setStars('');
+            setErrors({});
+            history.push(`/spots/${spotId}`)
+        })
+        .catch( async(res) => {
+            const data = await res.json();
+            if (data && data.message) setErrors(data.message) 
+        })
 
-        const myFetch = async(info) => {
-            const { spotId, ...rest } = info
-            const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
-                method: "POST",
-                body: JSON.stringify(rest)
-            });
+        // const myFetch = async(info) => {
+        //     const { spotId, ...rest } = info
+        //     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+        //         method: "POST",
+        //         body: JSON.stringify(rest)
+        //     });
 
-            if (res.ok) {
-                const data = await res.json();
-                console.log(data);
-                return data
-            } else {
-                throw res
-            }
-        };
+        //     if (res.ok) {
+        //         const data = await res.json();
+        //         console.log(data);
+        //         return data
+        //     } else {
+        //         throw res
+        //     }
+        // };
 
         // return myFetch(reviewInfo).then(() => {
         //     setReview('');
@@ -54,25 +65,25 @@ const ReviewForm = () => {
 
         //     // if (data && data.message) setErrors(data.message)
         // })
-        const reviewResponse = myFetch(reviewInfo);
-        console.log(reviewResponse)
+        // const reviewResponse = myFetch(reviewInfo);
+        // console.log(reviewResponse)
 
-        if (reviewResponse.ok) {
-            setReview('');
-            setStars('');
-            setErrors({});
-            history.push(`/spots/${spotId}`)
-        } else {
-            const err = await reviewResponse.json();
-            console.log(err.message)
-            if (err && err.message) setErrors(err.message)
-        }
+        // if (reviewResponse.ok) {
+        //     setReview('');
+        //     setStars('');
+        //     setErrors({});
+        //     history.push(`/spots/${spotId}`)
+        // } else {
+        //     const err = await reviewResponse.json();
+        //     console.log(err.message)
+        //     if (err && err.message) setErrors(err.message)
+        // }
     };
 
     return (
         <div>
             {!user && <Redirect to='/'></Redirect>}
-            {errors && (<p>{errors}</p>)}
+            {errors.length > 0 && (<p>{errors}</p>)}
             <form onSubmit={onSubmit}>
                 <label htmlFor="review">
                     <textarea

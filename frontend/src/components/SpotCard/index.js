@@ -14,7 +14,6 @@ const SpotCard = ({ spot }) => {
     if (spot.avgRating) {   
         rating = Math.round(+spot.avgRating*100)/100;
     } ;
-    console.log(rating)
 
     return (
         <div onClick={handleClick} className="card">
