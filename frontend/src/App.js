@@ -34,9 +34,9 @@ function App() {
         <Route path='/spots/:spotId/reviews/new'>
           <ReviewForm />
         </Route>
-        <Route path='/spots/:spotId/edit'>
+        {/* <Route path='/spots/:spotId/edit'>
           <EditSpotForm />
-        </Route>
+        </Route> */}
         <Route path='/spots/:spotId'>
           <SpotDetails />
         </Route>
