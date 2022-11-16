@@ -19,7 +19,7 @@ function App() {
   const [hasSpots, setHasSpots] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true)).catch((e) => console.log(e));
+    dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch]);
 
   useEffect(() => {

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { csrfFetch } from "../../store/csrf";
 import { postReview } from "../../store/spot";
 
 const ReviewForm = () => {
