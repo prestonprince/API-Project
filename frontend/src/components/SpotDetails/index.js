@@ -46,11 +46,6 @@ const SpotDetails = () => {
         history.push('/')
     };
 
-    // const handleReview = (e) => {
-    //     e.preventDefault();
-    //     history.push(`/spots/${spot.id}/reviews/new`)
-    // }
-
     const handleReviewDelete = (e, id) => {
         e.preventDefault();
         return dispatch(deleteReview(id)).then((data) => {

@@ -16,6 +16,12 @@
     position: absolute;
 }
 
+.search-bar {
+    border: 1px solid #808080;
+    border-radius: 20px;
+    height: 50%;
+}
+
 .big-nav {
     /* border: 3px solid red; */
     display: flex;
@@ -151,6 +157,7 @@
     justify-content: center;
     /* border: 3px solid black; */
     width: 33%;
+    align-items: center;
 }
 
 .home {
