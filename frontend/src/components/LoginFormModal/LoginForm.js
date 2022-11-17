@@ -4,7 +4,7 @@ import { login } from '../../store/session';
 
 import './LoginForm.css';
 
-const LoginForm = ({props: {setShowModal}}) => {
+const LoginForm = ({ setShowModal }) => {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -21,6 +21,7 @@ const LoginForm = ({props: {setShowModal}}) => {
         setErrors({});
 
         return dispatch(login({credential, password}))
+            .then(() => setShowModal(false))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors)
@@ -37,7 +38,7 @@ const LoginForm = ({props: {setShowModal}}) => {
             </div>
             <hr></hr>
             <h2>Welcome to BingusBnB</h2>
-            <ul>
+            <ul className='errors'>
                 {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}

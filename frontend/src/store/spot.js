@@ -39,6 +39,7 @@ export const deleteReview = (id) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(fetchSingleSpot);
+        dispatch(fetchSpotReviews)
         return data
     } else {
         throw response
@@ -133,7 +134,7 @@ export const postSpot = (spot) => async(dispatch) => {
 
     const response = await csrfFetch('/api/spots', {
         method: "POST",
-        body: JSON.stringify(rest)
+        body: JSON.stringify({ ...rest, lat: 1.435, lng: 0.2342 })
     });
 
     if (response.ok) {

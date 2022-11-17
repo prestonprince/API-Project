@@ -6,12 +6,50 @@
     margin: auto;
     width: 94%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* border: 3px solid teal */
 };
-
 .dropdown {
+    /* border: 3px solid red; */
+    margin-top: 200px;
     text-align: center;
+    position: absolute;
+}
+
+.search-bar {
+    border: 1px solid #808080;
+    border-radius: 20px;
+    height: 50%;
+}
+
+.big-nav {
+    /* border: 3px solid red; */
+    display: flex;
+}
+
+.logged-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    margin-top: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 15px -5px;
+    border-radius: 15px;
+    position: absolute;
+    /* border: 3px solid blue; */
+}
+
+.login-logout {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-top: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 15px -5px;
+    border-radius: 15px;
+    position: absolute;
+    /* border: 3px solid blue; */
 }
 
 .profile-btn {
@@ -52,6 +90,34 @@
 
 .drop-content {
     font-size: .8rem;
+    padding-left: 5px ;
+}
+
+.drop-content-div {
+    /* border: 3px solid black; */
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.user {
+    border-radius: 12px 12px 0 0;
+}
+
+.user:hover {
+    margin-top: 0;
+}
+
+.logoutbtn {
+    border-radius: 0 0 12px 12px;
+}
+
+.logoutbtn:hover {
+    margin-bottom: 0;
+}
+
+.drop-content-div:hover {
+    background-color: lightgray;
 }
 
 .logo {
@@ -65,4 +131,35 @@
 
 .sesh {
     margin-top: 20px;
+    /* border: 3px solid blue; */
+    display: flex;
+    align-items: center;
+    width: 33%;
+}
+
+.host{
+    /* border: 3px solid red; */
+    width: 60%;
+    font-size: .9rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile {
+    /* border: 3px solid gold; */
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    /* border: 3px solid black; */
+    width: 33%;
+    align-items: center;
+}
+
+.home {
+    width: 33%;
 }

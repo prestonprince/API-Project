@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteReview, removeSpot } from "../../store/spot";
 import { fetchSingleSpot, fetchSpotReviews } from "../../store/spot";
+import EditSpotModal from "../EditSpotModal";
+import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
 
 const SpotDetails = () => {
@@ -11,6 +13,8 @@ const SpotDetails = () => {
     const [spotLoaded, setSpotLoaded] = useState(false);
     const [spot, setSpot] = useState({});
     const [reviews, setReviews] = useState({});
+    const [reviewDelete, setReviewDelete] = useState(false)
+    const [editSubmit, setEditSubmit] = useState(false);
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory()
@@ -20,13 +24,13 @@ const SpotDetails = () => {
             setSpotLoaded(true)
             setSpot(data)
         })
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, reviewDelete, editSubmit])
 
     useEffect(() => {
         dispatch(fetchSpotReviews(spotId)).then((data) => {
             setReviews(data)
         })
-    }, [spotLoaded, spotId, dispatch])
+    }, [spotLoaded, spotId, dispatch, reviewDelete, editSubmit])
 
     const { Reviews } = reviews;
 
@@ -42,20 +46,10 @@ const SpotDetails = () => {
         history.push('/')
     };
 
-    const handleEdit = (e) => {
-        e.preventDefault();
-        history.push(`/spots/${spot.id}/edit`)
-    };
-
-    const handleReview = (e) => {
-        e.preventDefault();
-        history.push(`/spots/${spot.id}/reviews/new`)
-    }
-
     const handleReviewDelete = (e, id) => {
         e.preventDefault();
         return dispatch(deleteReview(id)).then((data) => {
-            history.push('/')
+            setReviewDelete(!reviewDelete)
         })
     };
 
@@ -88,7 +82,7 @@ const SpotDetails = () => {
                             {user && spot.ownerId === user.id && (
                                 <div className="buttons">
                                     <button className="clickable delete-btn" onClick={handleDelete}><i className="fa-regular fa-trash-can"></i></button>
-                                    <button className="clickable edit-btn" onClick={handleEdit}><i className="fa-regular fa-pen-to-square"></i></button>
+                                    <EditSpotModal setEditSubmit={setEditSubmit} spot={spot}/>
                                 </div>
                             )}
                         </div>
@@ -207,7 +201,7 @@ const SpotDetails = () => {
                         }
                     </div>
                     {user && user.id !== spot.Owner.id && (
-                        <button onClick={handleReview} className="button">Leave a review</button>
+                        <ReviewFormModal setReviewDelete={setReviewDelete} />
                     )}
                 </div>
                 <hr className="line"></hr>

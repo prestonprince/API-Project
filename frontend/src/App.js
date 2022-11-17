@@ -5,26 +5,18 @@ import { useDispatch } from 'react-redux';
 import * as sessionActivities from './store/session';
 import Navigation from './components/Navigation';
 import SpotsView from './components/SpotsView';
-import { fetchAllSpots } from './store/spot';
 import SpotDetails from './components/SpotDetails';
 import AddSpotForm from './components/AddSpotForm.js';
 import MySpots from './components/MySpots';
-import EditSpotForm from './components/EditSpotForm';
 import ReviewForm from './components/ReviewForm';
-
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [hasSpots, setHasSpots] = useState(false);
 
   useEffect(() => {
     dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchAllSpots()).then(() => setHasSpots(true))
-  }, [dispatch])
 
   return (
     <>
@@ -33,7 +25,7 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         <hr className='nav-under'></hr>
       </div>
-      {isLoaded && hasSpots ? (
+      {isLoaded ? (
       <Switch>
         <Route path='/spots/new'>
           <AddSpotForm />
@@ -41,9 +33,9 @@ function App() {
         <Route path='/spots/:spotId/reviews/new'>
           <ReviewForm />
         </Route>
-        <Route path='/spots/:spotId/edit'>
+        {/* <Route path='/spots/:spotId/edit'>
           <EditSpotForm />
-        </Route>
+        </Route> */}
         <Route path='/spots/:spotId'>
           <SpotDetails />
         </Route>

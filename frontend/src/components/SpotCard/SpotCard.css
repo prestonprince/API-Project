@@ -16,6 +16,7 @@
     overflow: hidden;
     height: 265px;
     width: 290px;
+    object-fit: cover;
     border-radius: 20px;
     grid-area: img;
 }

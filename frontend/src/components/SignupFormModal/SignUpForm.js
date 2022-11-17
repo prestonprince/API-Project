@@ -5,7 +5,7 @@ import { signupUser } from '../../store/session';
 
 import './SignUpForm.css'
 
-const SignupFormPage = ({props: {setShowModal}}) =>  {
+const SignupFormPage = ({ setShowModal }) =>  {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setusername] = useState('');
@@ -29,6 +29,9 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        setPasswordError({});
+        setErrors({});
+
         if (confirmPassword !== password) setPasswordError({error: "Passwords must match"});
         else {
             return dispatch(signupUser({
@@ -47,6 +50,7 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
                 setPassword('');
                 setConfirmPassword('');
                 setErrors({});
+                setShowModal(false)
                 history.push('/')
             })
             .catch(async(res) => {
@@ -66,7 +70,7 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
             </div>
             <hr></hr>
             <h3 className='title'>Welcome to BingusBnB</h3>
-            <ul>
+            <ul className='errors'>
                 {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}
