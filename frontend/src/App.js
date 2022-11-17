@@ -8,7 +8,6 @@ import SpotsView from './components/SpotsView';
 import SpotDetails from './components/SpotDetails';
 import AddSpotForm from './components/AddSpotForm.js';
 import MySpots from './components/MySpots';
-import EditSpotForm from './components/EditSpotForm';
 import ReviewForm from './components/ReviewForm';
 
 function App() {

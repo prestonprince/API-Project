@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 import { postSpot } from "../../store/spot";
 
-const AddSpotForm = () => {
+const AddSpotForm = ({ setShowSpotForm }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
@@ -49,6 +49,7 @@ const AddSpotForm = () => {
             setDescription('');
             setPreviewImageUrl('');
             setPrice('');
+            setShowSpotForm(false)
             history.push(`/spots/${data.id}`)
         })
         .catch(async(res) => {

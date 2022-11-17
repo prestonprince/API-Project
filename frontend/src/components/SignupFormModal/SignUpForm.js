@@ -5,7 +5,7 @@ import { signupUser } from '../../store/session';
 
 import './SignUpForm.css'
 
-const SignupFormPage = ({props: {setShowModal}}) =>  {
+const SignupFormPage = ({ setShowModal }) =>  {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setusername] = useState('');
@@ -47,6 +47,7 @@ const SignupFormPage = ({props: {setShowModal}}) =>  {
                 setPassword('');
                 setConfirmPassword('');
                 setErrors({});
+                setShowModal(false)
                 history.push('/')
             })
             .catch(async(res) => {
