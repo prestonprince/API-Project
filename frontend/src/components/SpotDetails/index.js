@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteReview, removeSpot } from "../../store/spot";
 import { fetchSingleSpot, fetchSpotReviews } from "../../store/spot";
 import EditSpotModal from "../EditSpotModal";
+import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
 
 const SpotDetails = () => {
@@ -45,10 +46,10 @@ const SpotDetails = () => {
         history.push('/')
     };
 
-    const handleReview = (e) => {
-        e.preventDefault();
-        history.push(`/spots/${spot.id}/reviews/new`)
-    }
+    // const handleReview = (e) => {
+    //     e.preventDefault();
+    //     history.push(`/spots/${spot.id}/reviews/new`)
+    // }
 
     const handleReviewDelete = (e, id) => {
         e.preventDefault();
@@ -205,7 +206,7 @@ const SpotDetails = () => {
                         }
                     </div>
                     {user && user.id !== spot.Owner.id && (
-                        <button onClick={handleReview} className="button">Leave a review</button>
+                        <ReviewFormModal setReviewDelete={setReviewDelete} />
                     )}
                 </div>
                 <hr className="line"></hr>

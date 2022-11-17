@@ -38,7 +38,7 @@ const LoginForm = ({ setShowModal }) => {
             </div>
             <hr></hr>
             <h2>Welcome to BingusBnB</h2>
-            <ul>
+            <ul className='errors'>
                 {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}

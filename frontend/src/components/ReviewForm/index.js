@@ -3,8 +3,9 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { postReview } from "../../store/spot";
+import './ReviewForm.css'
 
-const ReviewForm = () => {
+const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
     const [review, setReview] = useState('');
     const [stars, setStars] = useState('');
     const [errors, setErrors] = useState('')
@@ -13,8 +14,6 @@ const ReviewForm = () => {
     const { spotId } = useParams();
     const user = useSelector(state => state.session.user);
     const history = useHistory();
-
-    //TODO: make thunk to post reviews by spotId
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -29,63 +28,25 @@ const ReviewForm = () => {
             setReview('');
             setStars('');
             setErrors({});
+            setShowReviewModal(false);
+            setReviewDelete(prevState => !prevState)
             history.push(`/spots/${spotId}`)
         })
         .catch( async(res) => {
             const data = await res.json();
             if (data && data.message) setErrors(data.message) 
         })
-
-        // const myFetch = async(info) => {
-        //     const { spotId, ...rest } = info
-        //     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
-        //         method: "POST",
-        //         body: JSON.stringify(rest)
-        //     });
-
-        //     if (res.ok) {
-        //         const data = await res.json();
-        //         console.log(data);
-        //         return data
-        //     } else {
-        //         throw res
-        //     }
-        // };
-
-        // return myFetch(reviewInfo).then(() => {
-        //     setReview('');
-        //     setStars('');
-        //     setErrors({});
-        //     history.push(`/spots/${spotId}`)
-        // })
-        // .catch(async(response) => {
-        //     console.log(response)
-        //     const data = await response.json();
-
-        //     // if (data && data.message) setErrors(data.message)
-        // })
-        // const reviewResponse = myFetch(reviewInfo);
-        // console.log(reviewResponse)
-
-        // if (reviewResponse.ok) {
-        //     setReview('');
-        //     setStars('');
-        //     setErrors({});
-        //     history.push(`/spots/${spotId}`)
-        // } else {
-        //     const err = await reviewResponse.json();
-        //     console.log(err.message)
-        //     if (err && err.message) setErrors(err.message)
-        // }
     };
 
     return (
         <div>
             {!user && <Redirect to='/'></Redirect>}
-            {errors.length > 0 && (<p>{errors}</p>)}
+            <h3>Leave a review</h3>
+            {errors.length > 0 && (<p className="errors">{errors}</p>)}
             <form onSubmit={onSubmit}>
                 <label htmlFor="review">
                     <textarea
+                     className="input review-area"
                      onChange={(e) => setReview(e.target.value)}
                      value={review}
                      placeholder=' Write your review here'
@@ -94,13 +55,16 @@ const ReviewForm = () => {
                 </label>
                 <label htmlFor="stars">
                     <input 
+                        className="input"
                         type='number'
                         onChange={(e) => setStars(e.target.value)}
                         value={stars}
+                        placeholder=" Stars"
                         required
                     />
                 </label>
-                <button>Continue</button>
+                <br></br>
+                <button id="submit-review" className="btn">Continue</button>
             </form>
         </div>
     )

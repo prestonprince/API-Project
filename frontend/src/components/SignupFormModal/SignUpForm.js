@@ -29,6 +29,9 @@ const SignupFormPage = ({ setShowModal }) =>  {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        setPasswordError({});
+        setErrors({});
+
         if (confirmPassword !== password) setPasswordError({error: "Passwords must match"});
         else {
             return dispatch(signupUser({
@@ -67,7 +70,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
             </div>
             <hr></hr>
             <h3 className='title'>Welcome to BingusBnB</h3>
-            <ul>
+            <ul className='errors'>
                 {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}

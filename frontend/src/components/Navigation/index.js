@@ -34,7 +34,9 @@ const Navigation = ({ isLoaded }) => {
                     {isLoaded && (
                         <>
                             <div className='host'>
-                                <p className="clickable" onClick={() => setShowSpotForm(true)}>BingusBnB your home</p>
+                                <p className="clickable" onClick={() => {
+                                    sessionUser ? setShowSpotForm(true) : setShowModal(true)
+                                }}>Bingusbnb your home</p>
                             </div>
                             <div className="profile">
                                 <ProfileButton 
@@ -51,7 +53,7 @@ const Navigation = ({ isLoaded }) => {
                     </Modal>}
                     {showSpotForm && (
                         <Modal onClose={() => setShowSpotForm(false)}>
-                            <AddSpotForm />
+                            <AddSpotForm setShowSpotForm={setShowSpotForm}/>
                         </Modal>
                     )}
                 </div>

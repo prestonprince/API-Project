@@ -133,7 +133,7 @@
 
 .host{
     /* border: 3px solid red; */
-    width: 50%;
+    width: 60%;
     font-size: .9rem;
     display: flex;
     justify-content: flex-end;
@@ -141,7 +141,7 @@
 
 .profile {
     /* border: 3px solid gold; */
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: center;
 }

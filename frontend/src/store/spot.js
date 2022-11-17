@@ -134,7 +134,7 @@ export const postSpot = (spot) => async(dispatch) => {
 
     const response = await csrfFetch('/api/spots', {
         method: "POST",
-        body: JSON.stringify(rest)
+        body: JSON.stringify({ ...rest, lat: 1.435, lng: 0.2342 })
     });
 
     if (response.ok) {

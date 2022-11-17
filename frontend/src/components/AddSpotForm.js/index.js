@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { postSpot } from "../../store/spot";
+import './AddSpotForm.css'
 
 const AddSpotForm = ({ setShowSpotForm }) => {
     const history = useHistory();
@@ -14,8 +15,6 @@ const AddSpotForm = ({ setShowSpotForm }) => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -30,8 +29,6 @@ const AddSpotForm = ({ setShowSpotForm }) => {
             city,
             state,
             country,
-            lat,
-            lng,
             name,
             description,
             previewImageUrl,
@@ -43,8 +40,6 @@ const AddSpotForm = ({ setShowSpotForm }) => {
             setCity('');
             setState('');
             setCountry('');
-            setLat('');
-            setLng('');
             setName('');
             setDescription('');
             setPreviewImageUrl('');
@@ -58,18 +53,21 @@ const AddSpotForm = ({ setShowSpotForm }) => {
         });
     }   
 
+    if (!user) setShowSpotForm(false)
+
     return (
         <div>
             {!user && <Redirect to='/'></Redirect>}
             <h2>Host Your Very Own Spot!</h2>
-            <ul>
+            <ul className="errors">
             {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="address">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
@@ -79,6 +77,7 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                 </label>
                 <label htmlFor="city">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setCity(e.target.value)}
                         value={city}
@@ -88,6 +87,7 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                 </label>
                 <label htmlFor="state">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setState(e.target.value)}
                         value={state}
@@ -97,6 +97,7 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                 </label>
                 <label htmlFor="country">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setCountry(e.target.value)}
                         value={country}
@@ -104,26 +105,9 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                         required
                     />
                 </label>
-                <label htmlFor="latitude">
-                    <input
-                        type='text'
-                        onChange={(e) => setLat(e.target.value)}
-                        value={lat}
-                        placeholder=' Latitude'
-                        required
-                    />
-                </label>
-                <label htmlFor="longitude">
-                    <input
-                        type='text'
-                        onChange={(e) => setLng(e.target.value)}
-                        value={lng}
-                        placeholder=' Longitude'
-                        required
-                    />
-                </label>
                 <label htmlFor="name">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setName(e.target.value)}
                         value={name}
@@ -132,16 +116,18 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                     />
                 </label>
                 <label htmlFor="description">
-                    <input
-                        type='text'
+                    <textarea
+                        className="input"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder=' Description'
                         required
-                    />
+                    >
+                    </textarea>
                 </label>
                 <label htmlFor="preview image url">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setPreviewImageUrl(e.target.value)}
                         value={previewImageUrl}
@@ -151,6 +137,7 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                 </label>
                 <label htmlFor="price">
                     <input
+                        className="input"
                         type='number'
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
@@ -158,7 +145,8 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                         required
                     />
                 </label>
-                <button>Host</button>
+                <br></br>
+                <button className="btn host-btn">Host</button>
             </form>
         </div>
     )

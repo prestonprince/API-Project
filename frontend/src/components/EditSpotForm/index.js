@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { editSpot } from "../../store/spot";
+import './EditSpotForm.css'
 
 const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
     const history = useHistory();
@@ -13,8 +14,6 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -29,8 +28,6 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
         if (city) spotInfo.city = city;
         if (state) spotInfo.state = state;
         if (country) spotInfo.country = country;
-        if (lat) spotInfo.lat = lat;
-        if (lng) spotInfo.lng = lng;
         if (name) spotInfo.name = name;
         if (description) spotInfo.description = description;
         if (price) spotInfo.price = price;
@@ -40,8 +37,6 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
             setCity('');
             setState('');
             setCountry('');
-            setLat('');
-            setLng('');
             setName('');
             setDescription('');
             setPrice('');
@@ -59,14 +54,15 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
         <div>
             {!user && <Redirect to='/'></Redirect>}
             <h2>Edit Your Spot</h2>
-            <ul>
+            <ul className="errors">
             {Object.values(errors).map((err, idx) => (
                     <li key={idx}>{err}</li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="address">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
@@ -75,6 +71,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                 </label>
                 <label htmlFor="city">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setCity(e.target.value)}
                         value={city}
@@ -83,6 +80,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                 </label>
                 <label htmlFor="state">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setState(e.target.value)}
                         value={state}
@@ -91,6 +89,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                 </label>
                 <label htmlFor="country">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setCountry(e.target.value)}
                         value={country}
@@ -99,6 +98,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                 </label>
                 <label htmlFor="name">
                     <input
+                        className="input"
                         type='text'
                         onChange={(e) => setName(e.target.value)}
                         value={name}
@@ -106,22 +106,25 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                     />
                 </label>
                 <label htmlFor="description">
-                    <input
-                        type='text'
+                    <textarea
+                        className="input"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder={` ${spot.description}`}
-                    />
+                    >
+                    </textarea>
                 </label>
                 <label htmlFor="price">
                     <input
+                        className="input"
                         type='number'
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder={` ${spot.price}`}
                     />
                 </label>
-                <button>Continue</button>
+                <br></br>
+                <button className="btn edit-submit">Continue</button>
             </form>
         </div>
     )
