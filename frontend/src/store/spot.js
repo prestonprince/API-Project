@@ -38,8 +38,6 @@ export const deleteReview = (id) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(fetchSingleSpot);
-        dispatch(fetchSpotReviews)
         return data
     } else {
         throw response
@@ -55,7 +53,6 @@ export const postReview = (payload) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(fetchSpotReviews)
         return data
     } else {
         throw response
