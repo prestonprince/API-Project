@@ -1,9 +1,8 @@
 .loader {
+    position: relative;
+    border-radius: 30px;
     width: 60%;
     height: 4px;
-    border-radius: 30px;
-    background-color: rgba(0,0,0,0.2);
-    position: relative;
     top: 250px;
     left: 325px;
 }
@@ -11,12 +10,12 @@
 .loader::before {
     content: "";
     position: absolute;
-    background: rgb(255, 56, 92);
-    top: 0;
-    left: 0;
+    border-radius: 20px;
     width: 0%;
     height: 100%;
-    border-radius: 30px;
+    top: 0;
+    left: 0;
+    background: rgb(255, 56, 92);
     animation: moving 0.5s ease-in-out infinite;
 }
 
