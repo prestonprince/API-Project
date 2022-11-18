@@ -16,14 +16,16 @@ const SpotsView = () => {
 
     return (
         <>
-            {spotsLoaded && (
+            {spotsLoaded ? (
                 <div className='card-container'>
                     {Object.values(spotsObj).map((spot) => (
                             <SpotCard key={`spot${spot.id}`} spot={spot} />
                         ))}
                 </div>
 
-            )}
+            ) :
+            <div className='loader'></div>
+            }
         </>
     )
 };
