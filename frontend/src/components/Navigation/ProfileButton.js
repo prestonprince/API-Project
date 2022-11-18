@@ -54,19 +54,23 @@ const ProfileButton = ({ user, setLogin, setShowModal, setHostSpot }) => {
                 <div onClick={mySpotsClick} className="drop-content-div">
                     <p className='drop-content clickable'>My Spots</p>
                 </div>
-                <div className="drop-content-div logoutbtn">
-                    <button className="btn" onClick={handleClick}><span className='lgText'>Log Out</span></button>
+                <div onClick={handleClick} className="drop-content-div logoutbtn"> 
+                    <p className="drop-content clickable">Log Out</p>
                 </div>
                 </div>) :
                 (<div className="dropdown login-logout">
-                    <button className="btn" onClick={() => {
+                    <div onClick={() => {
                         setLogin(true);
-                        setShowModal(true);
-                    }}>Log In</button>
-                    <button className="btn" onClick={() => {
+                        setShowModal(true)
+                    }} className="drop-content-div user">
+                        <p className="drop-content clickable">Log In</p>
+                    </div>
+                    <div onClick={() => {
                         setLogin(false);
                         setShowModal(true)
-                    }}>Sign Up</button>
+                    }} className="drop-content-div logoutbtn">
+                        <p className="drop-content clickable">Sign Up</p>
+                    </div>
                 </div>)
             )}
         </div>
