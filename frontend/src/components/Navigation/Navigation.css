@@ -6,6 +6,7 @@
     margin: auto;
     width: 94%;
     display: flex;
+    /* align-items: center; */
     /* justify-content: space-between; */
     /* border: 3px solid teal */
 };
@@ -40,6 +41,35 @@
     /* border: 3px solid blue; */
 }
 
+@media screen and (max-width: 1030px) {
+    .search {
+        visibility: hidden;
+    }
+    .home {
+        margin-top: 6px;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        width: 50%;
+        /* border: 3px solid red; */
+    }
+
+    .host {
+        /* border: 3px solid red; */
+        font-size: .2rem;
+    }
+
+    .nav-container {
+        /* border: 3px solid gold; */
+        width: 50%;
+        align-items: center;
+    }
+
+    .sesh {
+        /* border: 3px solid blue; */
+        min-width: 100px;
+    }
+}
 .login-logout {
     display: flex;
     flex-direction: column;

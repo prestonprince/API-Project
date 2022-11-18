@@ -31,7 +31,7 @@ const Navigation = ({ isLoaded }) => {
                     <input
                         className="search-bar"
                         type='text' 
-                        placeholder="search"
+                        placeholder=" search"
                     />
                 </div>
                 <div className="sesh">

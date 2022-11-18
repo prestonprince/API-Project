@@ -40,7 +40,7 @@ const ProfileButton = ({ user, setLogin, setShowModal, setHostSpot }) => {
 
     return (
         <div className="whole-dropdown">
-            <button className='profile-btn' onClick={openMenu}>
+            <button className='profile-btn clickable' onClick={openMenu}>
                 <i className="fa-sharp fa-solid fa-user"></i>
             </button>
             {showMenu && ( user ? 

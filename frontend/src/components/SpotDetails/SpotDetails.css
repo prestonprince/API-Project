@@ -9,24 +9,96 @@
     display: flex;
 }
 
-.header-lower-left {
-    /* border: 3px solid orange; */
-    width: 50%;
-    display: flex;
-    align-items: center;
-    line-height: 5px;
+@media screen and (max-width: 1030px) {
+    .header-lower {
+        display: flex;
+        /* border: 3px solid blue; */
+    }
+
+    .header-lower-left {
+        /* border: 3px solid red; */
+        width: 70%;
+        display: flex;
+        align-items: center;
+        line-height: 5px;
+        justify-content: space-evenly;
+        text-decoration: underline;
+    }
+
+    .header-lower-right {
+        /* border: 3px solid gold; */
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .body-left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body-right {
+        width: 50%;
+    }
+
+    .booking-card {
+        border: 3px solid black;
+        position: sticky;
+        top: 150px;
+        border-radius: 10px;
+        height: 65%;
+        width: 70%;
+        z-index: -1;
+    }
+    
 }
 
-.header-lower-left p {
-    margin: 7px;
-    text-decoration: underline;
-}
 
-.header-lower-right {
-    /* border: 3px solid red; */
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
+@media screen and (min-width: 1030px) {
+    .body-left-header {
+        line-height: 5px;
+    }
+
+    .header-lower-left {
+        /* border: 3px solid orange; */
+        width: 50%;
+        display: flex;
+        align-items: center;
+        line-height: 5px;
+    }
+    .header-lower-left p {
+        margin: 7px;
+        text-decoration: underline;
+    }
+    .header-lower-right {
+        /* border: 3px solid red; */
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .body-left {
+        /* border: 3px solid blue; */
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .body-right {
+        /* border: 3px solid red; */
+        width: 45%;
+    }
+
+    .booking-card {
+        border: 3px solid black;
+        position: sticky;
+        top: 150px;
+        border-radius: 10px;
+        height: 500px;
+        width: 60%;
+        z-index: -1;
+    }
 }
 
 .edit-btn {
@@ -117,21 +189,7 @@
     display: flex;
 }
 
-.body-left {
-    /* border: 3px solid blue; */
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-}
 
-.body-right {
-    /* border: 3px solid red; */
-    width: 45%;
-}
-
-.body-left-header {
-    line-height: 5px;
-}
 
 .body-left-standout {
     display: flex;
@@ -155,15 +213,6 @@
     justify-content: center;
 }
 
-.booking-card {
-    border: 3px solid black;
-    position: sticky;
-    top: 150px;
-    border-radius: 10px;
-    height: 500px;
-    width: 60%;
-    z-index: -1;
-}
 
 .line {
 
