@@ -20,7 +20,7 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
 
         console.log(stars)
 
-        if (+stars < 0 || +stars > 5) {
+        if (+stars < 1 || +stars > 5) {
             setErrors('Please enter a star number between 1 and 5')
             return;
         };
