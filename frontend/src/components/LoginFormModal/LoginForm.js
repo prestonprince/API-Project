@@ -15,6 +15,16 @@ const LoginForm = ({ setShowModal }) => {
         setShowModal(false);
     };
 
+    const handleDemoLogin = (e) => {
+        e.preventDefault();
+        return dispatch(login({credential: "demo@user.io", password: "password"}))
+            .then(() => setShowModal(false))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors)
+            });
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -65,6 +75,7 @@ const LoginForm = ({ setShowModal }) => {
                     />
                 </label>
                 <button className='button' type='submit'>Log In</button>
+                <button onClick={handleDemoLogin} className='button' type='submit'>Demo Login</button>
             </form>
         </div>
     )

@@ -128,7 +128,7 @@ const AddSpotForm = ({ setShowSpotForm }) => {
                 <label htmlFor="preview image url">
                     <input
                         className="input"
-                        type='text'
+                        type='url'
                         onChange={(e) => setPreviewImageUrl(e.target.value)}
                         value={previewImageUrl}
                         placeholder=' Preview Image Url'

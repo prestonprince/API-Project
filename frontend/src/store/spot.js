@@ -31,6 +31,10 @@ const loadReviews = (payload) => {
     }
 };
 
+export const addImage = (img) => async(dispatch) => {
+
+}
+
 export const deleteReview = (id) => async(dispatch) => {
     const response = await csrfFetch(`/api/reviews/${id}`, {
         method: "DELETE"
@@ -84,7 +88,7 @@ export const fetchSingleSpot = (id) => async(dispatch) => {
 };
 
 export const editSpot = (spot) => async(dispatch) => {
-    const {id, ...rest} = spot;
+    const {id, img, ...rest} = spot;
     const response = await csrfFetch(`/api/spots/${id}`, {
         method: "PUT",
         body: JSON.stringify(rest)
@@ -92,8 +96,22 @@ export const editSpot = (spot) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(fetchAllSpots());
-        return data
+        if (img) {
+            const imageResponse = await csrfFetch(`/api/spots/${id}/images`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    url: img,
+                    preview: false
+                })
+            });
+            if (imageResponse.ok) {
+                dispatch(fetchAllSpots());
+                return data
+            }
+        } else {
+            dispatch(fetchAllSpots());
+            return data;
+        };
     } else {
         throw response
     }

@@ -24,14 +24,14 @@ const Navigation = ({ isLoaded }) => {
                 <div className='home'>
                     <NavLink exact to='/'>
                         {/* <i className="fa-solid fa-house fa-lg" inverse='true'></i> */}
-                        <img  className="logo" alt="logo" src="https://cdn.discordapp.com/attachments/1021817221082779668/1041441675580538970/someone.jpg"></img>
+                        <img  className="logo" alt="logo" src="https://cdn.discordapp.com/attachments/1023439168631738371/1043011701873844235/Untitled_design.jpg"></img>
                     </NavLink>
                 </div>
                 <div className="search">
                     <input
                         className="search-bar"
                         type='text' 
-                        placeholder="search"
+                        placeholder=" search"
                     />
                 </div>
                 <div className="sesh">

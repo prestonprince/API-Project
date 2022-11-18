@@ -18,6 +18,20 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        console.log(stars)
+
+        if (+stars < 0 || +stars > 5) {
+            setErrors('Please enter a star number between 1 and 5')
+            return;
+        };
+
+        const regEx = /[A-Za-z]/
+
+        if (!regEx.test(review)) {
+            setErrors('Please enter a valid review');
+            return
+        }
+
         const reviewInfo = {
             spotId,
             review,
@@ -64,7 +78,8 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
                     />
                 </label>
                 <br></br>
-                <button id="submit-review" className="btn">Continue</button>
+                <br></br>
+                <button id="submit-review" className="button submit-rev">Continue</button>
             </form>
         </div>
     )

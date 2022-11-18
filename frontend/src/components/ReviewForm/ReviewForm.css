@@ -2,8 +2,7 @@
     height: 50%;
 }
 
-#submit-reivew {
-    border: 3px solid red;
+.submit-rev {
     margin: 0;
     width: 100%;
 }

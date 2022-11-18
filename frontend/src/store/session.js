@@ -51,8 +51,8 @@ export const signupUser = ({firstName, lastName, username, email, password}) => 
     body: JSON.stringify({
       firstName,
       lastName,
-      username,
       email,
+      username,
       password
     })
   });
