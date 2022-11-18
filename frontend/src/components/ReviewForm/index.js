@@ -25,6 +25,11 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
             return;
         };
 
+        if (!Number.isInteger(+stars)) {
+            setErrors('Please enter a whole number')
+            return;
+        }
+
         const regEx = /[A-Za-z]/
 
         if (!regEx.test(review)) {

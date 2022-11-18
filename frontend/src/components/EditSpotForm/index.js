@@ -69,7 +69,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='text'
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
-                        placeholder={` ${spot.address}`}
+                        placeholder={` address`}
                     />
                 </label>
                 <label htmlFor="city">
@@ -78,7 +78,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='text'
                         onChange={(e) => setCity(e.target.value)}
                         value={city}
-                        placeholder={` ${spot.city}`}
+                        placeholder={` city`}
                     />
                 </label>
                 <label htmlFor="state">
@@ -87,7 +87,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='text'
                         onChange={(e) => setState(e.target.value)}
                         value={state}
-                        placeholder={` ${spot.state}`}
+                        placeholder={` state`}
                     />
                 </label>
                 <label htmlFor="country">
@@ -96,7 +96,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='text'
                         onChange={(e) => setCountry(e.target.value)}
                         value={country}
-                        placeholder={` ${spot.country}`}
+                        placeholder={` country`}
                     />
                 </label>
                 <label htmlFor="name">
@@ -105,7 +105,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='text'
                         onChange={(e) => setName(e.target.value)}
                         value={name}
-                        placeholder={` ${spot.name}`}
+                        placeholder={` name`}
                     />
                 </label>
                 <label htmlFor="description">
@@ -113,7 +113,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         className="input"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
-                        placeholder={` ${spot.description}`}
+                        placeholder={` description`}
                     >
                     </textarea>
                 </label>
@@ -123,7 +123,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         type='number'
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
-                        placeholder={` ${spot.price}`}
+                        placeholder={` price`}
                     />
                 </label>
                 <label htmlFor="img">
