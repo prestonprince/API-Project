@@ -26,18 +26,29 @@ const SpotCard = ({ spot }) => {
                     )
                 }
             </div>
-            <div className='title-container'>
-                <h5>{spot.city}, {spot.state}</h5> 
-                {spot.avgRating ? (
-                    <span>
-                    ★ {rating}
-                    </span>
-                    ) :
-                    (<span>No Reviews</span>)
-                }
-            </div>
-            <div className='price-container'>
-                <p><span className='price'>${spot.price}</span> night</p>
+            <div className="card-body">
+                <div className='title-container'>
+                    <div className="title-upper">
+                        <div className="title-upper-left">
+                            <h5>{spot.city}, {spot.state}</h5> 
+                        </div>
+                        <div className="title-upper-right">
+                            {spot.avgRating ? (
+                                <span>
+                                ★ {rating}
+                                </span>
+                                ) :
+                                (<span id="noReview">No Reviews</span>)
+                            }
+                        </div>
+                    </div>
+                        <div className="title-lower">
+                            <p>{spot.name}</p>
+                        </div>
+                </div>
+                <div className='price-container'>
+                    <p><span className='price'>${spot.price}</span> night</p>
+                </div>
             </div>
         </div>
     )

@@ -28,11 +28,11 @@ const Navigation = ({ isLoaded }) => {
                     </NavLink>
                 </div>
                 <div className="search">
-                    <input
+                    {/* <input
                         className="search-bar"
                         type='text' 
                         placeholder=" search"
-                    />
+                    /> */}
                 </div>
                 <div className="sesh">
                     {isLoaded && (
