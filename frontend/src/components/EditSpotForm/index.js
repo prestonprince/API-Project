@@ -17,6 +17,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
     const [name, setName] = useState(spot.name);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
+    const [img, setImg] = useState('');
 
     const user = useSelector(state => state.session.user);
 
@@ -31,6 +32,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
         if (name) spotInfo.name = name;
         if (description) spotInfo.description = description;
         if (price) spotInfo.price = price;
+        if (img) spotInfo.img = img;
 
         return dispatch(editSpot(spotInfo)).then((data) => {
             setAddress('');
@@ -40,6 +42,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
             setName('');
             setDescription('');
             setPrice('');
+            setImg('');
             setShowModal(false)
             setEditSubmit(prevState => !prevState)
             history.push(`/spots/${spotId}`)
@@ -121,6 +124,15 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder={` ${spot.price}`}
+                    />
+                </label>
+                <label htmlFor="img">
+                    <input
+                        className="input"
+                        type='url'
+                        onChange={(e) => setImg(e.target.value)}
+                        value={img}
+                        placeholder={` Add an image`}
                     />
                 </label>
                 <br></br>

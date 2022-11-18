@@ -29,16 +29,18 @@ const SignupFormPage = ({ setShowModal }) =>  {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        console.log(errors)
+
         setPasswordError({});
-        setErrors({});
+        // setErrors({});
 
         if (confirmPassword !== password) setPasswordError({error: "Passwords must match"});
         else {
             return dispatch(signupUser({
                 firstName,
                 lastName,
-                username,
                 email,
+                username,
                 password
             }))
             .then(() => {
@@ -89,6 +91,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
                         placeholder=' Email'
+                        required
                     />
                 </label>
                 <label htmlFor="firstName">
@@ -98,6 +101,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setFirstName(e.target.value)}
                         value={firstName}
                         placeholder=' First name'
+                        required
                     />
                 </label>
                 <label htmlFor='lastName'>
@@ -107,6 +111,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                         placeholder=' Last Name'
+                        required
                     />
                 </label>
                 <label htmlFor='username'>
@@ -116,6 +121,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setusername(e.target.value)}
                         value={username}
                         placeholder=' username'
+                        required
                     />
                 </label>
                 <label htmlFor='password'>
@@ -125,6 +131,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                         placeholder=' Password'
+                        required
                     />
                 </label>
                 <label htmlFor='confirm-password'>
@@ -134,6 +141,7 @@ const SignupFormPage = ({ setShowModal }) =>  {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
                         placeholder=' Confirm Password'
+                        required
                     />
                 </label>
                 <button className='button'>Continue</button>
