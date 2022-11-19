@@ -44,7 +44,7 @@
     }
 
     .booking-card {
-        border: 3px solid black;
+        border: 3px solid rgba(205, 205, 205, 0.2);
         position: sticky;
         top: 150px;
         border-radius: 10px;
@@ -91,7 +91,7 @@
     }
 
     .booking-card {
-        border: 3px solid black;
+        border: 3px solid rgba(205, 205, 205, 0.2);
         position: sticky;
         top: 150px;
         border-radius: 10px;
@@ -215,7 +215,6 @@
 
 
 .line {
-
     margin-top: 50px;
 }
 

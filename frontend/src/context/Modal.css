@@ -20,9 +20,9 @@
   
   #modal-content {
     width: 500px;
-    height: 650px;
+    height: fit-content;
     position: absolute;
     background-color:#FFF;
-    padding: 15px;
+    padding: 30px;
     border-radius: 15px;
   }
