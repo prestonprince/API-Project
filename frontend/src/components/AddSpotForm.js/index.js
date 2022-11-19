@@ -24,6 +24,12 @@ const AddSpotForm = ({ setShowSpotForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (+price <= 0) {
+            setErrors(prevState => ({...prevState, price: "Price must be greater than zero"}));
+            setPrice('');
+            return
+        }
+
         const spotInfo ={
             address,
             city,

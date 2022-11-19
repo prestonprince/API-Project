@@ -24,6 +24,14 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        setErrors({})
+
+        if (+price <= 0) {
+            setErrors((prevState) => ({...prevState, price: "Price must be greater than zero"}));
+            setPrice(spot.price);
+            return
+        }
+
         const spotInfo = {id: spotId}
         if (address) spotInfo.address = address;
         if (city) spotInfo.city = city;
@@ -70,6 +78,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
                         placeholder={` address`}
+                        required
                     />
                 </label>
                 <label htmlFor="city">
@@ -79,6 +88,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setCity(e.target.value)}
                         value={city}
                         placeholder={` city`}
+                        required
                     />
                 </label>
                 <label htmlFor="state">
@@ -88,6 +98,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setState(e.target.value)}
                         value={state}
                         placeholder={` state`}
+                        required
                     />
                 </label>
                 <label htmlFor="country">
@@ -97,6 +108,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setCountry(e.target.value)}
                         value={country}
                         placeholder={` country`}
+                        required
                     />
                 </label>
                 <label htmlFor="name">
@@ -106,6 +118,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         placeholder={` name`}
+                        required
                     />
                 </label>
                 <label htmlFor="description">
@@ -114,6 +127,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder={` description`}
+                        required
                     >
                     </textarea>
                 </label>
@@ -124,6 +138,7 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder={` price`}
+                        required
                     />
                 </label>
                 <label htmlFor="img">
