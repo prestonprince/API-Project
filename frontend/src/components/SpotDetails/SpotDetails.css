@@ -9,6 +9,32 @@
     display: flex;
 }
 
+.review-upper-left {
+    /* border: 3px solid red; */
+    display: flex;
+    width: 75%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.each-star {
+    font-size: .7rem;
+    padding-right: 2px;
+}
+
+.inner-left {
+    /* border: 3px solid green; */
+    display: flex;
+    align-items: center;
+}
+
+.inner-right {
+    /* border: 3px solid orange; */
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1030px) {
     .header-lower {
         display: flex;
@@ -239,6 +265,7 @@
     /* border: 3px solid gold; */
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .review-actual {
     /* display: flex;

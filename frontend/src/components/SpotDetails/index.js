@@ -187,7 +187,17 @@ const SpotDetails = () => {
                         {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
                             <div key={obj.id} className="review-actual">
                                 <div className="review-left">
-                                    <p>{capitalize(obj.User.firstName)}</p>
+                                    <div className="review-upper-left">
+                                        <div className="inner-left">
+                                            <p>{capitalize(obj.User.firstName)}</p>
+                                        </div>
+                                        <div className="inner-right">
+                                            <span className="each-star">
+                                                <i className="fa-solid fa-star"></i>
+                                            </span>
+                                            <p>{obj.stars}</p>
+                                        </div>
+                                    </div>
                                     <p>{obj.review}</p>
                                 </div>
                                 <div className="review-right">
