@@ -31,6 +31,9 @@ const MySpots = () => {
             (
                 <div className="no-spots">
                     <h2>Oops... You Don't Have Any Spots!</h2>
+                    <span className="sad">
+                    <i className="fa-regular fa-face-sad-cry"></i>
+                    </span>
                 </div>
             )
         }

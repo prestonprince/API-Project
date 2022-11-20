@@ -272,5 +272,7 @@
     flex-direction: row; */
     /* border: 3px solid purple; */
     /* align-items: center; */
-    width: 25%;
+    width: 20%;
+    padding: 15px;
+    margin: 10px
 };
