@@ -43,7 +43,14 @@
 }
 
 .title-upper-left {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     width: 70%;
+}
+
+.title-upper-left h5 {
+    text-overflow: ellipsis;
 }
 
 .title-upper-right {
