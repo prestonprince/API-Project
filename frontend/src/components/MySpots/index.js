@@ -30,8 +30,8 @@ const MySpots = () => {
                 </div>
                 ):
                 (
-                    <div className="no-spots">
-                        <h2>Oops... You Don't Have Any Spots!</h2>
+                    <div style={{textAlign: "center"}} className="no-spots">
+                        <h2 style={{textAlign: "center"}}>Oops... You Don't Have Any Spots!</h2>
                     </div>
                 )
             }
