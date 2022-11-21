@@ -48,7 +48,7 @@ const ProfileButton = ({ user, setLogin, setShowModal, setHostSpot }) => {
                 <div className="drop-content-div user"> 
                     <p className="drop-content">{user.username}</p>
                 </div>
-                <div className="drop-content-div">
+                <div className="drop-content-div user-email">
                     <p className="drop-content">{user.email}</p>
                 </div>
                 <div onClick={mySpotsClick} className="drop-content-div clickable">
