@@ -29,8 +29,6 @@ const SignupFormPage = ({ setShowModal }) =>  {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(errors)
-
         setPasswordError({});
         // setErrors({});
 

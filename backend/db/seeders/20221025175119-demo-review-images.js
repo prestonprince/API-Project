@@ -1,9 +1,15 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA; 
+}
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('ReviewImages', [
+    options.tableName = 'ReviewImages';
+    return queryInterface.bulkInsert(options, [
       {
         reviewId: 1,
         url: "https://www.housedigest.com/img/gallery/heres-where-you-can-visit-walter-whites-house-from-breaking-bad/where-to-find-the-breaking-bad-house-1649249304.jpg"
@@ -25,7 +31,8 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('ReviewImages', {
+    options.tableName = 'ReviewImages'
+    return queryInterface.bulkDelete(options, {
       reviewId: { [Op.in]: [1, 2, 3, 4] }
     }, {})
   }
