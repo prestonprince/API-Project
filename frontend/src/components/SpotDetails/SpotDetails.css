@@ -15,12 +15,13 @@
     text-overflow: ellipsis;
 }
 
-.review-upper-left {
+.review-upper {
     /* border: 3px solid red; */
     display: flex;
     width: 75%;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: .5vw;
 
 }
 
@@ -271,14 +272,21 @@
     /* border: 3px solid gold; */
     display: flex;
     flex-direction: row;
+    /* justify-content: center; */
     flex-wrap: wrap;
+    gap: 2vw;
 }
 .review-actual {
     /* display: flex;
     flex-direction: row; */
     /* border: 3px solid purple; */
     /* align-items: center; */
-    width: 20%;
-    padding: 15px;
-    margin: 10px
+    width: 45%;
+    height: fit-content;
+    /* padding: 15px; */
+    /* margin: 10px */
 };
+
+.review-upper-left {
+    border: 3px solid red;
+}

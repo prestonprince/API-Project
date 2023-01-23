@@ -187,7 +187,7 @@ const SpotDetails = () => {
                         {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
                             <div key={obj.id} className="review-actual">
                                 <div className="review-left">
-                                    <div className="review-upper-left">
+                                    <div className="review-upper">
                                         <div className="inner-left">
                                             <p>{capitalize(obj.User.firstName)}</p>
                                         </div>
@@ -197,13 +197,13 @@ const SpotDetails = () => {
                                             </span>
                                             <p>{obj.stars}</p>
                                         </div>
+                                        {user && obj.User.id === user.id && (
+                                            <button onClick={(e) => handleReviewDelete(e, obj.id)} className="clickable review-dlt delete-btn"><i className="fa-regular fa-trash-can"></i></button>
+                                            )}
                                     </div>
                                     <p>{obj.review}</p>
                                 </div>
                                 <div className="review-right">
-                                    {user && obj.User.id === user.id && (
-                                        <button onClick={(e) => handleReviewDelete(e, obj.id)} className="clickable review-dlt delete-btn"><i className="fa-regular fa-trash-can"></i></button>
-                                        )}
                                 </div>
                             </div>
                         )):
