@@ -24,6 +24,11 @@ const AddSpotForm = ({ setShowSpotForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (description.length > 255) {
+            setErrors(prevState => ({...prevState, description: 'Description must be 255 characters or less.'}));
+            return;
+        }
+
         if (+price <= 0) {
             setErrors(prevState => ({...prevState, price: "Price must be greater than zero"}));
             setPrice('');
