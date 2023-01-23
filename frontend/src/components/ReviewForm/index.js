@@ -18,6 +18,11 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        if (review.length > 255) {
+            setErrors('Review must be under 255 characters long');
+            return;
+        }
+
         if (+stars < 1 || +stars > 5) {
             setErrors('Please enter a star number between 1 and 5')
             return;
