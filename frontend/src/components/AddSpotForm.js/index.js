@@ -24,6 +24,11 @@ const AddSpotForm = ({ setShowSpotForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (name.length > 25) {
+            setErrors(prevState => ({...prevState, name: 'Name must be 25 characters or less.'}));
+            return;
+        }
+
         if (description.length > 255) {
             setErrors(prevState => ({...prevState, description: 'Description must be 255 characters or less.'}));
             return;

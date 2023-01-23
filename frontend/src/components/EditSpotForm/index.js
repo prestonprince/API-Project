@@ -26,6 +26,12 @@ const EditSpotForm = ({ spot, setShowModal, setEditSubmit }) => {
 
         setErrors({})
 
+        if (name.length > 25) {
+            setErrors((prevState) => ({...prevState, name: 'Name must be 25 characters or less.'}))
+            setName(spot.name);
+            return;
+        }
+
         if (description.length > 255) {
             setErrors((prevState) => ({...prevState, description: 'Description must be 255 characters or less.'}))
             setDescription(spot.description);

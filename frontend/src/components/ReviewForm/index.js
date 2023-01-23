@@ -19,7 +19,7 @@ const ReviewForm = ({ setShowReviewModal, setReviewDelete }) => {
         e.preventDefault();
 
         if (review.length > 255) {
-            setErrors('Review must be under 255 characters long');
+            setErrors('Review must be 255 characters or less');
             return;
         }
 
