@@ -24,6 +24,28 @@ const AddSpotForm = ({ setShowSpotForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        setErrors({});
+
+        if (address.length > 40) {
+            setErrors(prevState => ({...prevState, address: 'Address must be 25 characters or less.'}));
+            return;
+        }
+
+        if (city.length > 25) {
+            setErrors(prevState => ({...prevState, city: 'City must be 25 characters or less.'}));
+            return;
+        }
+
+        if (state.length > 25) {
+            setErrors(prevState => ({...prevState, state: 'State must be 25 characters or less.'}));
+            return;
+        };
+
+        if (country.length > 25) {
+            setErrors(prevState => ({...prevState, country: 'Country must be 25 characters or less.'}));
+            return;
+        }
+
         if (name.length > 25) {
             setErrors(prevState => ({...prevState, name: 'Name must be 25 characters or less.'}));
             return;
