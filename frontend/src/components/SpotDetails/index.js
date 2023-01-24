@@ -222,11 +222,11 @@ const SpotDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="body-right">
+                    {/* <div className="body-right">
                         <div className="booking-card">
 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <hr className="line"></hr>
                 <div className="reviews-container">

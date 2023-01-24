@@ -128,8 +128,8 @@
         position: sticky;
         top: 150px;
         border-radius: 10px;
-        height: 500px;
-        width: 60%;
+        height: 50vh;
+        width: 20vw;
         z-index: -1;
     }
 }
