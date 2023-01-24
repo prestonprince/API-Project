@@ -330,7 +330,14 @@
     display: flex;
     align-items: center;
     /* border: 3px solid blue; */
+    gap: 1vw;
 }
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+}
+
 .review-star {
     font-size: 1.2rem;
     color: black;

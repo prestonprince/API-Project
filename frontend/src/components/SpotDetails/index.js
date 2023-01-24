@@ -231,12 +231,17 @@ const SpotDetails = () => {
                 <hr className="line"></hr>
                 <div className="reviews-container">
                     <div className="reviews-header">
+                        <div className="rating-stars">
                             <div className="review-star">
                                 <i className="fa-solid fa-star"></i>
                             </div>
-                        <h2>
-                            {rating} · {spot.numReviews} reviews
-                        </h2>
+                            <h2>
+                                {rating} · {spot.numReviews} reviews
+                            </h2>
+                        </div>
+                        {user && user.id !== spot.Owner.id && (
+                        <ReviewFormModal setReviewDelete={setReviewDelete} />
+                    )}
                     </div>
                     <div className="reviews-box">
                         {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
@@ -265,9 +270,9 @@ const SpotDetails = () => {
                             <h3>No Reviews (Yet)</h3>
                         }
                     </div>
-                    {user && user.id !== spot.Owner.id && (
+                    {/* {user && user.id !== spot.Owner.id && (
                         <ReviewFormModal setReviewDelete={setReviewDelete} />
-                    )}
+                    )} */}
                 </div>
                 <hr className="line"></hr>
             </div>
