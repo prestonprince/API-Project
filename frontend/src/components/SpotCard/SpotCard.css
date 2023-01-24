@@ -1,7 +1,7 @@
 .card {
     /* border: 3px solid black; */
     box-sizing: border-box;
-    width: 250px;
+    width: 17vw;
     overflow: hidden;
     padding: 3px;
     margin: 8px;
@@ -47,6 +47,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 70%;
+    font-size: 1.05rem;
 }
 
 .title-upper-left h5 {
@@ -60,25 +61,32 @@
 }
 
 #noReview {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 }
 
 .title-upper-right span {
     margin-right: 9px;
-    font-size: .95rem;
+    font-size: 1rem;
 }
 
 .title-lower {
     display: flex;
     align-items: center;
     height: 50%;
-    font-size: 0.8rem;
+    font-size: .9rem;
     color: #808080;
 }
 
 .price-container {
+    /* border: 3px solid red; */
+    /* margin-bottom: 2vh; */
+    position: relative;
+    bottom: 1.5vh;
     font-size: 0.8rem;
     font-size: .9rem;
+    height: 4vh;
+    /* display: flex;
+    align-items: flex-start; */
 }
 
 .price-container span {
