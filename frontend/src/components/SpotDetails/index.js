@@ -177,9 +177,49 @@ const SpotDetails = () => {
                         </div>
                         <div className="body-left-desc">
                             <p>{spot.description}</p>
+                            <hr className="det-line"></hr>
                         </div>
-                        <div className="body-left-booking-calendar">
+                        <div className="bl-amenities-container">
+                            <div className="amenities-header">
+                                <h3>What this place offers</h3>
+                            </div>
+                            <div className="amenities">
+                                <div className="amenity">
+                                    <i class="fa-solid fa-mountain"></i>
+                                    <span>Mountain view</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <span>Kitchen</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-mountain-sun"></i>
+                                    <span>Valley view</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-computer"></i>
+                                    <span>Dedicated workspace</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-car"></i>
+                                    <span>Free parking on premises</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-hot-tub-person"></i>
+                                    <span>Private hot tub</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-tv"></i>
+                                    <span>HDTV with Disney+, Hulu, Netflix</span>
+                                </div>
+                            </div>
+                            <div>
 
+                            </div>
                         </div>
                     </div>
                     <div className="body-right">
