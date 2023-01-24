@@ -146,19 +146,34 @@ const SpotDetails = () => {
                             <p>6 guests · 4 bedrooms · 5 beds · 2 baths</p>
                             <hr className="line"></hr>
                         </div>
-                        <div className="body-left-standout">
-                            <div className="super-host">
-                                <h3>{capitalize(spot.Owner.firstName)} is a Superhost</h3>
-                                <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
+                        <div className="bl">
+                            <div className="bl-flex">
+                                <div className="icon-container">
+                                    <div className="icon">
+                                        <i class="fa-solid fa-medal"></i>
+                                    </div>
+                                    <div className="icon">
+                                        <i class="fa-solid fa-key"></i>
+                                    </div>
+                                    <div className="icon">
+                                        <i class="fa-regular fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <div className="body-left-standout">
+                                    <div className="super-host">
+                                        <h3 className="title">{capitalize(spot.Owner.firstName)} is a Superhost</h3>
+                                        <p className="bot-text">Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
+                                    </div>
+                                    <div className="super-host">
+                                        <h3 className="title">Self check-in</h3>
+                                        <p className="bot-text">You can check in with the smart lock</p> 
+                                    </div>
+                                    <div className="super-host">
+                                        <h3 className="title">Free cancellation for 48 hours.</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="check-in">
-                               <h3>Self check-in</h3>
-                               <p>You can check in with the smart lock</p> 
-                            </div>
-                            <div className="cancellation">
-                                <h3>Free cancellation for 48 hours.</h3>
-                                <hr className="line"></hr>
-                            </div>
+                            <hr className="det-line"></hr>
                         </div>
                         <div className="body-left-desc">
                             <p>{spot.description}</p>

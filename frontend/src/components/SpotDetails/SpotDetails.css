@@ -227,19 +227,64 @@
 .body-left-standout {
     display: flex;
     flex-direction: column;
+    gap: 2vh;
 }
 
 .super-host p {
     color: #808080;
 }
 
+.bl-flex {
+    padding-top: 1vh;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.title {
+    /* border: 3px solid red; */
+    margin: 0;
+}
+
+.bot-text {
+    margin: 0;
+    /* border: 3px solid blue; */
+}
+
+.super-host {
+    /* border: 3px solid gold; */
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    height: 8vh;
+}
+
+.icon {
+    height: 8vh;
+}
+
 .check-in p {
     color: #808080;
 }
 
-.body-left-desc p {
-    color: #808080;
+.check-in {
+    border: 3px solid red;
+    height: 8vh;
 }
+
+.cancellation {
+    height: 8vh;
+}
+
+/* .body-left-desc p {
+    color: #808080;
+} */
 
 .body-right {
     display: flex;
@@ -249,6 +294,12 @@
 
 .line {
     margin-top: 50px;
+    /* border: 3px solid red; */
+}
+
+.det-line {
+    /* border: 3px solid red; */
+    width: 100%;
 }
 
 .reviews-container {
