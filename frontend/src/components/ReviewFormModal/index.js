@@ -7,7 +7,7 @@ function ReviewFormModal({setReviewDelete}) {
 
     return (
         <>
-        <button onClick={() => setShowReviewModal(true)} className="button">Leave a review</button>
+        <button onClick={() => setShowReviewModal(true)} className="rev-button">Leave a review</button>
         {showReviewModal && (
             <Modal onClose={() => setShowReviewModal(false)}>
                 <ReviewForm setReviewDelete={setReviewDelete} setShowReviewModal={setShowReviewModal}/>

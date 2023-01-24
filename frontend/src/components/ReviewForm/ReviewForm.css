@@ -6,3 +6,21 @@
     margin: 0;
     width: 100%;
 }
+
+.rev-button {
+    border-radius: 6px;
+    height: 4vh;
+    border: 1px solid #d3d3d3;
+    background-color: transparent;
+    transition: all .25s ease;
+    font-size: .95rem;
+    padding: .5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rev-button:hover {
+    cursor: pointer;
+    background-color:#f8f6f6;
+}

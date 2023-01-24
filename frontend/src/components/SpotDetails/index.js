@@ -146,42 +146,102 @@ const SpotDetails = () => {
                             <p>6 guests · 4 bedrooms · 5 beds · 2 baths</p>
                             <hr className="line"></hr>
                         </div>
-                        <div className="body-left-standout">
-                            <div className="super-host">
-                                <h3>{capitalize(spot.Owner.firstName)} is a Superhost</h3>
-                                <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
+                        <div className="bl">
+                            <div className="bl-flex">
+                                <div className="icon-container">
+                                    <div className="icon">
+                                        <i class="fa-solid fa-medal"></i>
+                                    </div>
+                                    <div className="icon">
+                                        <i class="fa-solid fa-key"></i>
+                                    </div>
+                                    <div className="icon">
+                                        <i class="fa-regular fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <div className="body-left-standout">
+                                    <div className="super-host">
+                                        <h3 className="title">{capitalize(spot.Owner.firstName)} is a Superhost</h3>
+                                        <p className="bot-text">Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
+                                    </div>
+                                    <div className="super-host">
+                                        <h3 className="title">Self check-in</h3>
+                                        <p className="bot-text">You can check in with the smart lock</p> 
+                                    </div>
+                                    <div className="super-host">
+                                        <h3 className="title">Free cancellation for 48 hours.</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="check-in">
-                               <h3>Self check-in</h3>
-                               <p>You can check in with the smart lock</p> 
-                            </div>
-                            <div className="cancellation">
-                                <h3>Free cancellation for 48 hours.</h3>
-                                <hr className="line"></hr>
-                            </div>
+                            <hr className="det-line"></hr>
                         </div>
                         <div className="body-left-desc">
                             <p>{spot.description}</p>
+                            <hr className="det-line"></hr>
                         </div>
-                        <div className="body-left-booking-calendar">
+                        <div className="bl-amenities-container">
+                            <div className="amenities-header">
+                                <h3>What this place offers</h3>
+                            </div>
+                            <div className="amenities">
+                                <div className="amenity">
+                                    <i class="fa-solid fa-mountain"></i>
+                                    <span>Mountain view</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <span>Kitchen</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-mountain-sun"></i>
+                                    <span>Valley view</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-computer"></i>
+                                    <span>Dedicated workspace</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-car"></i>
+                                    <span>Free parking on premises</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-hot-tub-person"></i>
+                                    <span>Private hot tub</span>
+                                </div>
+                                <div className="amenity">
+                                    <i class="fa-solid fa-tv"></i>
+                                    <span>HDTV with Disney+, Hulu, Netflix</span>
+                                </div>
+                            </div>
+                            <div>
 
+                            </div>
                         </div>
                     </div>
-                    <div className="body-right">
+                    {/* <div className="body-right">
                         <div className="booking-card">
 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <hr className="line"></hr>
                 <div className="reviews-container">
                     <div className="reviews-header">
+                        <div className="rating-stars">
                             <div className="review-star">
                                 <i className="fa-solid fa-star"></i>
                             </div>
-                        <h2>
-                            {rating} · {spot.numReviews} reviews
-                        </h2>
+                            <h2>
+                                {rating} · {spot.numReviews} reviews
+                            </h2>
+                        </div>
+                        {user && user.id !== spot.Owner.id && (
+                        <ReviewFormModal setReviewDelete={setReviewDelete} />
+                    )}
                     </div>
                     <div className="reviews-box">
                         {Reviews && Reviews.length > 0 ? Reviews.map(obj => (
@@ -210,9 +270,9 @@ const SpotDetails = () => {
                             <h3>No Reviews (Yet)</h3>
                         }
                     </div>
-                    {user && user.id !== spot.Owner.id && (
+                    {/* {user && user.id !== spot.Owner.id && (
                         <ReviewFormModal setReviewDelete={setReviewDelete} />
-                    )}
+                    )} */}
                 </div>
                 <hr className="line"></hr>
             </div>

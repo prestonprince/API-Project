@@ -47,7 +47,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 70%;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 .title-upper-left h5 {
@@ -61,12 +61,12 @@
 }
 
 #noReview {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .title-upper-right span {
     margin-right: 9px;
-    font-size: 1rem;
+    font-size: .95rem;
 }
 
 .title-lower {
