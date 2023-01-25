@@ -3,6 +3,7 @@ import { normalizeWithId } from "./spot";
 
 const LOAD_BOOKINGS = 'spot/loadBookings';
 const ADD_BOOKING = 'spot/addBooking';
+const REMOVE_BOOKING = 'spot/removeBooking';
 
 const loadBookings = (payload) => {
     return {
@@ -14,6 +15,13 @@ const loadBookings = (payload) => {
 const addBooking = (payload) => {
     return {
         type: ADD_BOOKING,
+        payload
+    }
+};
+
+const removeBooking = (payload) => {
+    return {
+        type: REMOVE_BOOKING,
         payload
     }
 };
@@ -42,9 +50,23 @@ export const postBooking = ({ spotId, startDate, endDate }) => async(dispatch) =
 
     if (response.ok) {
         const data = await response.json();
-        const normalizedData = { ...data, id: data.id };
+        const normalizedData = { ...data, id: data.id, spotId: +data.spotId };
         dispatch(addBooking(normalizedData));
         return normalizedData;
+    };
+    const err = await response.json();
+    throw err;
+};
+
+export const deleteBooking = (bookingId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeBooking(bookingId));
+        return data
     };
     const err = await response.json();
     throw err;
@@ -64,6 +86,10 @@ const bookingReducer = (state = initialState, action) => {
             const newBookingId = newBooking.id;
             newState = { ...state };
             newState.userBookings[newBookingId] = newBooking;
+        case REMOVE_BOOKING:
+            const bookingId = action.payload;
+            newState = {...state};
+            delete newState.userBookings[bookingId];
         default:
             return state
     }
