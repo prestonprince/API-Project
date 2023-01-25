@@ -86,6 +86,7 @@ const bookingReducer = (state = initialState, action) => {
             const newBookingId = newBooking.id;
             newState = { ...state };
             newState.userBookings[newBookingId] = newBooking;
+            return newState
         case REMOVE_BOOKING:
             const bookingId = action.payload;
             newState = {...state};
