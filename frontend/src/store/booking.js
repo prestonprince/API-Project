@@ -54,8 +54,7 @@ export const postBooking = ({ spotId, startDate, endDate }) => async(dispatch) =
         dispatch(addBooking(normalizedData));
         return normalizedData;
     };
-    const err = await response.json();
-    throw err;
+    return response
 };
 
 export const deleteBooking = (bookingId) => async(dispatch) => {
@@ -68,8 +67,7 @@ export const deleteBooking = (bookingId) => async(dispatch) => {
         dispatch(removeBooking(bookingId));
         return data
     };
-    const err = await response.json();
-    throw err;
+    return response
 }
 
 const initialState = {userBookings: {}};

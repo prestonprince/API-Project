@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteReview, removeSpot } from "../../store/spot";
 import { fetchSingleSpot, fetchSpotReviews } from "../../store/spot";
 import EditSpotModal from "../EditSpotModal";
+import BookingCard from "../BookingCard";
 import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
 
@@ -150,13 +151,13 @@ const SpotDetails = () => {
                             <div className="bl-flex">
                                 <div className="icon-container">
                                     <div className="icon">
-                                        <i class="fa-solid fa-medal"></i>
+                                        <i className="fa-solid fa-medal"></i>
                                     </div>
                                     <div className="icon">
-                                        <i class="fa-solid fa-key"></i>
+                                        <i className="fa-solid fa-key"></i>
                                     </div>
                                     <div className="icon">
-                                        <i class="fa-regular fa-calendar"></i>
+                                        <i className="fa-regular fa-calendar"></i>
                                     </div>
                                 </div>
                                 <div className="body-left-standout">
@@ -222,11 +223,9 @@ const SpotDetails = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="body-right">
-                        <div className="booking-card">
-
-                        </div>
-                    </div> */}
+                    <div className="body-right">
+                        <BookingCard rating={rating} spot={spot} />
+                    </div> 
                 </div>
                 <hr className="line"></hr>
                 <div className="reviews-container">
