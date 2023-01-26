@@ -1,19 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { getUserBookings } from "../../store/booking";
+import styles from './MyBookings.module.css';
+import MyBookingCard from "../MyBookingCard";
+
 function MyBookings() {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
+    const history = useHistory()
 
+    const user = useSelector(state => state.session.user)
     const bookings = useSelector(state => state.bookings.userBookings);
     const bookingsArr = Object.values(bookings)
 
     useEffect(() => {
-        dispatch(getUserBookings()).then(() => {
+        user ? 
+            dispatch(getUserBookings()).then(() => {
+                setIsLoaded(true)
+            })
+        : 
             setIsLoaded(true)
-        });
-    }, [dispatch])
+    }, [dispatch, user])
 
     if (!isLoaded) {
         return (
@@ -21,20 +30,28 @@ function MyBookings() {
         )
     }
 
+    if (!user) {
+        history.push('/')
+    }
+
     return (
         <>
-        <div>
-            <h3>My Bookings</h3>
+        <div className={styles.container}>
+            <div className={styles.headerContainer}>
+                <h3 className={styles.title}>My Bookings</h3>
+            </div>
+            {bookingsArr.length > 0 && user ? (
+                <div className={styles.bookingContainer}>
+                    {bookingsArr.map(booking => (
+                        <MyBookingCard key={booking.id} booking={booking} />
+                    ))}
+                </div>
+            ) : 
+                <div>
+                    <span>Oops... You Have No Bookings Yet!</span>
+                </div>
+            }
         </div>
-        {bookingsArr.length > 0 ? (
-            <div>
-                // map out each booking with MyBookingCard component
-            </div>
-        ) : 
-            <div>
-                <span>Oops... You Have No Bookings Yet!</span>
-            </div>
-        }
         </>
     )
 };

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { postBooking } from '../../store/booking';
 import styles from './BookingCard.module.css'
@@ -23,10 +24,11 @@ function BookingCard({ rating, spot }) {
     };
 
     const newDate = formatDate(new Date());
+    const history = useHistory()
 
     const [startDate, setStartDate] = useState(newDate);
     const [endDate, setEndDate] = useState(newDate);
-    // const [guests, setGuests] = useState(0)
+    const [guests, setGuests] = useState('')
     const [errors, setErrors] = useState('')
     const dispatch = useDispatch()
 
@@ -59,7 +61,13 @@ function BookingCard({ rating, spot }) {
             endDate
         };
 
-        dispatch(postBooking(booking)).catch(async(data) => {
+        dispatch(postBooking(booking)).then(() => {
+            setErrors('');
+            setStartDate(newDate);
+            setEndDate(newDate);
+            setGuests('');
+            history.push('/bookings')
+        }).catch(async(data) => {
             const err = await data.json();
             setErrors(err.message)
         })
@@ -87,7 +95,7 @@ function BookingCard({ rating, spot }) {
                     <form className={styles.form} onSubmit={onSubmit}>
                         <div className={styles.inputs}>
                             <div className={styles.dateInputs}>
-                                <label htmlFor='startDate'>
+                                <label className={styles.dateContainer} htmlFor='startDate'>
                                     <input
                                     id={styles.startDate}
                                     className={styles.dates}
@@ -97,7 +105,7 @@ function BookingCard({ rating, spot }) {
                                     required
                                     />
                                 </label>
-                                <label htmlFor='endDate'>
+                                <label className={styles.dateContainer} htmlFor='endDate'>
                                     <input
                                     id={styles.endDate}
                                     type='date'
@@ -113,8 +121,8 @@ function BookingCard({ rating, spot }) {
                                 id={styles.guestInput}
                                 type='number'
                                 placeholder='Guests'
-                                // value={guests}
-                                // onChange={(e) => setGuests(e.target.value)}
+                                value={guests}
+                                onChange={(e) => setGuests(e.target.value)}
                                 />
                             </label>
                         </div>

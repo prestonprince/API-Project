@@ -49,6 +49,7 @@
     justify-content: space-between;
     /* gap: 2vh; */
     height: 22vh;
+    width: 20vw;
 }
 
 .inputs {
@@ -68,17 +69,24 @@
     /* top-left | top-right | bottom-right | bottom-left */
     border-radius: 8px 0 0 0;
     border: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.dateContainer {
+    width: 50%;
 }
 
 #endDate {
     /* top-left | top-right | bottom-right | bottom-left */
     border-radius: 0 8px 0 0;
     border: 1px solid #e0e0e0;
+    width: 100%;
 }
 
 .dates {
     height: 100%;
     padding: .5vw;
+    /* width: 50%; */
 }
 
 .guestContainer {

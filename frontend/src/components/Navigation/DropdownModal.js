@@ -16,6 +16,11 @@ function DropdownModal({ props: {handleClick, user} }) {
     history.push('/spots/new')
   };
 
+  const myBookingsClick = (e) => {
+    e.preventDefault();
+    history.push('/bookings')
+  };
+
   return (
     <>
       {showModal && (
@@ -25,6 +30,7 @@ function DropdownModal({ props: {handleClick, user} }) {
                 <p className='drop-content'>{user.email}</p>
                 <p onClick={hostSpot} className='drop-content clickable'>Become a Host</p>
                 <p onClick={mySpotsClick} className='drop-content clickable'>My Spots</p>
+                <p onClick={myBookingsClick} className='drop-content clickable'>My Bookings</p>
                 <button className='btn' onClick={handleClick}><span className='lgText'>Log Out</span></button>  
             </div>
         </ModalTwo>

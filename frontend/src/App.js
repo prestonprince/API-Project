@@ -9,13 +9,20 @@ import SpotDetails from './components/SpotDetails';
 import AddSpotForm from './components/AddSpotForm.js';
 import MySpots from './components/MySpots';
 import ReviewForm from './components/ReviewForm';
+import MyBookings from './components/MyBookings';
+import { fetchAllSpots } from './store/spot';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true))
+    // dispatch(sessionActivities.restoreUser()).then(() => setIsLoaded(true))
+    (async () => {
+      dispatch(sessionActivities.restoreUser())
+      dispatch(fetchAllSpots())
+      setIsLoaded(true)
+    })()
   }, [dispatch]);
 
   return (
@@ -41,6 +48,9 @@ function App() {
         </Route>
         <Route path='/users/:userId'>
           <MySpots />
+        </Route>
+        <Route path='/bookings'>
+          <MyBookings />
         </Route>
         <Route exact path='/'>
           <SpotsView />
