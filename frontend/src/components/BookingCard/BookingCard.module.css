@@ -41,3 +41,76 @@
 #reviews {
     font-size: .9rem;
 }
+
+.form {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 2vh; */
+    height: 22vh;
+}
+
+.inputs {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.dateInputs {
+    /* border: 3px solid orange; */
+    display: flex;
+    height: 45%;
+}
+
+#startDate {
+    /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 8px 0 0 0;
+    border: 1px solid #e0e0e0;
+}
+
+#endDate {
+    /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 0 8px 0 0;
+    border: 1px solid #e0e0e0;
+}
+
+.dates {
+    height: 100%;
+    padding: .5vw;
+}
+
+.guestContainer {
+    height: 55%;
+}
+
+#guestInput {
+    /* border: 3px solid green; */
+    /* top-left | top-right | bottom-right | bottom-left */
+    padding: .5vw;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #e0e0e0;
+    height: 100%;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.btn {
+    background: linear-gradient(90deg,#e41e4e,#d60565);
+    border: none;
+    height: 5vh;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.errors {
+    font-size: .8rem;
+    color: red;
+}

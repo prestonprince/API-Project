@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { postBooking } from '../../store/booking';
 import styles from './BookingCard.module.css'
 import "../SpotDetails/SpotDetails.css"
 
 function BookingCard({ rating, spot }) {
+    const user = useSelector(state => state.session.user)
     // function to format date to yyyy-mm-dd
     function formatDate(date) {
         let d = new Date(date),
@@ -19,21 +20,36 @@ function BookingCard({ rating, spot }) {
             day = '0' + day;
     
         return [year, month, day].join('-');
-    }
+    };
+
     const newDate = formatDate(new Date());
 
     const [startDate, setStartDate] = useState(newDate);
     const [endDate, setEndDate] = useState(newDate);
+    // const [guests, setGuests] = useState(0)
+    const [errors, setErrors] = useState('')
     const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault();
 
+        setErrors('')
+
+        if (!user) {
+            setErrors('Please log in or sign up before booking a spot');
+            return;
+        }
+
+        if (user.id === spot.ownerId) {
+            setErrors('You cannot book your own spot');
+            return;
+        }
+
         const startNum = startDate.split('-').join('')
         const endNum = endDate.split('-').join('')
 
         if (endNum < startNum) {
-            console.log('OOOOOPS');
+            setErrors('Check In date must be before Check Out date')
             return
         }
 
@@ -45,7 +61,7 @@ function BookingCard({ rating, spot }) {
 
         dispatch(postBooking(booking)).catch(async(data) => {
             const err = await data.json();
-            console.log('ERRR', err)
+            setErrors(err.message)
         })
         
     };
@@ -67,26 +83,48 @@ function BookingCard({ rating, spot }) {
                         }
                     </div>
                 </div>
-                <div className={styles.form}>
-                    <form onSubmit={onSubmit}>
-                        <label htmlFor='startDate'>
-                            <input
-                            type='date'
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            required
-                            />
-                        </label>
-                        <label htmlFor='endDate'>
-                            <input
-                            type='date'
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            required
-                            />
-                        </label>
-                        <button>Reserve</button>
+                <div>
+                    <form className={styles.form} onSubmit={onSubmit}>
+                        <div className={styles.inputs}>
+                            <div className={styles.dateInputs}>
+                                <label htmlFor='startDate'>
+                                    <input
+                                    id={styles.startDate}
+                                    className={styles.dates}
+                                    type='date'
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                    required
+                                    />
+                                </label>
+                                <label htmlFor='endDate'>
+                                    <input
+                                    id={styles.endDate}
+                                    type='date'
+                                    className={styles.dates}
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                    required
+                                    />
+                                </label>
+                            </div>
+                            <label className={styles.guestContainer} htmlFor='guests'>
+                                <input 
+                                id={styles.guestInput}
+                                type='number'
+                                placeholder='Guests'
+                                // value={guests}
+                                // onChange={(e) => setGuests(e.target.value)}
+                                />
+                            </label>
+                        </div>
+                        <button className={styles.btn}>Reserve</button>
                     </form>
+                </div>
+                <div className={styles.errors}>
+                    {errors && (
+                        <span>{errors}</span>
+                    )}
                 </div>
                 <div className={styles.noCharge}>
 
