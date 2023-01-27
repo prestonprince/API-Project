@@ -124,11 +124,11 @@
     }
 
     .booking-card {
-        border: #e9e9e9 1px solid;
+        border: #cccccc 1px solid;
         position: sticky;
         top: 150px;
         border-radius: 10px;
-        height: 55vh;
+        height: 58vh;
         width: 23vw;
         /* z-index: -1; */
         box-shadow: 5px 10px 20px rgb(208, 208, 208);

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1vh;
 }
 
 .header {
@@ -27,6 +28,15 @@
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.label {
+    position: relative;
+    top: 2vh;
+    left: .5vw;
+    font-size: .7rem;
+    font-weight: 600;
+
 }
 
 #spotPrice {
@@ -62,7 +72,7 @@
 .dateInputs {
     /* border: 3px solid orange; */
     display: flex;
-    height: 45%;
+    height: 50%;
 }
 
 #startDate {
@@ -90,7 +100,7 @@
 }
 
 .guestContainer {
-    height: 55%;
+    height: 50%;
 }
 
 #guestInput {
@@ -121,4 +131,39 @@
 .errors {
     font-size: .8rem;
     color: red;
+}
+
+.noCharge{
+    font-size: .9rem;
+    color: #3d3d3d;
+}
+
+.fees {
+    /* border: 3px solid blue; */
+    width: 90%;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    align-items: center;
+    color: #3d3d3d;
+}
+
+.nights {
+    /* border: 3px solid red; */
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calc {
+    text-decoration: underline;
+}
+
+.total {
+    /* border: 3px solid gold; */
+    font-weight: 800;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
 }

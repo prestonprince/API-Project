@@ -96,6 +96,7 @@ function BookingCard({ rating, spot }) {
                         <div className={styles.inputs}>
                             <div className={styles.dateInputs}>
                                 <label className={styles.dateContainer} htmlFor='startDate'>
+                                    <span className={styles.label}>CHECK-IN</span>
                                     <input
                                     id={styles.startDate}
                                     className={styles.dates}
@@ -106,6 +107,7 @@ function BookingCard({ rating, spot }) {
                                     />
                                 </label>
                                 <label className={styles.dateContainer} htmlFor='endDate'>
+                                    <span className={styles.label}>CHECKOUT</span>
                                     <input
                                     id={styles.endDate}
                                     type='date'
@@ -135,13 +137,26 @@ function BookingCard({ rating, spot }) {
                     )}
                 </div>
                 <div className={styles.noCharge}>
-
+                    <span>You won't be charged yet</span>
                 </div>
                 <div className={styles.fees}>
-
+                    <div className={styles.nights}>
+                        <span className={styles.calc}>{spot.price} x 5 nights</span>
+                        <span>${spot.price*5}</span>
+                    </div>
+                    <div className={styles.nights}>
+                        <span className={styles.calc}>Cleaning fee</span>
+                        <span>$22</span>
+                    </div>
+                    <div className={styles.nights}>
+                        <span className={styles.calc}>Service fee</span>
+                        <span>$120</span>
+                    </div>
+                    <hr className='det-line'></hr>
                 </div>
                 <div className={styles.total}>
-
+                    <span>Total before taxes: </span>
+                    <span>${(spot.price*5)+22+120}</span>
                 </div>
             </div>
         </div>
