@@ -91,7 +91,6 @@ function BookingCard({ rating, spot }) {
                         }
                     </div>
                 </div>
-                <div>
                     <form className={styles.form} onSubmit={onSubmit}>
                         <div className={styles.inputs}>
                             <div className={styles.dateInputs}>
@@ -130,7 +129,6 @@ function BookingCard({ rating, spot }) {
                         </div>
                         <button className={styles.btn}>Reserve</button>
                     </form>
-                </div>
                 <div className={styles.errors}>
                     {errors && (
                         <span>{errors}</span>
