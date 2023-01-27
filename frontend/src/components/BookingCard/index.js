@@ -52,7 +52,7 @@ function BookingCard({ rating, spot }) {
 
         if (endNum < startNum) {
             setErrors('Check In date must be before Check Out date')
-            return
+            return;
         }
 
         const booking = {
