@@ -27,14 +27,14 @@ const Navigation = ({ isLoaded }) => {
                         <img  className="logo" alt="logo" src="https://cdn.discordapp.com/attachments/1023439168631738371/1043011701873844235/Untitled_design.jpg"></img>
                     </NavLink>
                 </div>
-                <div className="search">
+                {/* <div className="search"> */}
                     {/* <input
                         className="search-bar"
                         type='text' 
                         placeholder=" search"
                     /> */}
-                </div>
-                <div className="sesh">
+                {/* </div> */}
+                {/* <div className="sesh"> */}
                     {isLoaded && (
                         <>
                             <div className='host'>
@@ -60,7 +60,7 @@ const Navigation = ({ isLoaded }) => {
                             <AddSpotForm setShowSpotForm={setShowSpotForm}/>
                         </Modal>
                     )}
-                </div>
+                {/* </div> */}
             </div>
         </div>
     )

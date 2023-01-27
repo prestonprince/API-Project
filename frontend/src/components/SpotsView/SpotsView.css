@@ -3,8 +3,8 @@
     border-radius: 30px;
     width: 60%;
     height: 4px;
-    top: 250px;
-    left: 325px;
+    top: 45vh;
+    left: 20vw;
 }
 
 .loader::before {

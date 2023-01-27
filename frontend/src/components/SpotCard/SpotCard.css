@@ -1,5 +1,4 @@
 .card {
-    /* border: 3px solid black; */
     box-sizing: border-box;
     width: 17vw;
     overflow: hidden;
@@ -7,10 +6,10 @@
     margin: 8px;
     display: flex;
     flex-direction: column;
+    /* z-index: 1; */
 }
 
 .image-container {
-    /* border: 3px solid pink; */
     height: 70%;
     display: flex;
     justify-content: center;
@@ -23,22 +22,18 @@
 }
 
 .card-body {
-    /* border: 3px solid lightblue; */
     height: 30%;
 }
 
 .title-container {
-    /* border: 3px solid orange; */
     display: flex;
     flex-direction: column;
     height: 50%;
 }
 
 .title-upper {
-    /* border: 3px solid gold; */
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     height: 50%;
 }
 
@@ -51,6 +46,9 @@
 }
 
 .title-upper-left h5 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
 
@@ -78,15 +76,11 @@
 }
 
 .price-container {
-    /* border: 3px solid red; */
-    /* margin-bottom: 2vh; */
     position: relative;
     bottom: 1.5vh;
     font-size: 0.8rem;
     font-size: .9rem;
     height: 4vh;
-    /* display: flex;
-    align-items: flex-start; */
 }
 
 .price-container span {
@@ -96,9 +90,69 @@
 .card:hover {
     cursor: pointer;
 } 
-/* 
-@media screen and (max-width: 1030px) {
+
+
+@media only screen and (max-width: 600px) {
     .card {
-        width: 200px;
+        width: 100%;
     }
-}  */
+    .title-upper-left h5 {
+        font-size: 1rem;
+    }
+    .title-upper-right span {
+        font-size: .9rem;
+    }
+    .title-lower {
+        font-size: .8rem;
+    }
+    .price-container {
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .card {
+        width: 70%;
+    }
+    .title-upper-left h5 {
+        font-size: 1.2rem;
+    }
+    .title-upper-right span {
+        font-size: 1.2rem;
+    }
+    .title-lower {
+        font-size: 1rem;
+    }
+    .price-container {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1324px) {
+    .card {
+        width: 25%;
+    }
+    .title-upper-left h5 {
+        font-size: 1.2rem;
+    }
+    .title-upper-right span {
+        font-size: 1.2rem;
+        visibility: hidden;
+    }
+    .title-lower {
+        font-size: 1rem;
+    }
+    .price-container {
+        font-size: 1rem;
+    }
+
+    .title-upper {
+        /* border: 3px solid red; */
+        display: flex;
+        justify-content: center;
+    }
+    /* .card-body{
+        display: flex;
+        justify-content: center;
+    } */
+}

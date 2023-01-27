@@ -8,6 +8,7 @@ import EditSpotModal from "../EditSpotModal";
 import BookingCard from "../BookingCard";
 import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
+import Maps from "../Maps/Maps";
 
 const SpotDetails = () => {
     const { spotId } = useParams();
@@ -69,14 +70,14 @@ const SpotDetails = () => {
                     <div className="header-lower">
                         <div className="header-lower-left">
                             {spot.avgStarRating ? (
-                                <p>★ {rating}</p>
+                                <p className="head-rating">★ {rating}</p>
                                 )
                             :
                                 (
-                                    <p>★ No Reviews Yet</p>
+                                    <p className="head-rating">★ No Reviews Yet</p>
                                 )
                             }
-                            <p>{spot.numReviews} {spot.numReviews === 1 ? (<>review</>) : (<>reviews</>)}</p>
+                            <p className="head-rating">{spot.numReviews} {spot.numReviews === 1 ? (<>review</>) : (<>reviews</>)}</p>
                             <p className="city-state">{spot.city}, {spot.state}</p>
                         </div>
                         <div className="header-lower-right">
@@ -145,8 +146,8 @@ const SpotDetails = () => {
                         <div className="body-left-header">
                             <h3>Entire spot hosted by {capitalize(spot.Owner.firstName)} {capitalize(spot.Owner.lastName)}</h3>
                             <p>6 guests · 4 bedrooms · 5 beds · 2 baths</p>
-                            <hr className="line"></hr>
                         </div>
+                        <hr className="line"></hr>
                         <div className="bl">
                             <div className="bl-flex">
                                 <div className="icon-container">
@@ -186,40 +187,41 @@ const SpotDetails = () => {
                             </div>
                             <div className="amenities">
                                 <div className="amenity">
-                                    <i class="fa-solid fa-mountain"></i>
+                                    <i className="fa-solid fa-mountain"></i>
                                     <span>Mountain view</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-utensils"></i>
+                                    <i className="fa-solid fa-utensils"></i>
                                     <span>Kitchen</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-mountain-sun"></i>
+                                    <i className="fa-solid fa-mountain-sun"></i>
                                     <span>Valley view</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-wifi"></i>
+                                    <i className="fa-solid fa-wifi"></i>
                                     <span>Wifi</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-computer"></i>
+                                    <i className="fa-solid fa-computer"></i>
                                     <span>Dedicated workspace</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-car"></i>
+                                    <i className="fa-solid fa-car"></i>
                                     <span>Free parking on premises</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-hot-tub-person"></i>
+                                    <i className="fa-solid fa-hot-tub-person"></i>
                                     <span>Private hot tub</span>
                                 </div>
                                 <div className="amenity">
-                                    <i class="fa-solid fa-tv"></i>
+                                    <i className="fa-solid fa-tv"></i>
                                     <span>HDTV with Disney+, Hulu, Netflix</span>
                                 </div>
+                <hr className="det-line"></hr>
                             </div>
                             <div>
-
+                                {/* <Maps /> */}
                             </div>
                         </div>
                     </div>
@@ -227,7 +229,6 @@ const SpotDetails = () => {
                         <BookingCard rating={rating} spot={spot} />
                     </div> 
                 </div>
-                <hr className="line"></hr>
                 <div className="reviews-container">
                     <div className="reviews-header">
                         <div className="rating-stars">
