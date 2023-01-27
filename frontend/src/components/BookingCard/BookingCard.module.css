@@ -170,8 +170,30 @@
     justify-content: space-between;
 }
 
+@media only screen  and (max-width: 1324px) {
+    #reviews {
+        font-size: .8rem;
+    }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    #spotPrice {
+        font-weight: 800;
+        font-size: 1.2rem;
+    }
+
+    .noCharge {
+        font-size: .8rem;
+    }
+
+    .fees {
+        font-size: .9rem;
+    }
+
+    .total {
+        font-size: .9rem;
+    }
+}
+
+@media only screen  and (max-width: 1024px) {
     .header {
         /* border: 3px solid red; */
         margin: 0;
@@ -240,4 +262,3 @@
     }
     
 }
-

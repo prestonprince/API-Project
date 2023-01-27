@@ -147,12 +147,7 @@
     }
 
     .title-upper {
-        /* border: 3px solid red; */
         display: flex;
         justify-content: center;
     }
-    /* .card-body{
-        display: flex;
-        justify-content: center;
-    } */
 }
