@@ -70,7 +70,7 @@ const SpotDetails = () => {
                     <div className="header-lower">
                         <div className="header-lower-left">
                             {spot.avgStarRating ? (
-                                <p className="head-rating">★ {rating}</p>
+                                <p className="head-rating">★{rating}</p>
                                 )
                             :
                                 (

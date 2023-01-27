@@ -67,14 +67,133 @@
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+
+    .infoContainer {
+        font-size: .7rem;
+    }
+
+    .btn {
+        width: 20vw;
+        height: 2vh;
+        font-size: .6rem;
+    }
+
+    .loaderContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        position: relative;
+        border-radius: 30px;
+        width: 60%;
+        height: 4px;
+        top:150px;
+        left: 200px;
+    }
+    
+    .loader::before {
+        content: "";
+        position: absolute;
+        border-radius: 20px;
+        width: 0%;
+        height: 100%;
+        /* top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; */
+        top: 0;
+        left: 0;
+        background: rgb(255, 56, 92);
+        animation: moving 0.5s ease-in-out infinite;
+    }
+    
+    
+    @keyframes moving {
+        50% {
+         width: 100%;
+        }
+       
+        100% {
+         width: 0;
+         right: 0;
+         left: unset;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
     .container {
         width: 100%;
     }
 
     .btn {
         width: 10vw;
-        height: 2vh;
+        height: 3vh;
+    }
+
+    .loaderContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        position: relative;
+        border-radius: 30px;
+        width: 60%;
+        height: 4px;
+        top:150px;
+        left: 200px;
+    }
+    
+    .loader::before {
+        content: "";
+        position: absolute;
+        border-radius: 20px;
+        width: 0%;
+        height: 100%;
+        /* top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; */
+        top: 0;
+        left: 0;
+        background: rgb(255, 56, 92);
+        animation: moving 0.5s ease-in-out infinite;
+    }
+    
+    
+    @keyframes moving {
+        50% {
+         width: 100%;
+        }
+       
+        100% {
+         width: 0;
+         right: 0;
+         left: unset;
+        }
+    }
+}
+
+@media only screen and (max-width: 1324px) {
+    .container {
+        width: 100%;
+    }
+
+    .btn {
+        width: 10vw;
+        height: 3vh;
     }
 
     .loaderContainer {
