@@ -9,6 +9,7 @@ import MyBookingCard from "../MyBookingCard";
 function MyBookings() {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
+    const [hasClicked, setHasClicked] = useState(false)
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
@@ -16,12 +17,9 @@ function MyBookings() {
     const bookingsArr = Object.values(bookings)
 
     useEffect(() => {
-        user ? 
-            dispatch(getUserBookings()).then(() => {
-                setIsLoaded(true)
-            })
-        : 
+        dispatch(getUserBookings()).then(() => {
             setIsLoaded(true)
+        })
     }, [dispatch, user])
 
     if (!isLoaded) {
@@ -40,10 +38,10 @@ function MyBookings() {
             <div className={styles.headerContainer}>
                 <h3 className={styles.title}>My Bookings</h3>
             </div>
-            {bookingsArr.length > 0 && user ? (
+            {bookings && bookingsArr.length > 0 && user ? (
                 <div className={styles.bookingContainer}>
                     {bookingsArr.map(booking => (
-                        <MyBookingCard key={booking.id} booking={booking} />
+                        <MyBookingCard hasClicked={hasClicked} setHasClicked={setHasClicked} key={booking.id} booking={booking} />
                     ))}
                 </div>
             ) : 

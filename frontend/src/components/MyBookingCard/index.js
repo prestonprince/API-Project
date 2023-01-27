@@ -1,8 +1,19 @@
+import { useDispatch } from 'react-redux';
+
+import { deleteBooking } from '../../store/booking';
 import styles from './MyBookingCard.module.css'
 
-function MyBookingCard({ booking }) {
+function MyBookingCard({ hasClicked, setHasClicked, booking }) {
+    const dispatch = useDispatch();
 
-    console.log(booking)
+    function handleCancel() {
+        dispatch(deleteBooking(booking.id)).then(() => {
+            setHasClicked(!hasClicked)
+        })
+        // dispatch(deleteBooking(booking.id))
+    }
+
+
     return (
         <>
         <div className={styles.container}>
@@ -31,7 +42,7 @@ function MyBookingCard({ booking }) {
                 </div>
                 <hr className={styles.line}></hr>
                 <div className={styles.btnContainer}>
-                    <button className={styles.btn}>Cancel</button>
+                    <button onClick={handleCancel} className={styles.btn}>Cancel</button>
                 </div>
             </div>
         </div>
