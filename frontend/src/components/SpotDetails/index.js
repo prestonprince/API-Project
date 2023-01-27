@@ -8,6 +8,7 @@ import EditSpotModal from "../EditSpotModal";
 import BookingCard from "../BookingCard";
 import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
+import Maps from "../Maps/Maps";
 
 const SpotDetails = () => {
     const { spotId } = useParams();
@@ -219,7 +220,7 @@ const SpotDetails = () => {
                                 </div>
                             </div>
                             <div>
-
+                                <Maps />
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ const usersRouter = require('./users.js');
 const spotsRouter = require('../api/spots.js');
 const reviewsRouter = require('../api/reviews.js');
 const bookingsRouter = require('../api/bookings');
+const mapsRouter = require('./maps');
 const { restoreUser } = require('../../utils/auth.js');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models');
@@ -19,6 +20,8 @@ router.use('/bookings', bookingsRouter);
 router.use('/spots', spotsRouter);
 
 router.use('/reviews', reviewsRouter);
+
+router.use('/maps', mapsRouter);
 
 
 router.delete('/review-images/:imageId', requireAuth, async (req, res, next) => {

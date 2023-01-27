@@ -45,6 +45,9 @@
 }
 
 .title-upper-left h5 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
 
@@ -133,6 +136,7 @@
     }
     .title-upper-right span {
         font-size: 1.2rem;
+        visibility: hidden;
     }
     .title-lower {
         font-size: 1rem;
@@ -140,4 +144,14 @@
     .price-container {
         font-size: 1rem;
     }
+
+    .title-upper {
+        /* border: 3px solid red; */
+        display: flex;
+        justify-content: center;
+    }
+    /* .card-body{
+        display: flex;
+        justify-content: center;
+    } */
 }
