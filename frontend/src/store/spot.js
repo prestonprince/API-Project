@@ -1,6 +1,6 @@
 import { csrfFetch } from './csrf';
 
-const normalizeWithId = (arr) => {
+export const normalizeWithId = (arr) => {
     const dataObj = {};
     arr.forEach(obj => dataObj[obj.id] = obj)
     return dataObj

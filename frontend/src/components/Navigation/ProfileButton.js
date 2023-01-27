@@ -20,6 +20,11 @@ const ProfileButton = ({ user, setLogin, setShowModal, setHostSpot }) => {
         history.push(`/users/${user.id}`)
       };
 
+    const myBookingsClick = (e) => {
+        e.preventDefault();
+        history.push('/bookings')
+    };
+
     useEffect(() => {
         if (!showMenu) return;
 
@@ -53,6 +58,9 @@ const ProfileButton = ({ user, setLogin, setShowModal, setHostSpot }) => {
                 </div>
                 <div onClick={mySpotsClick} className="drop-content-div clickable">
                     <p className='drop-content clickable'>My Spots</p>
+                </div>
+                <div onClick={myBookingsClick} className="drop-content-div clickable">
+                    <p className='drop-content clickable'>My Bookings</p>
                 </div>
                 <div onClick={handleClick} className="drop-content-div logoutbtn clickable"> 
                     <p className="drop-content clickable">Log Out</p>

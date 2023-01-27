@@ -1,0 +1,169 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+.header {
+    /* border: 3px solid red; */
+    margin-top: 2vh;
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+    width: 75%;
+    height: 8vh;
+}
+
+.headerDet {
+    /* border: 3px solid blue; */
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: .2vw;
+}
+
+.headerContainer {
+    /* border: 3px solid gold; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.label {
+    position: relative;
+    top: 2vh;
+    left: .5vw;
+    font-size: .7rem;
+    font-weight: 600;
+
+}
+
+#spotPrice {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+#night {
+    color: #3d3d3d;
+}
+
+#reviews {
+    font-size: .9rem;
+}
+
+.form {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 2vh; */
+    height: 22vh;
+    width: 20vw;
+}
+
+.inputs {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.dateInputs {
+    /* border: 3px solid orange; */
+    display: flex;
+    height: 50%;
+}
+
+#startDate {
+    /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 8px 0 0 0;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.dateContainer {
+    width: 50%;
+}
+
+#endDate {
+    /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 0 8px 0 0;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.dates {
+    height: 100%;
+    padding: .5vw;
+    /* width: 50%; */
+}
+
+.guestContainer {
+    height: 50%;
+}
+
+#guestInput {
+    /* border: 3px solid green; */
+    /* top-left | top-right | bottom-right | bottom-left */
+    padding: .5vw;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #e0e0e0;
+    height: 100%;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.btn {
+    background: linear-gradient(90deg,#e41e4e,#d60565);
+    border: none;
+    height: 5vh;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.errors {
+    font-size: .8rem;
+    color: red;
+}
+
+.noCharge{
+    font-size: .9rem;
+    color: #3d3d3d;
+}
+
+.fees {
+    /* border: 3px solid blue; */
+    width: 90%;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    align-items: center;
+    color: #3d3d3d;
+}
+
+.nights {
+    /* border: 3px solid red; */
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calc {
+    text-decoration: underline;
+}
+
+.total {
+    /* border: 3px solid gold; */
+    font-weight: 800;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
