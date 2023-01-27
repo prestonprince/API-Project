@@ -75,7 +75,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
                         startDate: "Start date conflicts with an existing booking",
                         endDate: "End date conflicts with an existing booking"
                     }
-                })
+                });
+                return;
         }
     }
 
