@@ -9,6 +9,7 @@ import BookingCard from "../BookingCard";
 import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
 import Maps from "../Maps/Maps";
+import MapContainer from "../Maps";
 
 const SpotDetails = () => {
     const { spotId } = useParams();
@@ -221,7 +222,7 @@ const SpotDetails = () => {
                 <hr className="det-line"></hr>
                             </div>
                             <div>
-                                {/* <Maps /> */}
+                                <MapContainer spot={spot} />
                             </div>
                         </div>
                     </div>
