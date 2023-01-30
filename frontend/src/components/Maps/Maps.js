@@ -20,11 +20,17 @@ const containerStyle = {
     return (
       <>
         {isLoaded && (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
-          />
+          // <GoogleMap
+          //   mapContainerStyle={containerStyle}
+          //   center={center}
+          //   zoom={10}
+          // />
+        <iframe
+        // id='map'
+        // className='embed-map'
+        title='location-map'
+        src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${spot.city}+${spot.state}`}>
+        </iframe>
         )}
       </>
     );
