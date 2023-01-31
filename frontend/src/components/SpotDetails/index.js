@@ -8,7 +8,6 @@ import EditSpotModal from "../EditSpotModal";
 import BookingCard from "../BookingCard";
 import ReviewFormModal from "../ReviewFormModal";
 import "./SpotDetails.css"
-import Maps from "../Maps/Maps";
 import MapContainer from "../Maps";
 
 const SpotDetails = () => {
@@ -171,14 +170,14 @@ const SpotDetails = () => {
                                         <h3 className="title">Self check-in</h3>
                                         <p className="bot-text">You can check in with the smart lock</p> 
                                     </div>
-                                    <div className="super-host">
+                                    <div id='48hr' className="super-host hrCancel">
                                         <h3 className="title">Free cancellation for 48 hours.</h3>
                                     </div>
                                 </div>
                             </div>
-                            <hr className="det-line"></hr>
                         </div>
                         <div className="body-left-desc">
+                            <hr className="det-line"></hr>
                             <p>{spot.description}</p>
                             <hr className="det-line"></hr>
                         </div>
@@ -224,6 +223,7 @@ const SpotDetails = () => {
                             <div>
                                 <MapContainer spot={spot} />
                             </div>
+                            <hr className="det-line"></hr>
                         </div>
                     </div>
                     <div className="body-right">
