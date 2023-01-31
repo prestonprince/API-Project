@@ -394,6 +394,13 @@
     .bl-flex {
         display: flex;
     }
+
+    .hrCancel {
+        /* border: 3px solid red; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
     
     .body-left-desc {
         display: flex;

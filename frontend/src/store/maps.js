@@ -15,7 +15,6 @@ export const getKey = () => async(dispatch) => {
     });
     
     const data = await res.json();
-    console.log(data)
     dispatch(loadApiKey(data.googleMapsAPIKey));
 };
 
