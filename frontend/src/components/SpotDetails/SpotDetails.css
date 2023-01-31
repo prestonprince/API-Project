@@ -171,10 +171,12 @@
 }
 
 .bl-flex {
+    /* border: 3px solid red; */
     padding-top: 1vh;
     display: flex;
     gap: 1vw;
     align-items: center;
+    height: fit-content;
 }
 
 .icon-container {
@@ -197,7 +199,7 @@
 .amenities {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5vw;
+    gap: 1.5vw;
 }
 
 .amenity {
@@ -228,7 +230,6 @@
 }
 
 .check-in {
-    border: 3px solid red;
     height: 8vh;
 }
 
@@ -236,9 +237,11 @@
     height: 8vh;
 }
 
-/* .body-left-desc p {
-    color: #808080;
-} */
+.body-left-desc {
+    /* border: 3px solid red; */
+    position: relative;
+    bottom: 2vh;
+}
 
 .body-right {
     display: flex;
@@ -281,27 +284,18 @@
 }
 
 .reviews-box {
-    /* border: 3px solid gold; */
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     flex-wrap: wrap;
     gap: 2vw;
 }
 .review-actual {
-    /* display: flex;
-    flex-direction: row; */
-    /* border: 3px solid purple; */
-    /* align-items: center; */
     width: 45%;
     height: fit-content;
-    /* padding: 15px; */
-    /* margin: 10px */
 };
 
-/* .review-upper-left {
-    border: 3px solid red;
-} */
+
+
 
 @media only screen and (max-width: 600px) {
 
@@ -400,11 +394,20 @@
     .bl-flex {
         display: flex;
     }
+
+    .hrCancel {
+        /* border: 3px solid red; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
     
     .body-left-desc {
         display: flex;
         flex-direction: column;
         text-align: center;
+        position: relative;
+        top: 1vh;
     }
     
     .bl-amenities-container {
