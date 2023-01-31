@@ -40,10 +40,12 @@ const LoginForm = ({ setShowModal }) => {
 
     return (
         <div>
-            <div className='header-box'>
+            <div className='xContainer'>
                 <button onClick={handleClick} className='x-button'>
                     <i className='fa-duotone fa-x'></i>
                 </button>
+            </div>
+            <div className='header-box'>
                 <h3 className='header'>Log In</h3>
             </div>
             <hr></hr>

@@ -62,10 +62,12 @@ const SignupFormPage = ({ setShowModal }) =>  {
 
     return (
         <div className='signup-form'>
-            <div className='header-box'>
+            <div className='xContainer'>
                 <button onClick={handleClick} className='x-button'>
                     <i className='fa-duotone fa-x'></i>
                 </button>
+            </div>
+            <div className='header-box'>
                 <h3 className='header'>Sign up</h3>
             </div>
             <hr></hr>

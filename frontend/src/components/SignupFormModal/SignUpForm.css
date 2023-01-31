@@ -30,15 +30,16 @@
 }
 
 .header-box {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
-    "x s .";
+    "x s ."; */
 }
 
+
 .header {
-    grid-area: "s";
+    /* grid-area: "s"; */
     text-align: center;
 }
 
@@ -81,4 +82,30 @@
 
 .signup-btn:active {
     transform: scale(0.95);
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1324px) {
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px){
+
+}
+
+@media only screen and (max-width: 600px) {
+    .header-box {
+        display: flex;
+        justify-content: center;
+        /* border: 3px solid orange; */
+    }
+
+    .header {
+        margin: 0;
+        /* border: 3px solid red; */
+    }
+
+    .header h3 {
+        margin: 0;
+    }
+    
 }

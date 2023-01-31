@@ -170,7 +170,7 @@
     justify-content: space-between;
 }
 
-@media only screen  and (max-width: 1324px) {
+@media only screen and (min-width: 1024px) and (max-width: 1324px) {
     #reviews {
         font-size: .8rem;
     }
@@ -193,7 +193,7 @@
     }
 }
 
-@media only screen  and (max-width: 1024px) {
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
     .header {
         /* border: 3px solid red; */
         margin: 0;
@@ -240,6 +240,96 @@
 
     .label {
         font-size: .6rem;
+    }
+
+    .guestInput{
+        font-size: .8rem;
+    }
+
+    .noCharge {
+        font-size: .75rem;
+    }
+
+    .fees {
+        /* border: 3px solid red; */
+        height: 12vh;
+        font-size: .9rem;
+        gap: 1vh;
+    }
+
+    .total {
+        font-size: .98rem;
+    }
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin-top: 2vh;
+        display: flex;
+        align-items: center;
+        /* border: 3px solid red; */
+    }
+
+    .header {
+        /* border: 3px solid red; */
+        margin: 0;
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        left: 1vw;
+    }
+
+    .headerContainer {
+        /* border: 3px solid black; */
+        margin: 0;
+        height: 2vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    #spotPrice {
+        font-size: 1.2rem;
+    }
+
+    #night {
+        font-size: .9rem;
+    }
+
+    #reviews {
+        display: none;
+        font-size: .9rem;
+    }
+
+    .form {
+        /* border: 3px solid red; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .5vh;
+        width: 60vw;
+        margin: 0;
+        height: 25vh;
+    }
+
+    .btn {
+        margin: 0;
+        height: 3vh;
+    }
+
+    .container {
+        gap: 0;
+    }
+
+    .label {
+        font-size: .6rem;
+        margin-left: 1vw;
+    }
+
+    .dates {
+        padding: 1vw;
     }
 
     .guestInput{

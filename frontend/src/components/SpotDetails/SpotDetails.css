@@ -294,19 +294,10 @@
     height: fit-content;
 };
 
-
-
-
-@media only screen and (max-width: 600px) {
-
-    .body-left-standout {
-        border: 3px solid red;
-        gap: 2vh;
-    }
-   
+@media only screen and (min-width: 1024px) and (max-width: 1324px) {
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
     .page-container {
         display: flex;
         flex-direction: column;
@@ -452,5 +443,188 @@
     
 }
 
-/* @media only screen and (min-width: 1024px) and (max-width: 1324px) {
-} */
+@media only screen and (max-width: 600px) {
+    .edit-btn {
+        font-size: .8rem;
+    }
+
+    .delete-btn {
+        font-size: .8rem;
+    }
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: .8rem;
+        /* border: 3px solid green; */
+        width: 100%;
+    }
+
+    .header-container {
+        /* border: 3px solid red; */
+        margin-top: .5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+    }
+
+    .header-upper {
+        margin: 0;
+        font-size: .7rem;
+        /* border: 3px solid red; */
+    }
+
+    .header-upper h2 {
+        margin: 0;
+    }
+
+    .header-lower {
+        margin: 0;
+        /* border: 3px solid blue; */
+        display: flex;
+        align-items: center;
+        font-size: .7rem;
+    }
+    
+    .head-rating {
+        display: none;
+    }
+    
+    .header-lower-left {
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+    }
+    
+    .image-box {
+        /* border: 3px solid blue; */
+        display: flex;
+        justify-content: center;
+        margin-top:.5vh;
+        width: 85vw;
+    }
+
+    .image-box-left{
+        width: 100%;
+    }
+
+    .big-img {
+        border-radius: 15px;
+    }
+
+    .image-box-right {
+        display: none;
+    }
+
+    .body-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* border: 3px solid red; */
+        width: 100%;
+    }
+
+    .body-left {
+        width: 100%;
+    }
+
+    .body-left-header {
+        margin-top: 1vh;
+        /* border: 3px solid red; */
+        font-size: .8rem;
+        display: flex;
+        flex-direction: column;
+        /* width: 50%; */
+    }
+
+    .body-left-header > h3 {
+        margin: 0;
+    }
+
+    .line {
+        margin-top: 1vh;
+    }
+    
+    .body-left-standout {
+        /* border: 3px solid red; */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin-left: 2.5vw;
+    }
+
+    .icon-container {
+        /* border: 3px solid orange; */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        display: none;
+    }
+    
+    .bl-flex {
+        display: flex;
+        /* border: 3px solid red; */
+        height: 22vh;
+        align-items: flex-start;
+    }
+
+    /* .hrCancel {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    } */
+    
+    .body-left-desc {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+        top: 1vh;
+    }
+    
+    .bl-amenities-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* border: 3px solid red; */
+    }
+
+    .amenities {
+        display: flex;
+        justify-content: center;
+        gap: 3vw;
+        /* border: 3px solid red; */
+    }
+
+    .amenity {
+        display: flex;
+        justify-content: center;
+        /* border: 3px solid red; */
+        width: 100%;
+        gap: 2vw;
+    }
+
+    .booking-card {
+        border: #cccccc 1px solid;
+        position: sticky;
+        top: 150px;
+        border-radius: 10px;
+        height: 50vh;
+        width: 70vw;
+        box-shadow: 5px 10px 20px rgb(208, 208, 208);
+        display: flex;
+        justify-content: center;
+    }
+
+    .reviews-container {
+        /* border: 3px solid red; */
+        margin-top: 4vh;
+        align-items: center;
+    }
+    
+    .reviews-box {
+        justify-content: center;
+    }
+}
