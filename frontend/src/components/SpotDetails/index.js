@@ -154,7 +154,7 @@ const SpotDetails = () => {
                                     <div className="icon">
                                         <i className="fa-solid fa-medal"></i>
                                     </div>
-                                    <div className="icon">
+                                    <div className="icon key">
                                         <i className="fa-solid fa-key"></i>
                                     </div>
                                     <div className="icon">
@@ -166,7 +166,7 @@ const SpotDetails = () => {
                                         <h3 className="title">{capitalize(spot.Owner.firstName)} is a Superhost</h3>
                                         <p className="bot-text">Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests</p>
                                     </div>
-                                    <div className="super-host">
+                                    <div className="super-host checkIn">
                                         <h3 className="title">Self check-in</h3>
                                         <p className="bot-text">You can check in with the smart lock</p> 
                                     </div>
