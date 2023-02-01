@@ -294,7 +294,7 @@
     height: fit-content;
 };
 
-@media only screen and (min-width: 1024px) and (max-width: 1324px) {
+@media only screen and (min-width: 1025px) and (max-width: 1324px) {
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
