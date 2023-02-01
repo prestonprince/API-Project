@@ -305,7 +305,6 @@
     }
 
     .header-container {
-        /* border: 3px solid red; */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -331,7 +330,6 @@
     }
     
     .image-box {
-        /* border: 3px solid blue; */
         display: flex;
         justify-content: center;
         margin-top:.5vh;
@@ -358,7 +356,6 @@
 
     .body-left-header {
         margin-top: 1vh;
-        /* border: 3px solid red; */
         display: flex;
         flex-direction: column;
     }
@@ -372,12 +369,10 @@
     }
     
     .body-left-standout {
-        /* border: 3px solid red; */
         height: 22vh;
     }
 
     .icon-container {
-        /* border: 3px solid orange; */
         height: 22vh;
         gap: 6vh;
     }
@@ -387,7 +382,6 @@
     }
 
     .hrCancel {
-        /* border: 3px solid red; */
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -405,19 +399,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* border: 3px solid red; */
     }
 
     .amenities {
         display: flex;
         justify-content: center;
-        /* border: 3px solid red; */
     }
 
     .amenity {
         display: flex;
         justify-content: center;
-        /* border: 3px solid red; */
         width: 100%;
     }
 
@@ -432,7 +423,6 @@
     }
 
     .reviews-container {
-        /* border: 3px solid red; */
         margin-top: 4vh;
         align-items: center;
     }
@@ -457,12 +447,10 @@
         flex-direction: column;
         align-items: center;
         font-size: .8rem;
-        /* border: 3px solid green; */
         width: 100%;
     }
 
     .header-container {
-        /* border: 3px solid red; */
         margin-top: .5vh;
         display: flex;
         flex-direction: column;
@@ -473,7 +461,6 @@
     .header-upper {
         margin: 0;
         font-size: .7rem;
-        /* border: 3px solid red; */
     }
 
     .header-upper h2 {
@@ -482,7 +469,6 @@
 
     .header-lower {
         margin: 0;
-        /* border: 3px solid blue; */
         display: flex;
         align-items: center;
         font-size: .7rem;
@@ -499,7 +485,6 @@
     }
     
     .image-box {
-        /* border: 3px solid blue; */
         display: flex;
         justify-content: center;
         margin-top:.5vh;
@@ -522,7 +507,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* border: 3px solid red; */
         width: 100%;
     }
 
@@ -532,11 +516,9 @@
 
     .body-left-header {
         margin-top: 1vh;
-        /* border: 3px solid red; */
         font-size: .8rem;
         display: flex;
         flex-direction: column;
-        /* width: 50%; */
     }
 
     .body-left-header > h3 {
@@ -548,7 +530,6 @@
     }
     
     .body-left-standout {
-        /* border: 3px solid red; */
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -556,7 +537,6 @@
     }
 
     .icon-container {
-        /* border: 3px solid orange; */
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -565,16 +545,9 @@
     
     .bl-flex {
         display: flex;
-        /* border: 3px solid red; */
         height: 22vh;
         align-items: flex-start;
     }
-
-    /* .hrCancel {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-    } */
     
     .body-left-desc {
         display: flex;
@@ -588,20 +561,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* border: 3px solid red; */
     }
 
     .amenities {
         display: flex;
         justify-content: center;
         gap: 3vw;
-        /* border: 3px solid red; */
     }
 
     .amenity {
         display: flex;
         justify-content: center;
-        /* border: 3px solid red; */
         width: 100%;
         gap: 2vw;
     }
@@ -619,7 +589,6 @@
     }
 
     .reviews-container {
-        /* border: 3px solid red; */
         margin-top: 4vh;
         align-items: center;
     }
