@@ -5,11 +5,21 @@ BingusBnB is a fullstack web application. Users can browse spots, leave reviews,
 
 Hosting a Spot
 
-![Host Spot Demo](https://cdn.discordapp.com/attachments/1023439168631738371/1043031716039753818/Untitled_video_-_Made_with_Clipchamp.gif)
+![Host Spot Demo](./Assets/spotGIF.gif)
+
+Spot Thunks and Reducer
+
+![Spot Thunks and Reducer](./Assets/spotThunksReducer.png)
 
 Leave a Review
 
-![Leave Review Demo](https://cdn.discordapp.com/attachments/1023439168631738371/1043033092723585054/Untitled_video_-_Made_with_Clipchamp_2.gif)
+![Leave Review Demo](./Assets/leaveReviewGIF.gif)
+
+Review Form Component
+
+This code snippet showcases the function that is invoked when a user submits a review.
+
+![Review Form](./Assets/reviewForm.png)
 
 # Technologies Used
 - React.js
