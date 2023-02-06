@@ -1,7 +1,7 @@
 # BingusBnB
 BingusBnB is a fullstack web application. Users can browse spots, leave reviews, and host, edit, and delete their own locations. The initial app was built in two weeks, and is meant to be clone of AirBnB. 
 
-[Click me to visit the live site](https://bingusbnb.herokuapp.com/)
+[Click me to visit the live site](https://bingus-bnb.onrender.com/)
 
 Hosting a Spot
 
