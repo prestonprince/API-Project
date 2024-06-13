@@ -27,6 +27,29 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+/**
+ * @description Handles a POST request to create a new user account. It validates the
+ * input parameters and creates a new user object using the `signup` method from the
+ * `User` model. Then it sets a token cookie for the user and returns a JSON response
+ * with the user's information.
+ * 
+ * @param { BodyRequestBearer, specifically a UserSignupBody. } req - request body
+ * containing the user's information, which is then extracted and processed by the function.
+ * 
+ * 	* `email`: A string property representing the email address of the user signing
+ * up.
+ * 	* `password`: A string property representing the password of the user signing up.
+ * 	* `username`: A string property representing the username of the user signing up.
+ * 	* `firstName`: A string property representing the first name of the user signing
+ * up.
+ * 	* `lastName`: A string property representing the last name of the user signing up.
+ * 
+ * @param { object } res - Response object to which the signed-up user information
+ * will be sent as JSON.
+ * 
+ * @returns { object } an JSON object containing the user's `firstName`, `lastName`,
+ * `email`, `username`, and `password`.
+ */
 router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
     const user = await User.signup({ email, password, username, firstName, lastName });
